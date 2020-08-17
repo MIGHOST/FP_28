@@ -1,0 +1,97 @@
+@font-face {
+  font-family: "BauhausC";
+  src: url("../../fonts/bauhouse/BauhausC_Medium_Bold.ttf") format("woff2");
+}
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.ttf")
+    format("woff2");
+}
+.wrapper {
+  min-width: 320px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+.logo {
+  margin: auto;
+  margin-bottom: 23px;
+  margin-top: 23px;
+  background-image: url("../../icons/logo.svg");
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  margin-bottom: 23px;
+  font-size: 24px;
+  font-family: "BauhausC";
+  color: rgb(40, 40, 40);
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 23px;
+}
+.formGroup {
+  margin-bottom: 12px;
+  width: 100%;
+}
+.formGroup input {
+  padding: 16px;
+  width: 100%;
+  font-size: 13px;
+  font-family: "HelveticaNeueCyr";
+  color: rgb(185, 201, 212);
+  line-height: 2.308;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(249, 251, 251);
+  height: 48px;
+}
+.confirmPasswordBar {
+  background-color: rgb(252, 132, 44);
+  opacity: 0.2;
+  width: 100%;
+  height: 6px;
+}
+.confirmed {
+  background-color: rgb(55, 190, 62);
+  opacity: 0.8;
+  width: 100%;
+  height: 6px;
+}
+
+.button {
+  border: none;
+  border-radius: 4px;
+  background: rgb(236, 178, 42) 0%;
+
+  box-shadow: 0px 3px 3px 0px rgba(226, 122, 43, 0.2);
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "HelveticaNeueCyr";
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  line-height: 2;
+}
+.login a {
+  cursor: pointer;
+  font-size: 12px;
+  font-family: "HelveticaNeueCyr";
+  color: rgb(107, 125, 131);
+  text-decoration: underline;
+  line-height: 2.5;
+}
+.login a:visited {
+  color: rgb(107, 125, 131);
+}
