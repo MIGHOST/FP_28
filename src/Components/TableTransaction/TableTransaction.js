@@ -21,7 +21,7 @@ const TableTransaction = () => {
           return (
             <TableTransactionItem
               key={transaction.id}
-              transaction={{ ...transaction }}
+              transaction={transaction}
             />
           );
         })}
