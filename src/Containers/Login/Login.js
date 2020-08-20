@@ -4,12 +4,11 @@ import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
-  const isDesktop = useMediaQuery({ query: "(max-width: 1280px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
-  const isMobileDevice = useMediaQuery({
-    query: "(max-device-width: 320px)",
-  });
-
+//   const isDesktop = useMediaQuery({ query: "(max-width: 1280px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
+//   const isMobileDevice = useMediaQuery({
+//     query: "(max-device-width: 767px)",
+//   });
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -52,19 +51,19 @@ const Login = () => {
             </form>
             <Link
               to="/registration"
-              className={styles.link_registation}
+              className={styles.link_registration}
               href="#"
             >
               Регистрация
             </Link>
 
-            <div className={styles.login}>
+            <div className={styles.login_box_social}>
               <h3 className={styles.social_title}>Войти c помощью</h3>
               <div className={styles.social_box}>
-                <Link to="/google" className={styles}>
+                <Link to="/google">
                   <div className={styles.google_box}></div>
                 </Link>
-                <Link to="/facebook" className={styles}>
+                <Link to="/facebook">
                   <div className={styles.fb_box}></div>
                 </Link>
               </div>
