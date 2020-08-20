@@ -3,14 +3,13 @@ import style from "./Currency.module.css";
 import moment from "moment";
 import axios from "axios";
 
-const requestCurrencyURL = `https://cors-anywhere.herokuapp.com/https://api.privatbank.ua/p24api/exchange_rates?json&date=${moment(
+
+const Currency = () => {
+
+  const requestCurrencyURL = `https://cors-anywhere.herokuapp.com/https://api.privatbank.ua/p24api/exchange_rates?json&date=${moment(
   Date.now()
 ).format("DD.MM.yyyy")}`;
 
-
-
-
-const Currency = () => {
   const [arrayOfExchange, setArrayOfExchange] = useState([]);
   
 

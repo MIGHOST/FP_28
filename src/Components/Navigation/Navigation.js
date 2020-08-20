@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./Navigation.module.css";
-
 const Navigation = () => {
   return (
     <div>
@@ -13,13 +12,6 @@ const Navigation = () => {
           <div className={style.navItem}>
             <div className={style.navItem_chart}></div>
             <p className={style.navItem_text}>Статистика</p>
-          </div>
-        </div>
-
-        <div className={style.navContainer}>
-          <div className={style.balance}>
-            <p>Баланс</p>
-            <p>income data грн</p>
           </div>
         </div>
       </div>
@@ -42,7 +34,6 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-
       <div className={style.mob}>
         <div className={style.mob_container}>
           <div className={style.mob_navItem}>
@@ -55,13 +46,8 @@ const Navigation = () => {
             <div className={style.mob_navItem_dolar}></div>
           </div>
         </div>
-        <div className={style.mob_balance}>
-          <p>Баланс</p>
-          <p>income data грн</p>
-        </div>
       </div>
     </div>
   );
 };
-
 export default Navigation;
