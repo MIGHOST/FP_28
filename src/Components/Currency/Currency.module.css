@@ -115,6 +115,7 @@ html {
   display: flex;
   height: 43px;
   border-bottom: 2px solid #f3f6f6;
+  background-color: white;
   justify-content: space-around;
   align-items: center;
   font-family: Helvetica;
