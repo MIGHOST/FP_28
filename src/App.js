@@ -1,10 +1,8 @@
-import React from 'react';
-
-
+import React from "react";
+import Statistic from "./Components/Statistic/Statistic";
+import "./fonts/HelveticaNeueCyr/stylesheet.css";
 const App = () => {
-    return (
-        <h1>Final project</h1>
-    );
-}
+  return <Statistic />;
+};
 
 export default App;
