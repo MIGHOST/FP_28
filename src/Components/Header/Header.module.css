@@ -90,7 +90,7 @@
   display: none;
 }
 
-@media (min-width: 748px) {
+@media screen and (min-width: 321px) and (max-width: 748px) {
   .header {
     background-color: rgb(255, 255, 255);
     box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
@@ -134,13 +134,47 @@
   }
 }
 
-@media (min-width: 1190px) {
+@media (min-width: 749px) {
+  .header {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+  }
+
   .wrapper {
-    width: 100%;
+    background-color: white;
+    width: 1192px;
+  }
+
+  .logo {
+    margin-right: 15px;
   }
 
   .siteLogo {
     color: black;
+  }
+
+  .navList {
+    min-width: 150px;
+  }
+
+  .navItem:last-child {
+    display: inline-block;
+  }
+  .navItem:nth-child(1)::after {
+    display: block;
+    content: "";
+    position: absolute;
+    border-width: 1px;
+    border-color: rgb(107, 125, 131);
+    border-style: solid;
+    position: absolute;
+    left: 50px;
+    top: 22px;
+    height: 13px;
+  }
+
+  .navLinkImg {
+    margin-left: 20px;
   }
 
   .navItem {
