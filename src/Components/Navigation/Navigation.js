@@ -19,12 +19,7 @@ const Navigation =() => {
                 </div>
             </div>
 
-            <div className={style.navContainer}>
-                <div className={style.balance}>
-                    <p>Баланс</p>
-                    <p>income data грн</p>
-                </div>
-            </div>
+ 
             </div>
 
             <div className={style.tab}>
