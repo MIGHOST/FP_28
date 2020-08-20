@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 767px) {
+  .currency {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .wrapper {
     background-image: url(./img/main_tab_bgrd.jpg);
@@ -13,5 +19,25 @@
   }
   .mainPage {
     width: 748px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    background-image: url(./img/mp_dt_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .mainPage {
+    width: 1192px;
+    padding: 45px 0;
+    position: relative;
+  }
+
+  .transactionTable {
+    position: absolute;
+    top: 45px;
+    right: 0;
   }
 }

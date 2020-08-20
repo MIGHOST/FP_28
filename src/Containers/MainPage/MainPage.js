@@ -6,15 +6,21 @@ import AddButton from "../../Components/AddButton/AddButton";
 import Currency from "../../Components/Currency/Currency";
 
 import styles from "./MainPage.module.css";
+import Balance from "../../Components/Balance/Balance";
 
 const MainPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
         <Navigation />
-        <TableTransaction />
+        <Balance />
+        <div className={styles.transactionTable}>
+          <TableTransaction />
+        </div>
         <AddButton />
-        <Currency />
+        <div className={styles.currency}>
+          <Currency />
+        </div>
       </div>
     </div>
   );
