@@ -6,17 +6,17 @@
 }
 
 .cell {
-  font-family: sans-serif;
   padding-left: 23px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #282828;
-  font-size: 13px;
-  line-height: 30px;
 }
 
 .cell p {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  color: #282828;
+  font-size: 13px;
+  line-height: 30px;
   font-weight: 300;
 }
 
