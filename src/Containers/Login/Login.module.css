@@ -1,0 +1,214 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1280px;
+}
+
+.wrapper_left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 130px 0 67px;
+  min-width: 32em;
+  height: 100vh;
+  background-blend-mode: multiply;
+  background: rgb(61, 85, 117) url("./images/Слой_1.png") center;
+  background-size: cover;
+}
+
+.wrapper_phone {
+  width: 298px;
+  height: 599px;
+  margin-bottom: 39px;
+  background: url("./images/5-layers.webp") no-repeat center;
+  background-size: contain;
+}
+
+.wrapper_left__title {
+  color: #ffffff;
+  font-family: "Bauhaus C";
+  font-size: 24px;
+  font-weight: 500;
+
+}
+
+.wrapper_right {
+  width: 48em;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 225px;
+}
+
+.wrapper_login {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 58px 20px;
+  align-items: center;
+  width: 550px;
+  height: 390px;
+  box-shadow: 10px 17px 40px rgba(112, 124, 130, 0.3);
+  background-color: #ffffff;
+}
+
+.img_logo {
+  width: 24px;
+  height: 24px;
+  background: url("./images/icons/logo.svg") no-repeat;
+  margin-right: 14px;
+}
+
+.wrapper_title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.title {
+  color: #2c2c2c;
+  font-family: "Bauhaus C";
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 57px;
+  background-color: #f9fbfb;
+  border: none;
+  border-radius: 5px;
+  font-family: "Helvetica Neue Cyr - Roman";
+  font-size: 20px;
+  font-weight: 400;
+  padding-left: 58px;
+
+}
+
+.input_wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: #bcc8d2;
+  font-family: "Helvetica Neue Cyr - Roman";
+  font-size: 15px;
+  font-weight: 400;
+
+}
+
+.input_email {
+  margin-bottom: 14px;
+}
+
+.input_password {
+  margin-bottom: 35px;
+}
+
+.icon {
+  position: absolute;
+  top: 21px;
+  left: 18px;
+  width: 20px;
+  height: 16px;
+}
+
+.icon_email {
+  background: url('./images/icons/baseline-email-24px.svg') no-repeat;
+  background-size: contain;
+}
+
+.icon_password {
+  background: url('./images/icons/baseline-lock-24px.svg') no-repeat;
+  background-size: contain;
+}
+
+
+.buttom {
+  width: 281px;
+  height: 39px;
+  color: #ffffff;
+  font-family: "Helvetica Neue Cyr";
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 2px 3px 3px rgba(225, 131, 55, 0.25);
+  background-color: #e18337;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 33px;
+}
+
+.link_registation {
+  color: #707c82;
+  font-family: "Helvetica Neue Cyr - Roman";
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+
+@media screen and (max-width: 769px) {
+  .wrapper {
+    width: 769px;
+  }
+
+  .wrapper_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 319px 0 69px;
+    height: 100vh;
+    background-blend-mode: multiply;
+    background: rgb(61, 85, 117) url("./images/Слой_1.png") center;
+    background-size: cover;
+  }
+
+  .wrapper_login {
+    margin-bottom: 227px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+
+  .wrapper {
+    width: 320px;
+    height: auto;
+  }
+
+  .wrapper_right {
+    padding: 0;
+    width: 100%;
+    height: auto;
+    background: none;
+  }
+
+  .wrapper_login {
+    width: 100%;
+    height: auto;
+    padding: 101px 22px 0;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .wrapper_title {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .img_logo {
+    margin: 0 0 21px;
+  }
+}

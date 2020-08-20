@@ -1,10 +1,8 @@
-import React from 'react';
-
+import React from "react";
+import Login from "./Containers/Login/Login";
 
 const App = () => {
-    return (
-        <h1>Final project</h1>
-    );
-}
+  return <Login />;
+};
 
 export default App;
