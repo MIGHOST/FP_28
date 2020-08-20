@@ -9,6 +9,7 @@ import styles from "./MainPage.module.css";
 import Balance from "../../Components/Balance/Balance";
 
 const MainPage = () => {
+  console.log(window);
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>

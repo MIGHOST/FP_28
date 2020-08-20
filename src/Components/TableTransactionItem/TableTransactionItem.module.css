@@ -1,5 +1,4 @@
 .tableTransactionItem {
-  position: relative;
   height: 270px;
   margin-bottom: 15px;
   box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
@@ -44,6 +43,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .tableTransactionItem {
+    position: relative;
+  }
+
   .tableTransactionItem::before {
     display: block;
     position: absolute;
