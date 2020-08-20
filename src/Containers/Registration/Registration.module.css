@@ -95,3 +95,37 @@
 .login a:visited {
   color: rgb(107, 125, 131);
 }
+.social_box{
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 10px;
+}
+.social_title{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: rgb(107, 125, 131);
+  font-family: "HelveticaNeueCyr";
+}
+.google_box{
+  margin: auto;
+  background-image: url("../../icons/social_icon/google.svg");
+  width: 42px;
+  height: 42px;
+  margin-right: 25px;
+  
+}
+.fb_box{
+  margin: auto;
+  background-image: url("../../icons/social_icon/fb.svg");
+  width: 40px;
+  height: 40px;
+}
+
+.fb_box:hover,
+.google_box:hover
+{
+transform: scale(1.2);
+}

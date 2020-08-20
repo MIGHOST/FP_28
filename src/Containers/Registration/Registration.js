@@ -84,6 +84,18 @@ const Registration = () => {
       <div className={styles.login}>
         <Link to="/login">Войти</Link>
       </div>
+      <div className={styles.login}>
+        <h3 className={styles.social_title}>Войти c помощью</h3>
+        <div className={styles.social_box}>
+    
+        <Link to="/google" className={styles}>
+        <div className={styles.google_box}></div>
+    
+        </Link>
+        <Link to="/facebook" className={styles}><div className={styles.fb_box}></div>
+    </Link>
+    </div>
+      </div>
     </div>
   );
 };
