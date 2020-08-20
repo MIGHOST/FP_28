@@ -81,6 +81,14 @@ const Registration = () => {
           Регистрация
         </button>
       </form>
+
+      <div className={styles.test}>
+        <a href="google.com">
+          <div  className={styles.link_fb}></div>
+        </a>
+
+        <a href="facebook.com" className="login100-social-item bg2"></a>
+      </div>
       <div className={styles.login}>
         <Link to="/login">Войти</Link>
       </div>

@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <h1>Final project</h1>
-      <Switch>
+            <Switch>
         <Route path="/registration" component={Registration} />
       </Switch>
     </>
