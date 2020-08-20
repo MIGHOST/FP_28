@@ -3,17 +3,65 @@
   src: url("../../fonts/bauhouse/BauhausC_Medium_Bold.ttf") format("woff2");
 }
 @font-face {
+  font-family: "BauhausC-thin";
+  src: url("../../fonts/bauhouse/BauhausC_Light.ttf") format("woff2");
+}
+@font-face {
   font-family: "HelveticaNeueCyr";
   src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.ttf")
     format("woff2");
 }
 .wrapper {
-  min-width: 320px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.aside {
+  background-image: url(./img/registration-background.png);
+  width: 40%;
+  margin: 0;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.iphone {
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(./img/iphone.png);
+  background-position: center;
+  background-size: contain;
+  width: 290px;
+  height: 100%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.titleApp {
+  margin: auto;
+  font-size: 24px;
+  font-family: "BauhausC-thin";
+  color: rgb(255, 255, 255);
+  line-height: 1.875;
+  font-weight: 200;
+}
+.formSectionWrapper {
+  margin: 0 auto;
+  padding: 100px;
+  padding-top: 150px;
+  text-align: center;
+}
+.formWrapper {
+  min-width: 560px;
   padding: 20px;
   margin: 0 auto;
   text-align: center;
   box-sizing: border-box;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 10px 17.321px 40px 0px rgba(112, 124, 130, 0.3);
 }
+
 .logo {
   margin: auto;
   margin-bottom: 23px;
@@ -22,19 +70,7 @@
   width: 24px;
   height: 24px;
 }
-.link_fb{
-  margin: auto;
-  margin-bottom: 23px;
-  margin-top: 23px;
-  background-image: url("./icons/fb.svg");
-  width: 24px;
-  height: 24px;
-}
 
-.test{
-  width: 50px;
-  height: 50px;
-}
 .title {
   margin-bottom: 23px;
   font-size: 24px;
@@ -95,6 +131,8 @@
   color: rgb(255, 255, 255);
   font-weight: normal;
   line-height: 2;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 .login a {
   cursor: pointer;
@@ -107,22 +145,29 @@
 .login a:visited {
   color: rgb(107, 125, 131);
 }
-
-.login100-social-item {
-  font-size: 25px;
-  color: #fff;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
+.socials {
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 5px;
+}
+.login100SocialItem {
+  margin: 10px;
+  margin-bottom: 23px;
+  margin-top: 23px;
+  background-image: url("./icons/google.svg");
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+}
+.link_fb {
+  margin: 10px;
+  margin-bottom: 23px;
+  margin-top: 23px;
+  background-image: url("./icons/fb.svg");
+  background-size: contain;
+  width: 24px;
+  height: 24px;
 }
 
 .login100-social-item:hover {
@@ -130,40 +175,27 @@
   background-color: #333333;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 1200px) {
+  .aside {
+    display: none;
+  }
+  .formSectionWrapper {
+    background-image: url(./img/registration-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+  .formWrapper {
+    max-width: 560px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .formSectionWrapper {
+    background-image: none;
+    padding: 0;
+    padding-top: 40px;
+  }
+  .formWrapper {
+    min-width: 320px;
+  }
+}
