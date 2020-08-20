@@ -185,6 +185,23 @@
   background-position: center;
 }
 
+.mob_balance {
+  display: none;
+  background-color: #3a5374;
+  width: 306px;
+  height: 90px;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 700;
+}
+
 /* ____media-rules */
 
 @media screen and (min-width: 1280px) {
@@ -201,6 +218,11 @@
 
 @media screen and (max-width: 767px) {
   .mob_container {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .mob_balance {
     display: flex;
   }
 }
