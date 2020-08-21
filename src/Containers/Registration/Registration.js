@@ -28,63 +28,69 @@ const Registration = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.logo}></div>
-      <h3 className={styles.title}>WALLET</h3>
-      <form onSubmit={formSubmit} className={styles.formWrapper}>
-        <div className={styles.formGroup}>
-          <input
-            type="email"
-            className={styles.inputEmail}
-            placeholder="E-mail"
-            autoComplete="on"
-            onChange={inputHandler}
-            name="email"
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <input
-            type="password"
-            className={styles.inputPassword}
-            placeholder="Пароль"
-            autoComplete="off"
-            onChange={inputHandler}
-            name="password"
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <input
-            type="password"
-            className={styles.inputConfirmPassword}
-            placeholder="Подтвердите пароль"
-            autoComplete="off"
-            onChange={inputHandler}
-            name="confirmPassword"
-          />
-          {form.confirmPassword && form.confirmPassword === form.password ? (
-            <div className={styles.confirmed}></div>
-          ) : (
-            <div className={styles.confirmPasswordBar}></div>
-          )}
-        </div>
+      <aside className={styles.aside}>
+        <div className={styles.iphone}></div>
+        <p className={styles.titleApp}>Finance App</p>
+      </aside>
+      <div className={styles.formSectionWrapper}>
+        <form onSubmit={formSubmit} className={styles.formWrapper}>
+          <div className={styles.logo}></div>
+          <h3 className={styles.title}>WALLET</h3>
+          <div className={styles.formGroup}>
+            <input
+              type="email"
+              className={styles.inputEmail}
+              placeholder="E-mail"
+              autoComplete="on"
+              onChange={inputHandler}
+              name="email"
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <input
+              type="password"
+              className={styles.inputPassword}
+              placeholder="Пароль"
+              autoComplete="off"
+              onChange={inputHandler}
+              name="password"
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <input
+              type="password"
+              className={styles.inputConfirmPassword}
+              placeholder="Подтвердите пароль"
+              autoComplete="off"
+              onChange={inputHandler}
+              name="confirmPassword"
+            />
+            {form.confirmPassword && form.confirmPassword === form.password ? (
+              <div className={styles.confirmed}></div>
+            ) : (
+              <div className={styles.confirmPasswordBar}></div>
+            )}
+          </div>
 
-        <div className={styles.formGroup}>
-          <input
-            type="text"
-            className={styles.inputName}
-            placeholder="Ваше имя"
-            onChange={inputHandler}
-            name="name"
-          />
-        </div>
+          <div className={styles.formGroup}>
+            <input
+              type="text"
+              className={styles.inputName}
+              placeholder="Ваше имя"
+              onChange={inputHandler}
+              name="name"
+            />
+          </div>
 
-        <button type="submit" className={styles.button}>
-          Регистрация
-        </button>
-      </form>
-      <div className={styles.login}>
-        <Link to="/login">Войти</Link>
-      </div>
-      <div className={styles.login}>
+          <button type="submit" className={styles.button}>
+            Регистрация
+          </button>
+          <div className={styles.login}>
+            <Link to="/login">Войти</Link>
+          </div>
+
+
+          <div className={styles.login}>
         <h3 className={styles.social_title}>Войти c помощью</h3>
         <div className={styles.social_box}>
     
@@ -96,6 +102,19 @@ const Registration = () => {
     </Link>
     </div>
       </div>
+
+          {/* <div className={styles.socials}>
+            <a href="google.com">
+              <div className={styles.login100SocialItem}></div>
+            </a>
+
+            <a href="facebook.com">
+              <div className={styles.link_fb}></div>
+            </a>
+          </div> */}
+        </form>
+      </div>
+  
     </div>
   );
 };
