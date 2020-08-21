@@ -2,6 +2,7 @@
   font-family: "BauhausC";
   src: url("../../fonts/bauhouse/BauhausC_Medium_Bold.ttf") format("woff2");
 }
+
 @font-face {
   font-family: "HelveticaNeueCyr";
   src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.ttf")
@@ -86,7 +87,7 @@
   color: #2c2c2c;
   font-family: "BauhausC";
   font-size: 24px;
-  font-weight: 700;
+  font-weight: lighter;
 }
 
 .form {
