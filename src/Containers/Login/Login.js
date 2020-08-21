@@ -1,9 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 
+const formInitialState = {
+  email: "",
+  password: "",
+};
+
 const Login = () => {
+  // const [form, setForm] = useState(formInitialState);
+  // const dispatch = useDispatch();
+  // const history = useHistory();
 //   const isDesktop = useMediaQuery({ query: "(max-width: 1280px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
 //   const isMobileDevice = useMediaQuery({

@@ -25,7 +25,7 @@
   padding: 130px 0 67px;
   margin-right: 100px;
   /* min-width: 512px; */
-  height: 100vh;
+  /* height: 100vh; */
   background-blend-mode: multiply;
   background: rgb(61, 85, 117) url("./images/Layer1.png") center;
   background-size: cover;

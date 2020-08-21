@@ -1,0 +1,228 @@
+.navContainer {
+  display: none;
+  flex-direction: column;
+  width: 312px;
+  padding: 30px 0;
+  background-color: #284060;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f7f8fa;
+  font-size: 13px;
+  padding: 0 30px;
+}
+
+.navItem:hover {
+  background-color: #3a5374;
+  font-weight: 700;
+}
+
+.navItem_house {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-image: url("./icon/home.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.navItem_chart {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-image: url("./icon/Diagrams.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.navItem_text {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f7f8fa;
+  font-size: 13px;
+  padding: 0 30px;
+  font-weight: 700;
+}
+
+/* ____tablet */
+
+/* .tab {
+    display: none;
+} */
+
+.tab_container {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 85px;
+  justify-content: center;
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #3a5374;
+  background-color: #fcf9f8;
+}
+
+.tab_dash {
+  display: block;
+  content: none;
+  width: 1px;
+  height: 16px;
+  background-color: #3a5374;
+  margin: 0 12px;
+}
+
+.tab_navItem {
+  display: flex;
+}
+
+.tab_navItem:hover {
+  cursor: pointer;
+}
+
+.tab_balance {
+  display: flex;
+}
+
+.tab_navItem_chart {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-image: url("./icon/Diagrams-tab.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 10px;
+}
+
+.tab_navItem_house {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("./icon/home-tab.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 10px;
+}
+
+/* ____mobile */
+
+.mob_container {
+  display: none;
+  width: 100%;
+  height: 40px;
+  background-color: #3a5374;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+.mob_navItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: none;
+  width: 32px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: #2a4262;
+}
+
+.mob_navItem:hover {
+  background-color: #66778e;
+}
+
+.mob_navItem_house {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("./icon/home-mob.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.mob_navItem_chart {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("./icon/Diagrams-mob.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.mob_navItem_dolar {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("./icon/dolar-mob.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.mob_balance {
+  display: none;
+  background-color: #3a5374;
+  width: 306px;
+  height: 90px;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 700;
+}
+
+/* ____media-rules */
+
+@media screen and (min-width: 1280px) {
+  .navContainer {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .tab_container {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mob_container {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .mob_balance {
+    display: flex;
+  }
+}

@@ -1,0 +1,156 @@
+.tableTransactionItem {
+  height: 270px;
+  margin-bottom: 15px;
+  box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
+}
+
+.cell {
+  padding-left: 23px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cell p {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  color: #282828;
+  font-size: 13px;
+  line-height: 30px;
+  font-weight: 300;
+}
+
+.cellTitle {
+  width: 130px;
+  display: none;
+}
+
+.cellData {
+  color: #2c353e;
+}
+
+.date {
+  color: #282828;
+}
+
+.plus .sum {
+  color: #3a5374;
+  font-weight: 700;
+}
+
+.minus .sum {
+  color: #ff6c00;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .tableTransactionItem {
+    position: relative;
+  }
+
+  .tableTransactionItem::before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 270px;
+    left: 0;
+  }
+
+  .cell {
+    height: 45px;
+  }
+
+  .plus::before {
+    background-color: #7e8c9e;
+  }
+  .minus::before {
+    background-color: #e28b20;
+  }
+
+  .cell:nth-child(2n-1) {
+    background-color: #f3f6f6;
+  }
+  .cellTitle {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tableTransactionItem {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+
+  .cell {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .cellDate {
+    width: 85px;
+  }
+
+  .cellType {
+    width: 65px;
+  }
+
+  .cellCategory {
+    width: 175px;
+  }
+
+  .cellComment {
+    width: 165px;
+  }
+
+  .cellSum {
+    width: 105px;
+  }
+
+  .cellBalance {
+    width: 110px;
+  }
+  .tableTransactionItem:nth-child(2n) {
+    background: transparent;
+  }
+
+  .tableTransactionItem:nth-child(2n-1) {
+    background-color: #f3f6f6;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cell {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+  }
+
+  .cellDate {
+    width: 117px;
+  }
+
+  .cellType {
+    width: 95px;
+  }
+
+  .cellCategory {
+    width: 184px;
+  }
+
+  .cellComment {
+    width: 184px;
+  }
+
+  .cellSum {
+    width: 144px;
+  }
+
+  .cellBalance {
+    width: 131px;
+  }
+}
