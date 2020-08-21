@@ -1,8 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import FacebookLogin from "react-facebook-login";
+import { GoogleLogin } from "react-google-login";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
+import axios from "axios";
+
 
 const formInitialState = {
   email: "",
@@ -10,14 +14,87 @@ const formInitialState = {
 };
 
 const Login = () => {
-  // const [form, setForm] = useState(formInitialState);
-  // const dispatch = useDispatch();
-  // const history = useHistory();
-//   const isDesktop = useMediaQuery({ query: "(max-width: 1280px)" });
+  const [form, setForm] = useState(formInitialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  // const [userTokenG, setUserTokenG] = useState("");
+  // const [userTokenF, setUserTokenF] = useState("");
+
+  const handleInput = (e) => {
+    const { value, name } = e.target;
+
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await axios.post(
+        "https://powerful-waters-91620.herokuapp.com/auth/login",
+        form
+      );
+
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setForm({ email: "", password: "", confirmPassword: "", name: "" });
+  };
+
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
-//   const isMobileDevice = useMediaQuery({
-//     query: "(max-device-width: 767px)",
-//   });
+
+  const responseGoogle = async (response) => {
+    try {
+      const { accessToken } = response;
+
+      const body = {
+        accessToken,
+      };
+
+      const { data } = await axios.post(
+        "https://powerful-waters-91620.herokuapp.com/auth/google",
+        body
+      );
+
+      // setUserTokenG(data.token);
+      // setUserTokenF("");
+
+      console.log("GOOGLE LOGIN GOOD");
+      console.log(data);
+    } catch (error) {
+      console.log("GOOGLE LOGIN FAILED");
+      console.error(error);
+    }
+  };
+
+  const responseFacebook = async (response) => {
+    try {
+      const { accessToken } = response;
+
+      const body = {
+        accessToken,
+      };
+
+      const { data } = await axios.post(
+        "https://powerful-waters-91620.herokuapp.com/auth/facebook",
+        body
+      );
+
+      // setUserTokenF(data.token);
+      // setUserTokenG("");
+
+      console.log("FACEBOOK LOGIN GOOD");
+
+      console.log(data);
+    } catch (error) {
+      console.log("FACEBOOK LOGIN FAILED");
+      console.error(error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -37,12 +114,16 @@ const Login = () => {
               <h2 className={styles.title}>Wallet</h2>
             </div>
             {/**----form---- */}
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.input_wrapper}>
                 <div className={`${styles.icon} ${styles.icon_email}`}></div>
                 <input
                   className={`${styles.input} ${styles.input_email}`}
                   placeholder="E-mail"
+                  type="text"
+                  name="email"
+                  value={form.email}
+                  onChange={handleInput}
                 />
               </div>
 
@@ -51,6 +132,10 @@ const Login = () => {
                 <input
                   className={`${styles.input} ${styles.input_password}`}
                   placeholder="Пароль"
+                  type="text"
+                  name="password"
+                  value={form.password}
+                  onChange={handleInput}
                 />
               </div>
 
@@ -69,6 +154,25 @@ const Login = () => {
             <div className={styles.login_box_social}>
               <h3 className={styles.social_title}>Войти c помощью</h3>
               <div className={styles.social_box}>
+                <GoogleLogin 
+                  clientId="1016113227604-0u7tph6hm9s2bbnvi19h8dvdg3h5lqu4.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  autoLoad={false}
+                />
+                <FacebookLogin
+                  appId="628094021455729"
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                  autoLoad={false}
+                  buttonStyle={{
+                    padding: "12px 16px",
+                    fontSize: "14px",
+                    marginLeft: "10px",
+                  }}
+                />
+
                 <Link to="/google">
                   <div className={styles.google_box}></div>
                 </Link>
