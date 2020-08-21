@@ -29,7 +29,8 @@ const MainPage = () => {
         <div className={styles.transactionTable}>
           <TableTransaction />
         </div>
-        <AddButton modalOpener={() => modalOpener()} />
+        <AddButton modalOpener={modalOpener} />
+        <div className={styles.blockForMobileButton}></div>
         <div className={styles.currency}>
           <Currency />
         </div>

@@ -4,41 +4,22 @@
   min-height: 100vh;
 }
 
+.blockForMobileButton {
+  display: none;
+  width: 320px;
+  height: 42px;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(40, 64, 96, 0.651);
+  z-index: 2;
+}
+
 @media screen and (max-width: 767px) {
   .currency {
     display: none;
   }
-}
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .wrapper {
-    background-image: url(./img/main_tab_bgrd.jpg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .mainPage {
-    width: 748px;
-    padding-bottom: 50px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .wrapper {
-    background-image: url(./img/mp_dt_bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .mainPage {
-    width: 1192px;
-    padding: 45px 0;
-    position: relative;
-  }
-
-  .transactionTable {
-    position: absolute;
-    top: 45px;
-    right: 0;
+  .blockForMobileButton {
+    /* display: block; */
   }
 }
