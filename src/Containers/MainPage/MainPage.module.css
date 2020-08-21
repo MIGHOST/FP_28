@@ -4,9 +4,22 @@
   min-height: 100vh;
 }
 
+.blockForMobileButton {
+  display: none;
+  width: 320px;
+  height: 42px;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(40, 64, 96, 0.651);
+}
+
 @media screen and (max-width: 767px) {
   .currency {
     display: none;
+  }
+
+  .blockForMobileButton {
+    /* display: block; */
   }
 }
 
