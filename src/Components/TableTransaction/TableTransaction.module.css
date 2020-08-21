@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.eot)
+      format("eot"),
+    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.ttf) format("ttf"),
+    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.woff)
+      format("woff");
+}
+@font-face {
+  font-family: "HelveticaNeueCyr";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.eot)
+      format("eot"),
+    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.ttf) format("ttf"),
+    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.woff) format("woff");
+}
+
 .list {
   list-style: none;
 }
