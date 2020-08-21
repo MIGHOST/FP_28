@@ -13,3 +13,6 @@ export const loginUserWithFacebook = ({ email, facebookToken }) => ({
   type: userTypes.LOGIN_WITH_FACEBOOK,
   payload: { email, facebookToken },
 });
+export const LOG_OUT = "USER_LOG_OUT";
+
+export const userLogOut = () => ({ type: LOG_OUT });
