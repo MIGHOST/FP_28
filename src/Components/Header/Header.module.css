@@ -1,13 +1,13 @@
 @font-face {
   font-family: "BauhausC";
-  src: url("./BauhausC_Medium_Bold.ttf");
+  src: url("../../fonts/bauhouse/BauhausC_Medium_Regular.ttf");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueCyr";
-  src: url("./HelveticaNeueCyr-Roman.ttf");
+  src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.woff");
   font-weight: normal;
   font-style: normal;
 }
