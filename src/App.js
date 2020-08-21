@@ -1,10 +1,8 @@
-import React from 'react';
-
+import React from "react";
+import AddTransaction from "./Components/AddTransaction/AddTransaction";
 
 const App = () => {
-    return (
-        <h1>Final project</h1>
-    );
-}
+	return <AddTransaction />;
+};
 
 export default App;
