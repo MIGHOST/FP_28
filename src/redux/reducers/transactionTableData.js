@@ -35,6 +35,15 @@ const initialState = [
     balance: 18000.0,
     id: 4,
   },
+  {
+    date: "28.08.2020",
+    type: "-",
+    category: "Different",
+    commentary: "Bla bla bla",
+    sum: 8000.0,
+    balance: 18000.0,
+    id: 5,
+  },
 ];
 
 const tableData = (state = initialState, action) => {
