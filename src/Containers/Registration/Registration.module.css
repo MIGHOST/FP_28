@@ -15,6 +15,7 @@
   display: flex;
   padding: 0;
   margin: 0;
+  height: 100vh;
 }
 .aside {
   background-image: url(./img/registration-background.png);
@@ -61,23 +62,29 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 10px 17.321px 40px 0px rgba(112, 124, 130, 0.3);
 }
-
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
 .logo {
   margin: auto;
-  margin-bottom: 23px;
-  margin-top: 23px;
   background-image: url("../../icons/logo.svg");
   width: 24px;
   height: 24px;
+  margin: 105px 10px;
 }
 
 .title {
-  margin-bottom: 23px;
+  height: 100%;
   font-size: 24px;
   font-family: "BauhausC";
   color: rgb(40, 40, 40);
   font-weight: bold;
   line-height: 1.25;
+  margin: 10px 10px;
 }
 
 .formWrapper {
@@ -197,5 +204,15 @@
   }
   .formWrapper {
     min-width: 320px;
+  }
+  .logoWrapper {
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    align-content: space-around;
+    margin-bottom: 10px;
+  }
+  .logo {
+    margin: 10px;
   }
 }
