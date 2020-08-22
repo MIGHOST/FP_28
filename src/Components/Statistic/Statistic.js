@@ -125,7 +125,7 @@ const Statistic = () => {
                     ></div>
                     <p className={styles.ItemTitle}>{el.category}</p>
                   </div>
-                  <p>{el.sum}</p>
+                  <p>{el.sum.toFixed(2)}</p>
                 </li>
               ))}
             </Scrollbars>
@@ -145,7 +145,7 @@ const Statistic = () => {
                   ></div>
                   <p className={styles.ItemTitle}>{el.category}</p>
                 </div>
-                <p>{el.sum}</p>
+                <p>{el.sum.toFixed(2)}</p>
               </li>
             ))}
           </ul>
