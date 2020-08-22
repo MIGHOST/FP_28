@@ -1,3 +1,5 @@
+import AddTransaction from "../../Components/AddTransaction/AddTransaction";
+
 const initialState = [
   {
     date: "25.08.2020",
@@ -47,10 +49,12 @@ const initialState = [
 ];
 
 const tableData = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case "ADD_TRANSACTION":
+			return [...state, action.payload];
+		default:
+			return state;
+	}
 };
 
 export default tableData;

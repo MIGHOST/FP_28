@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./Containers/Login/Login";
 import Registration from "./Containers/Registration/Registration";
 import MainPage from "./Containers/MainPage/MainPage";
-
+import AddTransaction from "./Components/AddTransaction/AddTransaction";
 
 const App = () => {
   return (
@@ -12,6 +12,7 @@ const App = () => {
         <Route path="/registration" component={Registration} />
         <Route path="/login" component={Login} />
         <Route path="/main" component={MainPage} />
+        <Route path="/transaction" component={AddTransaction} />
       </Switch>
     </>
   );
