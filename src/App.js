@@ -11,7 +11,8 @@ const App = () => {
       <Switch>
         <Route path="/registration" component={Registration} />
         <Route path="/login" component={Login} />
-        <Route path="/main" component={MainPage} />  
+        <Route path="/main" component={MainPage} />
+        <Route path="/transaction" component={AddTransaction} />
       </Switch>
     </>
   );
