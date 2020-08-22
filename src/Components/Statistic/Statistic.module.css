@@ -17,6 +17,7 @@
 .WrapperPie::after {
   content: "";
   position: absolute;
+  z-index: -1;
   width: 264px;
   height: 264px;
   border-radius: 50%;
