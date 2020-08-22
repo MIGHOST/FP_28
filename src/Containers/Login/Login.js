@@ -152,33 +152,36 @@ const Login = () => {
             </Link>
 
             <div className={styles.login_box_social}>
-              <h3 className={styles.social_title}>Войти c помощью</h3>
+             
               <div className={styles.social_box}>
                 <GoogleLogin 
+                className={styles.sm_box}
                   clientId="1016113227604-0u7tph6hm9s2bbnvi19h8dvdg3h5lqu4.apps.googleusercontent.com"
-                  buttonText="Login"
+                  buttonText="Login with Google"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   autoLoad={false}
                 />
                 <FacebookLogin
+                  className={styles.sm_box}
                   appId="628094021455729"
                   fields="name,email,picture"
-                  callback={responseFacebook}
+                  callback={responseFacebook}                  
                   autoLoad={false}
                   buttonStyle={{
                     padding: "12px 16px",
                     fontSize: "14px",
                     marginLeft: "10px",
+                    textTransform: "capitalize"
                   }}
                 />
 
-                <Link to="/google">
+                {/* <Link to="/google">
                   <div className={styles.google_box}></div>
                 </Link>
                 <Link to="/facebook">
                   <div className={styles.fb_box}></div>
-                </Link>
+                </Link> */}
               </div>
             </div>
 

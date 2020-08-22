@@ -9,13 +9,15 @@
     format("woff2");
 }
 
-.container {
-  display: flex;
-  /* justify-content: space-around; */
-}
+/* .container {
+  display: flex; 
+  justify-content: space-around; 
+} */
 
 .wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   /* max-width: 1280px; */
 }
 
@@ -23,10 +25,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0 55px;
-  margin-right: 10px;
+  justify-content: center;
+  margin: 0;
+  /* justify-content: center; */
+  /* padding: 30px 0 55px; */
+  /* margin-right: 10px; */
   /* min-width: 512px; */
-  /* height: 100vh; */
+  height: 100vh;
   background-blend-mode: multiply;
   background: rgb(61, 85, 117) url("./images/Layer1.png");
   background-position: cover;
@@ -48,7 +53,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   /* margin-right: 20px; */
 }
 
@@ -62,13 +67,14 @@
   height: 480px;
   box-shadow: 10px 17px 40px rgba(112, 124, 130, 0.3);
   background-color: #ffffff;
+  /* margin-bottom: 50px; */
 }
 .wrapper_left__title {
   color: #ffffff;
   font-family: "BauhausC";
   font-size: 24px;
   font-weight: 500;
-  /* margin-top: 120px; */
+  /* margin-top: 30px; */
 
 }
 .img_logo {
@@ -195,11 +201,11 @@
 
   .wrapper_right {
     display: flex;
-    /* flex-direction: column; */
-    /* align-items: center; */
+    flex-direction: column;
+    align-items: center;
     /* justify-content: start; */
     /* padding: 319px 0 69px; */
-    /* height: 100vh; */
+    height: 100vh;
 
   }
 
@@ -208,14 +214,21 @@
     font-family: "BauhausC";
     font-size: 24px;
     font-weight: 500;
+    
     /* margin-top: 120px; */
   
   }
   
 
-  .wrapper_login {
-    /* margin-bottom: 227px; */
+  .wrapper_left__title {
+
+    margin-top: 50px;
+  
   }
+
+  /* .wrapper_login {
+    margin-bottom: 227px;
+  } */
 
  
 }
@@ -237,7 +250,7 @@
   .wrapper_login {
     width: 100%;
     height: auto;
-    padding: 101px 22px 0;
+    /* padding: 101px 22px 0; */
     box-shadow: none;
     margin: 0;
   }
@@ -261,7 +274,7 @@
 .social_box{
   display: flex;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
   margin: 0 auto;
   padding: 0;
   padding-bottom: 15px;
@@ -292,7 +305,15 @@
 }
 
 .fb_box:hover,
+
 .google_box:hover
 {
 transform: scale(1.2);
 }
+
+
+.sm_box:hover:hover
+{
+transform: scale(1.05);
+}
+
