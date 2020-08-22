@@ -1,14 +1,15 @@
-.google_box {
+.google_button {
   margin: auto;
-  /* background-image: url("../../icons/social_icon/google.svg"); */
+  background-image: url("../../icons/social_icon/google.svg");
   width: 42px;
   height: 42px;
   margin-right: 25px;
   border: none;
   outline: none;
+  border-radius: 50%;
 }
 
-.google_box:hover {
+.google_button:hover {
   transform: scale(1.2);
   cursor: pointer;
 }

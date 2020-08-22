@@ -14,7 +14,6 @@ const GoogleButton = () => {
 
       const { data } = await axios.post(
         "https://powerful-waters-91620.herokuapp.com/auth/google",
-        // "http://localhost:4242/auth/google",
         body
       );
 
@@ -32,13 +31,12 @@ const GoogleButton = () => {
       render={(renderProps) => (
         <button
           onClick={renderProps.onClick}
-          className={styles.google_box}
+          className={styles.google_button}
         ></button>
       )}
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       autoLoad={false}
-      // style={styles.google_box}
     />
   );
 };
