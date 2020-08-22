@@ -99,6 +99,10 @@
   margin-bottom: 12px;
   width: 100%;
 }
+.formGroupConfirm {
+  composes: formGroup;
+  margin-bottom: 2px;
+}
 .formGroup input {
   padding: 16px;
   width: 100%;
@@ -153,31 +157,28 @@
   color: rgb(107, 125, 131);
 }
 
-
-
-.social_box{
+.social_box {
   display: inline-flex;
   justify-content: center;
   margin: 0 auto;
   padding: 0;
   margin-top: 10px;
 }
-.social_title{
+.social_title {
   margin: 0;
   padding: 0;
   text-align: center;
   color: rgb(107, 125, 131);
   font-family: "HelveticaNeueCyr";
 }
-.google_box{
+.google_box {
   margin: auto;
   background-image: url("../../icons/social_icon/google.svg");
   width: 42px;
   height: 42px;
   margin-right: 25px;
-  
 }
-.fb_box{
+.fb_box {
   margin: auto;
   background-image: url("../../icons/social_icon/fb.svg");
   width: 40px;
@@ -185,12 +186,9 @@
 }
 
 .fb_box:hover,
-.google_box:hover
-{
-transform: scale(1.2);
+.google_box:hover {
+  transform: scale(1.2);
 }
-
-
 
 @media screen and (max-width: 1200px) {
   .aside {
@@ -226,7 +224,6 @@ transform: scale(1.2);
     margin: 10px;
   }
 }
-
 
 /* .socials {
   margin: auto;
