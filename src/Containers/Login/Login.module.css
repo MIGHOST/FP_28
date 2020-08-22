@@ -249,11 +249,11 @@
   }
 
   .wrapper_login {
-    width: 80%;
+    width: 100%;
     height: auto;
-    /* padding: 101px 22px 0; */
+    padding: 101px 22px 0;
     box-shadow: none;
-    margin: 0;
+    margin: 0 auto;   
   }
 
   .wrapper_title {
