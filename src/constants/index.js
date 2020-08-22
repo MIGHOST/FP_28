@@ -10,3 +10,9 @@ export const userTypes = {
   REGISTER: "REGISTER",
   LOG_OUT: "LOG_OUT",
 };
+export const screenSizes = {
+  small: 575.98,
+  medium: 767.98,
+  large: 991.98,
+  extra: 1199.98,
+};
