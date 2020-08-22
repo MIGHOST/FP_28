@@ -34,8 +34,11 @@ const Registration = () => {
       </aside>
       <div className={styles.formSectionWrapper}>
         <form onSubmit={formSubmit} className={styles.formWrapper}>
-          <div className={styles.logo}></div>
-          <h3 className={styles.title}>WALLET</h3>
+          <div className={styles.logoWrapper}>
+            <div className={styles.logo}></div>
+            <h3 className={styles.title}>WALLET</h3>
+          </div>
+
           <div className={styles.formGroup}>
             <input
               type="email"
