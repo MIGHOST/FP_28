@@ -3,7 +3,7 @@ import MainPage from "./Containers/MainPage/MainPage";
 const App = () => {
   return (
     <>
-      <h1>Final project</h1>
+      {/* <h1>Final project</h1> */}
       <MainPage />
     </>
   );

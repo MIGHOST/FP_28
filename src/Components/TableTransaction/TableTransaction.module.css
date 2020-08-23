@@ -53,9 +53,28 @@
 }
 
 @media screen and (min-width: 768px) {
+  .list {
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+
+  .list::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .list::-webkit-scrollbar-track {
+    background: #9ca2aa;
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    background: #3a5374;
+  }
+
+  .list::-webkit-scrollbar-thumb:hover {
+    background: #ff6c00;
+  }
   .wrapper {
-    padding: 20px;
-    margin: 0 auto 200px;
+    padding: 20px 20px 200px;
   }
 
   .listTitle {
