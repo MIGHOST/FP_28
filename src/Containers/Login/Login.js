@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import FacebookLogin from "react-facebook-login";
-import { GoogleLogin } from "react-google-login";
+import GoogleButton from "../../Components/GoogleButton/GoogleButton";
+import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-
 
 const formInitialState = {
   email: "",
@@ -17,9 +16,6 @@ const Login = () => {
   const [form, setForm] = useState(formInitialState);
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // const [userTokenG, setUserTokenG] = useState("");
-  // const [userTokenF, setUserTokenF] = useState("");
 
   const handleInput = (e) => {
     const { value, name } = e.target;
@@ -45,55 +41,6 @@ const Login = () => {
   };
 
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
-
-  const responseGoogle = async (response) => {
-    try {
-      const { accessToken } = response;
-
-      const body = {
-        accessToken,
-      };
-
-      const { data } = await axios.post(
-        "https://powerful-waters-91620.herokuapp.com/auth/google",
-        body
-      );
-
-      // setUserTokenG(data.token);
-      // setUserTokenF("");
-
-      console.log("GOOGLE LOGIN GOOD");
-      console.log(data);
-    } catch (error) {
-      console.log("GOOGLE LOGIN FAILED");
-      console.error(error);
-    }
-  };
-
-  const responseFacebook = async (response) => {
-    try {
-      const { accessToken } = response;
-
-      const body = {
-        accessToken,
-      };
-
-      const { data } = await axios.post(
-        "https://powerful-waters-91620.herokuapp.com/auth/facebook",
-        body
-      );
-
-      // setUserTokenF(data.token);
-      // setUserTokenG("");
-
-      console.log("FACEBOOK LOGIN GOOD");
-
-      console.log(data);
-    } catch (error) {
-      console.log("FACEBOOK LOGIN FAILED");
-      console.error(error);
-    }
-  };
 
   return (
     <div className={styles.container}>
@@ -152,29 +99,9 @@ const Login = () => {
             </Link>
 
             <div className={styles.login_box_social}>
-             
               <div className={styles.social_box}>
-                <GoogleLogin 
-                className={styles.sm_box}
-                  clientId="1016113227604-0u7tph6hm9s2bbnvi19h8dvdg3h5lqu4.apps.googleusercontent.com"
-                  buttonText="Login with Google"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  autoLoad={false}
-                />
-                <FacebookLogin
-                  className={styles.sm_box}
-                  appId="628094021455729"
-                  fields="name,email,picture"
-                  callback={responseFacebook}                  
-                  autoLoad={false}
-                  buttonStyle={{
-                    padding: "12px 16px",
-                    fontSize: "14px",
-                    marginLeft: "10px",
-                    textTransform: "capitalize"
-                  }}
-                />
+                <GoogleButton />
+                <FacebookButton />
 
                 {/* <Link to="/google">
                   <div className={styles.google_box}></div>
