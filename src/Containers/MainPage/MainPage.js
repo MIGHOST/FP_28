@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
@@ -10,7 +10,7 @@ import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import styles from "./MainPage.module.css";
 
 const MainPage = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const modalOpener = () => {
     if (modalOpen) return;
@@ -21,6 +21,7 @@ const MainPage = () => {
     if (!modalOpen) return;
     setModalOpen(false);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
