@@ -6,7 +6,6 @@ import MainPage from "./Containers/MainPage/MainPage";
 import AddTransaction from "./Components/AddTransaction/AddTransaction";
 import Statistic from "./Components/Statistic/Statistic";
 
-
 const App = () => {
   return (
     <>
