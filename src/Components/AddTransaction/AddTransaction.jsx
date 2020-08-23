@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AddTransaction.module.css";
 import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { addTtansaction } from "../../redux/actions/transactionTableData";
-import { useState } from "react";
 
-const category = [
+import { validate } from "./validate";
+
+const costCategory = [
 	"category1",
 	"category2",
 	"category3",
@@ -19,22 +20,32 @@ const category = [
 	"category10",
 	"category11",
 ];
+const profitCtegory = [
+	"profitCategory1",
+	"profitCategory2",
+	"profitCategory3",
+	"profitCategory4",
+	"profitCategory5",
+	"profitCategory6",
+];
 
 const AddTransaction = () => {
 	const [categiryList, setCategiryList] = useState(false);
 	const dispatch = useDispatch();
 	const formik = useFormik({
 		initialValues: {
-			date: `${moment(Date.now()).format("YYYY-MM-DDThh:mm")}`,
-			type: "-",
-			category: "category",
+			date: `${moment(Date.now()).format("YYYY-MM-DD")}`,
+			type: "+",
+			category: "",
 			commentary: "",
 			sum: "",
 		},
 		onSubmit: (values) => {
-			if (!values.date) values.date = moment(Date.now());
-			if (values.category === "category") values.category = "profit";
-			dispatch(addTtansaction(values));
+			const newTransaction = {
+				...values,
+				sum: Number(values.type + values.sum),
+			};
+			dispatch(addTtansaction(newTransaction));
 			formik.resetForm();
 		},
 	});
@@ -42,17 +53,14 @@ const AddTransaction = () => {
 	const selectHandler = () => {
 		setCategiryList(!categiryList);
 	};
+
 	return (
 		<div className={styles.Overlay}>
 			<div className={styles.Container}>
 				<div className={styles.HeadingContainer}>
 					<h3 className={styles.FormHeader}>add a transaction</h3>
 				</div>
-				<form
-					action=""
-					className={styles.AddingForrm}
-					onSubmit={formik.handleSubmit}
-				>
+				<form className={styles.AddingForrm} onSubmit={formik.handleSubmit}>
 					<div className={styles.RadioContainer}>
 						<div className={`${styles.FormRadio} ${styles.Profit}`}>
 							<input
@@ -60,6 +68,7 @@ const AddTransaction = () => {
 								type="radio"
 								name="type"
 								value="+"
+								defaultChecked
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 							/>
@@ -72,49 +81,56 @@ const AddTransaction = () => {
 								type="radio"
 								name="type"
 								value="-"
-								defaultChecked
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 							/>
 							<label htmlFor="cost">Cost</label>
 						</div>
 					</div>
-					{formik.values.type === "-" && (
-						<div className={styles.CategoryContainer}>
-							<div className={`${styles.Input} ${styles.Category}`}>
-								<p onClick={selectHandler} className={styles.SelectHeading}>
-									{formik.values.category}
-								</p>
 
-								<div
-									className={
-										categiryList
-											? `${styles.CategoryList} ${styles.CategoryContainerVisible}`
-											: styles.CategoryList
-									}
-								>
-									{!!category.length &&
-										category.map((el, index) => (
-											<div
-												key={index}
-												className={`${styles.FormRadio} ${styles.CategoryRadio}`}
-											>
-												<input
-													id={el}
-													type="radio"
-													name="category"
-													value={el}
-													onChange={formik.handleChange}
-													onBlur={formik.handleBlur}
-													onClick={selectHandler}
-												/>
-												<label htmlFor={el}>{el}</label>
-											</div>
-										))}
-								</div>
+					<div className={styles.CategoryContainer}>
+						<div
+							className={
+								formik.errors.category
+									? `${styles.Input} ${styles.Category} ${styles.InputError}`
+									: `${styles.Input} ${styles.Category}`
+							}
+						>
+							<p onClick={selectHandler} className={styles.SelectHeading}>
+								{formik.values.category ? formik.values.category : "Category"}
+							</p>
+
+							<div
+								className={
+									categiryList
+										? `${styles.CategoryList} ${styles.CategoryContainerVisible}`
+										: styles.CategoryList
+								}
+							>
+								{(formik.values.type === "+"
+									? profitCtegory
+									: costCategory
+								).map((el, index) => (
+									<div
+										key={index}
+										className={`${styles.FormRadio} ${styles.CategoryRadio}`}
+									>
+										<input
+											id={el}
+											type="radio"
+											name="category"
+											value={el}
+											onChange={formik.handleChange}
+											onBlur={formik.handleBlur}
+											onClick={selectHandler}
+											formNoValidate
+										/>
+										<label htmlFor={el}>{el}</label>
+									</div>
+								))}
 							</div>
 						</div>
-					)}
+					</div>
 
 					<div className={styles.InputContainer}>
 						<input
@@ -124,10 +140,14 @@ const AddTransaction = () => {
 							value={formik.values.sum}
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
-							className={`${styles.Input} ${styles.Sum}`}
+							className={
+								formik.errors.sum
+									? `${styles.Input} ${styles.InputError} ${styles.Sum}`
+									: `${styles.Input} ${styles.Sum}`
+							}
 						/>
 						<input
-							type="datetime-local"
+							type="date"
 							name="date"
 							value={formik.values.date}
 							onChange={formik.handleChange}

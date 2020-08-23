@@ -1,5 +1,3 @@
-import AddTransaction from "../../Components/AddTransaction/AddTransaction";
-
 const initialState = [
 	{
 		date: "25.08.2020",
