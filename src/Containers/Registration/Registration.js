@@ -3,25 +3,26 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "./Registration.module.css";
 import { signUp } from "../../redux/operations/registration";
+import PasswordStrengthMeter from "../../Components/PasswordStrengthMeter/PasswordStrengthMeter";
 
 const formState = {
   email: "",
   password: "",
   confirmPassword: "",
-  name: "",
+  name: ""
 };
 
 const Registration = () => {
   const [form, setForm] = useState(formState);
   const dispatch = useDispatch();
 
-  const inputHandler = (e) => {
+  const inputHandler = e => {
     const value = e.target.value;
     const name = e.target.name;
     setForm({ ...form, [name]: value });
   };
 
-  const formSubmit = (e) => {
+  const formSubmit = e => {
     e.preventDefault();
     dispatch(signUp(form));
   };
@@ -59,7 +60,7 @@ const Registration = () => {
               name="password"
             />
           </div>
-          <div className={styles.formGroup}>
+          <div className={styles.formGroupConfirm}>
             <input
               type="password"
               className={styles.inputConfirmPassword}
@@ -68,12 +69,14 @@ const Registration = () => {
               onChange={inputHandler}
               name="confirmPassword"
             />
-            {form.confirmPassword && form.confirmPassword === form.password ? (
+
+            {/* {form.confirmPassword && form.confirmPassword === form.password ? (
               <div className={styles.confirmed}></div>
             ) : (
               <div className={styles.confirmPasswordBar}></div>
-            )}
+            )} */}
           </div>
+          <PasswordStrengthMeter password={form.password} />
 
           <div className={styles.formGroup}>
             <input
@@ -92,19 +95,17 @@ const Registration = () => {
             <Link to="/login">Войти</Link>
           </div>
 
-
           <div className={styles.login}>
-        <h3 className={styles.social_title}>Войти c помощью</h3>
-        <div className={styles.social_box}>
-    
-        <Link to="/google" className={styles}>
-        <div className={styles.google_box}></div>
-    
-        </Link>
-        <Link to="/facebook" className={styles}><div className={styles.fb_box}></div>
-    </Link>
-    </div>
-      </div>
+            <h3 className={styles.social_title}>Войти c помощью</h3>
+            <div className={styles.social_box}>
+              <Link to="/google" className={styles}>
+                <div className={styles.google_box}></div>
+              </Link>
+              <Link to="/facebook" className={styles}>
+                <div className={styles.fb_box}></div>
+              </Link>
+            </div>
+          </div>
 
           {/* <div className={styles.socials}>
             <a href="google.com">
@@ -117,7 +118,6 @@ const Registration = () => {
           </div> */}
         </form>
       </div>
-  
     </div>
   );
 };
