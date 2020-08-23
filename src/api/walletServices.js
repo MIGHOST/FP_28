@@ -16,8 +16,7 @@ export const loginToWallet = (credentials) =>
 export const registerToWallet = (credentials) =>
   axios.post("/auth/register", credentials);
 
-export const logoutFromWallet = (credentials) =>
-  axios.post("/auth/logout", credentials);
+export const logoutFromWallet = () => axios.post("/auth/logout");
 
 export const getTransactions = () => axios.get("/get");
 
