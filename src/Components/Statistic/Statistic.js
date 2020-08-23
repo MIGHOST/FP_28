@@ -75,9 +75,9 @@ const Statistic = () => {
             onChange={inputHandler}
             label="Месяц"
           >
-            <MenuItem value={"January"}>January</MenuItem>
-            <MenuItem value={"February"}>February</MenuItem>
-            <MenuItem value={"March"}>March</MenuItem>
+            <MenuItem value={1}>January</MenuItem>
+            <MenuItem value={2}>February</MenuItem>
+            <MenuItem value={3}>March</MenuItem>
           </StyledSelect>
         </FormControl>
         <FormControl variant="outlined" className={classes.formControl}>
@@ -92,9 +92,9 @@ const Statistic = () => {
             onChange={inputHandler}
             label="Год"
           >
-            <MenuItem value={"2018"}>2018</MenuItem>
-            <MenuItem value={"2019"}>2019</MenuItem>
-            <MenuItem value={"2020"}>2020</MenuItem>
+            <MenuItem value={2018}>2018</MenuItem>
+            <MenuItem value={2019}>2019</MenuItem>
+            <MenuItem value={2020}>2020</MenuItem>
           </StyledSelect>
         </FormControl>
       </div>
@@ -125,7 +125,7 @@ const Statistic = () => {
                     ></div>
                     <p className={styles.ItemTitle}>{el.category}</p>
                   </div>
-                  <p>{el.sum}</p>
+                  <p>{el.sum.toFixed(2)}</p>
                 </li>
               ))}
             </Scrollbars>
@@ -145,7 +145,7 @@ const Statistic = () => {
                   ></div>
                   <p className={styles.ItemTitle}>{el.category}</p>
                 </div>
-                <p>{el.sum}</p>
+                <p>{el.sum.toFixed(2)}</p>
               </li>
             ))}
           </ul>
