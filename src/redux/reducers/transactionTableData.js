@@ -1,4 +1,7 @@
+import AddTransaction from "../../Components/AddTransaction/AddTransaction";
+
 const initialState = [
+<<<<<<< HEAD
   {
     date: "25.08.2020",
     type: "+",
@@ -44,13 +47,25 @@ const initialState = [
     balance: 18000.0,
     id: 5,
   },
+=======
+	{
+		date: "25.08.2020",
+		type: "+",
+		category: "Different",
+		commentary: "Bla bla bla",
+		sum: 1000.0,
+		balance: 1000.0,
+	},
+>>>>>>> origin/F4
 ];
 
 const tableData = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case "ADD_TRANSACTION":
+			return [...state, action.payload];
+		default:
+			return state;
+	}
 };
 
 export default tableData;
