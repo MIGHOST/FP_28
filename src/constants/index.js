@@ -9,7 +9,9 @@ export const userTypes = {
   LOGIN_WITH_FACEBOOK: "LOGIN_WITH_FACEBOOK",
   REGISTER: "REGISTER",
   LOG_OUT: "LOG_OUT",
+  USER_ERROR: "USER_ERROR",
 };
+
 export const screenSizes = {
   small: 575.98,
   medium: 767.98,

@@ -1,8 +1,8 @@
 import { userTypes } from "../../constants";
 
-export const loginUser = ({ token, _id}) => ({
+export const loginUser = ({ email, _id}) => ({
   type: userTypes.LOGIN,
-  payload: { token, _id },
+  payload: { email, _id },
 });
 export const loginUserWithGoogle = ({ email, googleToken, _id }) => ({
   type: userTypes.LOGIN_WITH_GOOGLE,
@@ -16,3 +16,8 @@ export const loginUserWithFacebook = ({ email, facebookToken }) => ({
 export const LOG_OUT = "USER_LOG_OUT";
 
 export const userLogOut = () => ({ type: LOG_OUT });
+
+export const userError = (error)=> ({
+  type: userTypes.USER_ERROR,
+  payload: error,
+})
