@@ -14,9 +14,27 @@ import { screenSizes } from "../../constants";
 import styles from "./Statistic.module.css";
 import { state } from "./HardCode";
 
+const monthArr = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+const dataNow = new Date();
 const Statistic = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [initialState, setInitialState] = useState({ month: "", year: "" });
+  const [initialState, setInitialState] = useState({
+    month: monthArr.indexOf(monthArr[dataNow.getMonth()]) + 1,
+    year: dataNow.getFullYear(),
+  });
   const inputHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -43,7 +61,6 @@ const Statistic = () => {
     ],
   };
   const classes = useStyles();
-
   return (
     <div className={styles.Wrapper}>
       {screenSizes.medium < screenWidth && (
@@ -75,9 +92,11 @@ const Statistic = () => {
             onChange={inputHandler}
             label="Месяц"
           >
-            <MenuItem value={1}>January</MenuItem>
-            <MenuItem value={2}>February</MenuItem>
-            <MenuItem value={3}>March</MenuItem>
+            {monthArr.map((el, index) => (
+              <MenuItem value={index + 1} key={`${el}_${index}`}>
+                {el}
+              </MenuItem>
+            ))}
           </StyledSelect>
         </FormControl>
         <FormControl variant="outlined" className={classes.formControl}>

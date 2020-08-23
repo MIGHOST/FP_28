@@ -5,6 +5,7 @@ import Registration from "./Containers/Registration/Registration";
 import MainPage from "./Containers/MainPage/MainPage";
 import AddTransaction from "./Components/AddTransaction/AddTransaction";
 import Statistic from "./Components/Statistic/Statistic";
+import PrivateRoute from "./Containers/PrivateRoute/index";
 
 const App = () => {
   return (
@@ -12,9 +13,9 @@ const App = () => {
       <Switch>
         <Route path="/registration" component={Registration} />
         <Route path="/login" component={Login} />
-        <Route path="/transaction" component={AddTransaction} />
-        <Route path="/sta" component={Statistic} />
-        <Route path="/" component={MainPage} />
+        <PrivateRoute path="/transaction" component={AddTransaction} />
+        <PrivateRoute path="/sta" component={Statistic} />
+        <PrivateRoute path="/" component={MainPage} />
       </Switch>
     </>
   );
