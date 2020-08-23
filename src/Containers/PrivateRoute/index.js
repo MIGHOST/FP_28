@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Verified from "../../Components/Verified/Verified";
 
 const PrivateRoute = ({ component, ...rest }) => {
-  const isAuth = "Verified";
+  const isAuth = "Created";
   const Interface = component;
   switch (isAuth) {
     case "Verified":
