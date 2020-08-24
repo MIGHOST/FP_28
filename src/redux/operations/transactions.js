@@ -10,11 +10,9 @@ import {
 } from "../actions/transactionTableData";
 import { loaderOn, loaderOff } from "../actions/loader";
 import { getFromLocaleStorage } from "../../helpers/storage";
-import { convertToNull } from "../../helpers/convertator";
+import { filteredToken } from "../../helpers/convertator";
 
-const token =
-  convertToNull(getFromLocaleStorage("persist:auth-token").token) ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDI4YmFmNGM5ZTFiMDAxN2NhYzYyNSIsImlhdCI6MTU5ODIwMjcwMywiZXhwIjoxNTk4Mjg5MTAzfQ.wwl6TNx8C8ZlwHACrPtTXxEegJDVx0gcN50UyIaLkg0";
+const token = filteredToken(getFromLocaleStorage("persist:auth-token").token);
 
 export const updateUserTransaction = (id, transaction) => async (dispatch) => {
   dispatch(loaderOn());
