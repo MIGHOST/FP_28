@@ -1,31 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import axios from "axios";
+import { loginWithFacebook } from "../../redux/operations/login";
 import styles from "./FacebookButton.module.css";
 
 const FacebookButton = () => {
+  const dispatch = useDispatch();
   const responseFacebook = async (response) => {
     try {
       const { accessToken } = response;
-
       const body = {
         accessToken,
       };
-
-      const { data } = await axios.post(
-        "https://powerful-waters-91620.herokuapp.com/auth/facebook",
-        body
-      );
-
-      console.log("FACEBOOK LOGIN GOOD");
-
-      console.log(data);
+      dispatch(loginWithFacebook(body));
     } catch (error) {
-      console.log("FACEBOOK LOGIN FAILED");
+      console.log("Facebook LOGIN FAILED");
       console.error(error);
     }
   };
-
   return (
     <FacebookLogin
       appId={process.env.REACT_APP_FACEBOOK_APP_ID}

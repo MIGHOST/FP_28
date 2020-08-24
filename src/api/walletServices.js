@@ -12,6 +12,11 @@ export const clearAuthToken = () => {
 
 export const loginToWallet = (credentials) =>
   axios.post("/auth/login", credentials);
+export const loginToWalletWithGoogle = (credentials) =>
+  axios.post("/auth/google", credentials);
+
+export const loginToWalletWithFacebook = (credentials) =>
+  axios.post("/auth/facebook", credentials);
 
 export const registerToWallet = (credentials) =>
   axios.post("/auth/register", credentials);

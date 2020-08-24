@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
-// import axios from "axios";
 import { createUserLogin } from "../../redux/operations/login";
 import user from "../../redux/reducers/user";
 
@@ -26,22 +25,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const userData = {
-    //   email: form.email,
-    //   password: form.password,
-    // };
     dispatch(createUserLogin(form));
-    // try {
-    //   const { data } = await axios.post(
-    //     "https://powerful-waters-91620.herokuapp.com/auth/login",
-    //     form
-    //   );
-
-    //   console.log(data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-
     setForm(formInitialState);
   };
 

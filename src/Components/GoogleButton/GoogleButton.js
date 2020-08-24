@@ -1,24 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { GoogleLogin } from "react-google-login";
-import axios from "axios";
 import styles from "./GoogleButton.module.css";
+import { loginWithGoogle } from "../../redux/operations/login";
 
 const GoogleButton = () => {
+  const dispatch = useDispatch();
   const responseGoogle = async (response) => {
     try {
       const { accessToken } = response;
-
       const body = {
         accessToken,
       };
-
-      const { data } = await axios.post(
-        "https://powerful-waters-91620.herokuapp.com/auth/google",
-        body
-      );
-
-      console.log("GOOGLE LOGIN GOOD");
-      console.log(data);
+      dispatch(loginWithGoogle(body));
     } catch (error) {
       console.log("GOOGLE LOGIN FAILED");
       console.error(error);
