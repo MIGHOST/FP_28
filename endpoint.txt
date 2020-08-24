@@ -4,7 +4,7 @@ URL = "https://powerful-waters-91620.herokuapp.com"
 ================For User=====================
 Реєстрація юзера  "https://powerful-waters-91620.herokuapp.com/register"
 Логінізація юзера "https://powerful-waters-91620.herokuapp.com/login"
-LogOut юзера      "https://powerful-waters-91620.herokuapp.com/lotOut"
+LogOut юзера      "https://powerful-waters-91620.herokuapp.com/logout"
 
 ===============For Transaction=================
 

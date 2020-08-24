@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
-import axios from "axios";
+import { createUserLogin } from "../../redux/operations/login";
+import user from "../../redux/reducers/user";
+
 
 const formInitialState = {
   email: "",
@@ -19,29 +21,17 @@ const Login = () => {
 
   const handleInput = (e) => {
     const { value, name } = e.target;
-
     setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const { data } = await axios.post(
-        "https://powerful-waters-91620.herokuapp.com/auth/login",
-        form
-      );
-
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-
-    setForm({ email: "", password: "", confirmPassword: "", name: "" });
+    dispatch(createUserLogin(form, history));
+    setForm(formInitialState);
   };
 
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
-
+  const { email, password } = form;
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -67,9 +57,9 @@ const Login = () => {
                 <input
                   className={`${styles.input} ${styles.input_email}`}
                   placeholder="E-mail"
-                  type="text"
+                  type="email"
                   name="email"
-                  value={form.email}
+                  value={email}
                   onChange={handleInput}
                 />
               </div>
@@ -79,13 +69,13 @@ const Login = () => {
                 <input
                   className={`${styles.input} ${styles.input_password}`}
                   placeholder="Пароль"
-                  type="text"
+                  type="password"
                   name="password"
-                  value={form.password}
+                  value={password}
                   onChange={handleInput}
                 />
               </div>
-
+              <p>{user.error && user.error.message}</p>
               <button type="submit" className={styles.buttom}>
                 Войти
               </button>
@@ -102,13 +92,6 @@ const Login = () => {
               <div className={styles.social_box}>
                 <GoogleButton />
                 <FacebookButton />
-
-                {/* <Link to="/google">
-                  <div className={styles.google_box}></div>
-                </Link>
-                <Link to="/facebook">
-                  <div className={styles.fb_box}></div>
-                </Link> */}
               </div>
             </div>
 
