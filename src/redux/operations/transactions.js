@@ -13,8 +13,8 @@ import { getFromLocaleStorage } from "../../helpers/storage";
 import { convertToNull } from "../../helpers/convertator";
 
 const token =
-  convertToNull(getFromLocaleStorage("persist:auth-token").token) ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDI4YmFmNGM5ZTFiMDAxN2NhYzYyNSIsImlhdCI6MTU5ODIwMjcwMywiZXhwIjoxNTk4Mjg5MTAzfQ.wwl6TNx8C8ZlwHACrPtTXxEegJDVx0gcN50UyIaLkg0";
+  // convertToNull(getFromLocaleStorage("persist:auth-token").token) ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDNiZjQzNDY2Y2Y3MDAxN2E4Yzk3MyIsImlhdCI6MTU5ODI3NTM5NSwiZXhwIjoxNTk4MzYxNzk1fQ.yteFcVoiRlbibA_ynh4L9vuddodIyKINVgaCNB_gLeo";
 
 export const updateUserTransaction = (id, transaction) => async (dispatch) => {
   dispatch(loaderOn());

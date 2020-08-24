@@ -1,5 +1,4 @@
-// import axios from "axios";
-// import { setToken } from "../actions/token";
+import { paths } from "../../constants";
 const {
   loginToWallet,
   loginToWalletWithGoogle,
@@ -17,6 +16,7 @@ export const createUserLogin = (formData, history) => async (dispatch) => {
     const loginResult = await loginToWallet(formData);
     const user = loginResult.data;
     dispatch(loginUser(user));
+    history.push(paths.mainPage);
   } catch (error) {
     dispatch(userError(error));
   }
@@ -27,6 +27,7 @@ export const loginWithGoogle = (formData, history) => async (dispatch) => {
     const loginResult = await loginToWalletWithGoogle(formData);
     const user = loginResult.data;
     dispatch(loginUserWithGoogle(user));
+    history.push(paths.mainPage);
   } catch (error) {
     dispatch(userError(error));
   }
@@ -38,30 +39,8 @@ export const loginWithFacebook = (formData, history) => async (dispatch) => {
 
     const user = loginResult.data;
     dispatch(loginUserWithFacebook(user));
+    history.push(paths.mainPage);
   } catch (error) {
     dispatch(userError(error));
   }
 };
-
-// const options = {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// };
-
-// export const createUserLogin = (formData) => async (dispatch) => {
-
-//   try {
-//     const loginResult = await axios.post(
-//       "https://powerful-waters-91620.herokuapp.com/auth/login",
-//       formData,
-//       options
-//     );
-
-//     console.log(loginResult.data);
-//     dispatch(loginUser(loginResult.data));
-//     console.log("DO IT!!!");
-//   } catch (error) {
-//     dispatch(userError(error));
-//   }
-// };

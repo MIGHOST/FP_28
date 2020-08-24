@@ -1,6 +1,7 @@
 export const paths = {
   registration: "/registration",
   login: "/login",
+  mainPage: "/"
 };
 
 export const userTypes = {
