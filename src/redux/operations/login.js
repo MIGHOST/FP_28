@@ -15,7 +15,6 @@ const {
 export const createUserLogin = (formData, history) => async (dispatch) => {
   try {
     const loginResult = await loginToWallet(formData);
-
     const user = loginResult.data;
     dispatch(loginUser(user));
   } catch (error) {
@@ -27,9 +26,7 @@ export const loginWithGoogle = (formData, history) => async (dispatch) => {
   try {
     const loginResult = await loginToWalletWithGoogle(formData);
     const user = loginResult.data;
-    console.log(user);
     dispatch(loginUserWithGoogle(user));
-    console.log(test);
   } catch (error) {
     dispatch(userError(error));
   }
