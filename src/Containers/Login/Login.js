@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
@@ -29,7 +29,7 @@ const Login = () => {
     dispatch(createUserLogin(form, history));
     setForm(formInitialState);
   };
-
+const user = useSelector((state)=>state.session.user) 
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
   const { email, password } = form;
   return (
@@ -75,7 +75,7 @@ const Login = () => {
                   onChange={handleInput}
                 />
               </div>
-              <p>{user.error && user.error.message}</p>
+              <p className={styles.error}>{user.error && user.error.message}</p>
               <button type="submit" className={styles.buttom}>
                 Войти
               </button>
