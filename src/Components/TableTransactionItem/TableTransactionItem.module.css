@@ -35,7 +35,7 @@
   font-family: "HelveticaNeueCyr", sans-serif;
   color: #282828;
   font-size: 13px;
-  line-height: 30px;
+  line-height: 15px;
   font-weight: 300;
 }
 
@@ -46,6 +46,56 @@
 
 .cellData {
   color: #2c353e;
+}
+
+.edit {
+  width: 130px;
+  line-height: 1px;
+  position: relative;
+}
+
+.edit {
+  width: 130px;
+  position: relative;
+}
+
+.edit::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  background-image: url("../../icons/edit_icon.svg");
+}
+
+.cellDataFieldComment,
+.cellDataFieldSum {
+  padding: 5px;
+  border: 1px solid #2c353e;
+  border-radius: 5px;
+  background-color: transparent;
+}
+.cellDataFieldComment {
+  width: 130px;
+}
+
+.cellDataFieldComment:focus,
+.cellDataFieldSum:focus {
+  outline: none;
+}
+
+.cellDataFieldSum::-webkit-outer-spin-button,
+.cellDataFieldSum::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cellDataFieldSum {
+  width: 70px;
 }
 
 .date {
@@ -172,5 +222,11 @@
 
   .cellBalance {
     width: 131px;
+  }
+
+  .edit::before {
+    left: -25px;
+    width: 13px;
+    height: 13px;
   }
 }
