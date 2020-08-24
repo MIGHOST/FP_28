@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TableTransactionItem.module.css";
 
-const TableTransactionItem = (props) => {
-  const { date, type, category, commentary, sum, balance } = props.transaction;
+import { useDispatch } from "react-redux";
+import { updateUserTransaction } from "../../redux/operations/transactions";
+
+const TableTransactionItem = ({ transaction }) => {
+  const { date, type, category, comment, sum, balance, _id } = transaction;
+  const [isEditSum, setIsEditSum] = useState(false);
+  const [isEditCommentary, setIsEditCommentary] = useState(false);
+  const [editFields, setEditFields] = useState({ sum, comment });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+
+    setEditFields({ ...editFields, [name]: value });
+  };
+
+  const editSum = () => {
+    setIsEditSum(true);
+    setIsEditCommentary(false);
+  };
+
+  const editCommentary = () => {
+    setIsEditCommentary(true);
+    setIsEditSum(false);
+  };
+
+  const handleKeyDown = async (e) => {
+    if (e.key !== "Enter") return;
+
+    setIsEditSum(false);
+    setIsEditCommentary(false);
+
+    const transaction = {
+      sum: editFields.sum,
+      comment: editFields.comment,
+    };
+
+    dispatch(updateUserTransaction(_id, transaction));
+  };
+
   return (
     <li
       className={`${styles.tableTransactionItem} ${
@@ -23,11 +62,45 @@ const TableTransactionItem = (props) => {
       </div>
       <div className={`${styles.cell} ${styles.cellComment}`}>
         <p className={styles.cellTitle}>Комментарий</p>
-        <p className={styles.cellData}>{commentary}</p>
+        {isEditCommentary ? (
+          <input
+            type="text"
+            value={editFields.comment}
+            name="comment"
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            className={styles.cellDataFieldComment}
+            maxLength="40"
+          />
+        ) : (
+          <p
+            className={`${styles.cellData} ${styles.edit}`}
+            onClick={editCommentary}
+          >
+            {editFields.comment}
+          </p>
+        )}
       </div>
       <div className={`${styles.cell} ${styles.cellSum}`}>
         <p className={styles.cellTitle}>Сумма</p>
-        <p className={`${styles.cellData} ${styles.sum}`}>{sum}</p>
+        {isEditSum ? (
+          <input
+            type="number"
+            value={editFields.sum}
+            name="sum"
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            className={styles.cellDataFieldSum}
+            maxLength="40"
+          />
+        ) : (
+          <p
+            className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
+            onClick={editSum}
+          >
+            {editFields.sum}
+          </p>
+        )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
