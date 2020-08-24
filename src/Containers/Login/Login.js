@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
 import user from "../../redux/reducers/user";
+
 
 const formInitialState = {
   email: "",
@@ -16,7 +17,7 @@ const formInitialState = {
 const Login = () => {
   const [form, setForm] = useState(formInitialState);
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleInput = (e) => {
     const { value, name } = e.target;
@@ -25,7 +26,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createUserLogin(form));
+    dispatch(createUserLogin(form, history));
     setForm(formInitialState);
   };
 
