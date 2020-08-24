@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
-import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
-import user from "../../redux/reducers/user";
-
+// import user from "../../redux/reducers/user";
 
 const formInitialState = {
   email: "",
@@ -18,7 +17,8 @@ const Login = () => {
   const [form, setForm] = useState(formInitialState);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const user = useSelector((state) => state.session.user);
+  console.log(user);
   const handleInput = (e) => {
     const { value, name } = e.target;
     setForm({ ...form, [name]: value });
@@ -27,6 +27,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(createUserLogin(form, history));
+
     setForm(formInitialState);
   };
 
@@ -75,11 +76,16 @@ const Login = () => {
                   onChange={handleInput}
                 />
               </div>
-              <p>{user.error && user.error.message}</p>
               <button type="submit" className={styles.buttom}>
                 Войти
               </button>
             </form>
+
+            <span className={styles.link_registration}>
+              {user.error && user.error.message}
+              {/* {error && error.message}1111111111 */}
+            </span>
+
             <Link
               to="/registration"
               className={styles.link_registration}

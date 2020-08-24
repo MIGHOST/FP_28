@@ -317,4 +317,17 @@ transform: scale(1.2);
 {
 transform: scale(1.05);
 }
-
+.error_box{
+  display: inline-block;
+  width: 200px;
+  height: 25px;
+}
+.error {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  /* letter-spacing: 0.04em; */
+  color: #ff2c0c;
+  margin-bottom: 10px;
+}
