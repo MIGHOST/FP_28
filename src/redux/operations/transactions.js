@@ -12,7 +12,11 @@ import { loaderOn, loaderOff } from "../actions/loader";
 import { getFromLocaleStorage } from "../../helpers/storage";
 import { filteredToken } from "../../helpers/convertator";
 
-const token = filteredToken(getFromLocaleStorage("persist:auth-token").token);
+const token = filteredToken(
+  getFromLocaleStorage("persist:auth-token")
+    ? getFromLocaleStorage("persist:auth-token").token
+    : ""
+);
 
 export const updateUserTransaction = (id, transaction) => async (dispatch) => {
   dispatch(loaderOn());
