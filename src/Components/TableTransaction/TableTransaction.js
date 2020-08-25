@@ -35,7 +35,7 @@ const TableTransaction = ({ modalOpener }) => {
             {transactionsArr.map((transaction) => {
               return (
                 <TableTransactionItem
-                  key={transaction.id}
+                  key={transaction._id}
                   transaction={transaction}
                 />
               );

@@ -29,6 +29,9 @@
     width: 306px;
     margin: 0 auto;
   }
+  .list {
+    padding-bottom: 55px;
+  }
 }
 
 @media screen and (min-width: 768px) {
