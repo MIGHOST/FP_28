@@ -1,25 +1,5 @@
-@font-face {
-  font-family: "HelveticaNeueCyr";
-  font-style: normal;
-  font-weight: 300;
-  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Light.eot)
-      format("eot"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Light.ttf) format("ttf"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Light.woff)
-      format("woff");
-}
-@font-face {
-  font-family: "HelveticaNeueCyr";
-  font-style: normal;
-  font-weight: 700;
-  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.eot)
-      format("eot"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.ttf) format("ttf"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.woff) format("woff");
-}
-
 .tableTransactionItem {
-  height: 270px;
+  height: 315px;
   margin-bottom: 15px;
   box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
 }
@@ -112,6 +92,15 @@
   font-weight: 700;
 }
 
+.delete {
+  display: flex;
+  align-items: center;
+}
+
+.deleteIconSmall {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   .tableTransactionItem {
     position: relative;
@@ -122,12 +111,17 @@
     position: absolute;
     content: "";
     width: 8px;
-    height: 270px;
+    height: 315px;
     left: 0;
   }
 
   .cell {
     height: 45px;
+  }
+
+  .delete {
+    height: 45px;
+    background-color: #f3f6f6;
   }
 
   .plus::before {
@@ -142,6 +136,27 @@
   }
   .cellTitle {
     display: block;
+  }
+
+  .deleteWord {
+    border-radius: 205px;
+    background-color: #ff6c00;
+    width: 200px;
+    height: 30px;
+    font-family: "HelveticaNeueCyr", sans-serif;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 16px;
+    line-height: 30px;
+    margin: auto;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .deleteWord:active {
+    border: solid 1px #ff6c00;
+    background-color: transparent;
+    color: #ff6c00;
   }
 }
 
@@ -170,7 +185,7 @@
   }
 
   .cellCategory {
-    width: 175px;
+    width: 125px;
   }
 
   .cellComment {
@@ -191,6 +206,25 @@
   .tableTransactionItem:nth-child(2n-1) {
     background-color: #f3f6f6;
   }
+
+  .delete {
+    cursor: pointer;
+    width: 50px;
+    padding-right: 20px;
+  }
+
+  .deleteIconSmall {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/del.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .deleteWord {
+    display: none;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -209,7 +243,7 @@
   }
 
   .cellCategory {
-    width: 184px;
+    width: 134px;
   }
 
   .cellComment {

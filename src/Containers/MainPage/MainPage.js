@@ -1,18 +1,31 @@
-import React, { useState, Suspense } from "react";
 import {Switch, Route} from "react-router-dom"
 import styles from './MainPage.module.css';
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
-import AddButton from "../../Components/AddButton/AddButton";
 import Currency from "../../Components/Currency/Currency";
 import Balance from "../../Components/Balance/Balance";
 import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
-import Statistic from '../../Components/Statistic/Statistic'
+import Loading from "../../Components/Loader/Loader";
+import { getUserTransactions } from "../../redux/operations/transactions";
 
 
-const MainPage = (props) => {
+const Statistic = lazy(() =>
+  import(
+    "../../Components/Statistic/Statistic" /* webpackChunkName: "Statistic" */
+  )
+);
+
+const MainPage = () => {
+  const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserTransactions());
+  }, []);
 
  
 
@@ -25,28 +38,32 @@ const MainPage = (props) => {
     if (!modalOpen) return;
     setModalOpen(false);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
         <Header />
         <Navigation />
         <Balance />
-        <div className={styles.transactionTable}>
-          <Suspense fallback={<p>...Loading</p>}>
-        <Switch>
-          <Route path={`${props.match.path}/`} component={TableTransaction}/>
-          <Route path={`${props.match.path}statistic`} component={Statistic}/>
-          <Route path={`${props.match.path}currency`} component={Currency}/>
-      </Switch>
-      </Suspense>
+        <div className={styles.mainData}>
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <TableTransaction modalOpener={modalOpener} />}
+              />
+              <Route path="/statistics" component={Statistic} />
+            </Switch>
+          </Suspense>
         </div>
 
-        <AddButton modalOpener={modalOpener} />
         <div className={styles.blockForMobileButton}></div>
         <div className={styles.currency}>
           <Currency />
         </div>
         {modalOpen && <AddTransaction modalCloser={modalCloser} />}
+        {loader && <Loading />}
       </div>
     </div>
   );

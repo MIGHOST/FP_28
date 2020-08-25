@@ -30,6 +30,8 @@ const Login = () => {
   };
   const user = useSelector((state) => state.session.user);
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  
   const { email, password } = form;
   return (
     <div className={styles.container}>
@@ -99,7 +101,7 @@ const Login = () => {
               </div>
             </div>
 
-            {isTablet && (
+            {!isMobile && (
               <h2 className={styles.wrapper_left__title}>Finance App</h2>
             )}
           </div>

@@ -3,10 +3,12 @@ import {
   getTransactions,
   setAuthToken,
   clearAuthToken,
+  deleteTransaction,
 } from "../../api/walletServices";
 import {
   getTransactionList,
   editTransaction,
+  deleteTransactionFromState,
 } from "../actions/transactionTableData";
 import { loaderOn, loaderOff } from "../actions/loader";
 import { getFromLocaleStorage } from "../../helpers/storage";
@@ -41,10 +43,23 @@ export const getUserTransactions = () => async (dispatch) => {
     setAuthToken(token);
 
     const { data } = await getTransactions();
-
     dispatch(getTransactionList(data));
   } catch (error) {
     console.log("Error get ---->>", error);
+  } finally {
+    clearAuthToken();
+    dispatch(loaderOff());
+  }
+};
+
+export const deleteUsersTransaction = (id) => async (dispatch) => {
+  dispatch(loaderOn());
+  try {
+    setAuthToken(token);
+    await deleteTransaction(id);
+    dispatch(deleteTransactionFromState(id));
+  } catch (error) {
+    console.log("Error delete ---->>", error);
   } finally {
     clearAuthToken();
     dispatch(loaderOff());

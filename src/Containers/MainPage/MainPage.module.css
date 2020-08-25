@@ -48,13 +48,14 @@
 
   .mainPage {
     width: 1192px;
-    padding: 45px 0;
+    padding: 0 0 45px;
     position: relative;
   }
 
-  .transactionTable {
+  .mainData {
     position: absolute;
-    top: 120px;
+    width: 855px;
+    top: 75px;
     right: 0;
   }
 }

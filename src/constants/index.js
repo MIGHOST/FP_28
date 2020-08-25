@@ -22,6 +22,7 @@ export const screenSizes = {
 
 export const TRANSACTIONS_GET = "transaction/TRANSACTIONS_GET";
 export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
+export const TRANSACTION_DELETE = "transaction/TRANSACTION_DELETE";
 
 export const LOADER_ON = "loader/LOADER_ON";
 export const LOADER_OFF = "loader/LOADER_OFF";
