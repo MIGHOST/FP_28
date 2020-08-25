@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import styles from "./AddTransaction.module.css";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import {
-	addTtansaction,
-	asyncAddTransaction,
-} from "../../redux/actions/transactionTableData";
+import { asyncAddTransaction } from "../../redux/actions/transactionTableData";
 import { validate } from "./validate";
 
 const costCategoryArr = [

@@ -2,20 +2,20 @@ import { userTypes } from "../../constants";
 
 const initialState = {};
 
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
+export default (state = initialState, action) => {
+  switch (action.type) {
     case userTypes.LOGIN:
-      return payload;
+      return action.payload;
     case userTypes.LOGIN_WITH_GOOGLE:
-      return payload;
+      return action.payload;
     case userTypes.LOGIN_WITH_FACEBOOK:
-      return payload;
-
-      default:
-        return state;
-    }
-      
+      return action.payload;
+    case userTypes.USER_ERROR:
+      return { ...state, error: action.payload };
+    default:
+      return state;
   }
+};
 // import { LOG_OUT } from "../actions/user";
 
 // const initialState = {

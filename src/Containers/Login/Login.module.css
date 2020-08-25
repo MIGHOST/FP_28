@@ -64,7 +64,7 @@
   padding: 42px 58px;
   align-items: center;
   width: 550px;
-  height: 480px;
+  height: 500px;
   box-shadow: 10px 17px 40px rgba(112, 124, 130, 0.3);
   background-color: #ffffff;
   /* margin-bottom: 50px; */
@@ -318,3 +318,14 @@ transform: scale(1.2);
 transform: scale(1.05);
 }
 
+.error {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #ff2c0c;
+  margin-bottom: 20px;
+}

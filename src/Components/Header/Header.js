@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userLogOut } from "../../redux/actions/user";
 
 const Header = () => {
-  const currentUser = useSelector((state) => state.user);
+  const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const logOut = () => {
     // console.log("sadsad");

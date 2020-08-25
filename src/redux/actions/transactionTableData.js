@@ -1,25 +1,25 @@
-import axios from "axios";
+import { TRANSACTION_UPDATE, TRANSACTIONS_GET } from "../../constants";
 
-export const addTtansaction = (data) => ({
+import { addTransaction } from "../../api/walletServices";
+
+export const addTransactionToRedux = (data) => ({
 	type: "ADD_TRANSACTION",
 	payload: data,
 });
 
-const option = {
-	headers: {
-		"Content-Type": "application/json",
-	},
-};
+export const getTransactionList = (transactions) => ({
+	type: TRANSACTIONS_GET,
+	payload: transactions,
+});
+
+export const editTransaction = (id, transaction) => ({
+	type: TRANSACTION_UPDATE,
+	payload: { id, transaction },
+});
 
 export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
 	try {
-		axios
-			.post(
-				"https://powerful-waters-91620.herokuapp.com/post",
-				newTransaction,
-				option
-			)
-			.then((data) => console.log(data));
+		await addTransaction(newTransaction).then((data) => console.log(data));
 	} catch (error) {
 		console.log(error);
 	}

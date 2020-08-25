@@ -1,6 +1,7 @@
 export const paths = {
   registration: "/registration",
   login: "/login",
+  mainPage: "/"
 };
 
 export const userTypes = {
@@ -9,10 +10,18 @@ export const userTypes = {
   LOGIN_WITH_FACEBOOK: "LOGIN_WITH_FACEBOOK",
   REGISTER: "REGISTER",
   LOG_OUT: "LOG_OUT",
+  USER_ERROR: "USER_ERROR",
 };
+
 export const screenSizes = {
   small: 575.98,
   medium: 767.98,
   large: 991.98,
   extra: 1199.98,
 };
+
+export const TRANSACTIONS_GET = "transaction/TRANSACTIONS_GET";
+export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
+
+export const LOADER_ON = "loader/LOADER_ON";
+export const LOADER_OFF = "loader/LOADER_OFF";
