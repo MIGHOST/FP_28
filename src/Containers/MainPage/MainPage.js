@@ -46,6 +46,7 @@ const MainPage = (props) => {
         <div className={styles.currency}>
           <Currency />
         </div>
+        <AddTransaction modalCloser={modalCloser} />
         {modalOpen && <AddTransaction modalCloser={modalCloser} />}
       </div>
     </div>
