@@ -16,3 +16,9 @@ export const screenSizes = {
   large: 991.98,
   extra: 1199.98,
 };
+
+export const TRANSACTIONS_GET = "transaction/TRANSACTIONS_GET";
+export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
+
+export const LOADER_ON = "loader/LOADER_ON";
+export const LOADER_OFF = "loader/LOADER_OFF";
