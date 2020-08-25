@@ -30,7 +30,7 @@ const Login = () => {
     setForm(formInitialState);
   };
 const user = useSelector((state)=>state.session.user) 
-  const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1023px)" }); 
   const { email, password } = form;
   return (
     <div className={styles.container}>
