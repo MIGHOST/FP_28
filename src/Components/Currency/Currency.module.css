@@ -6,7 +6,7 @@ html {
 .wrapper {
   display: flex;
   align-items: center;
-  width: 320px;
+  min-width: 320px;
   flex-direction: column;
 }
 
@@ -151,9 +151,12 @@ html {
   .chart {
     display: none;
   }
-
   .wrapper {
+    width: 100%;
+  }
+
+  /* .wrapper {
     width: 354px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
-  }
+  } */
 }
