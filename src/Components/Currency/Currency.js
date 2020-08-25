@@ -41,7 +41,7 @@ const Currency = () => {
         <ul>
         <Suspense fallback={<p>...Loading</p>}>
           {currencyArray.map((el, index) => 
-            <CurrencyTable el={el} index={index}/>
+            <CurrencyTable el={el} key={index} index={index}/>
             
           )}
           </Suspense>

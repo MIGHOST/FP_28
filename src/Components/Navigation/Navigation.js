@@ -1,11 +1,13 @@
 import React from "react";
 import style from "./Navigation.module.css";
 import {useLocation, Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const Navigation = () => {
  
 
     const location = useLocation()
+    const user = useSelector((state) => state.session.user)
 
   return (
     <div>
@@ -53,7 +55,7 @@ const Navigation = () => {
           <div className={style.tab_dash}></div>
           <div className={style.tab_balance}>
             <p>Баланс </p>
-            <p>: income data грн</p>
+            <p>{`: ${user.userBalance} грн`}</p>
           </div>
         </div>
       </div>
