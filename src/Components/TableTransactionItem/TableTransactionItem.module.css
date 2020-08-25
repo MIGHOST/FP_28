@@ -1,5 +1,5 @@
 .tableTransactionItem {
-  height: 270px;
+  height: 315px;
   margin-bottom: 15px;
   box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
 }
@@ -112,12 +112,17 @@
     position: absolute;
     content: "";
     width: 8px;
-    height: 270px;
+    height: 315px;
     left: 0;
   }
 
   .cell {
     height: 45px;
+  }
+
+  .delete {
+    height: 45px;
+    background-color: #f3f6f6;
   }
 
   .plus::before {
@@ -185,7 +190,7 @@
   .delete {
     cursor: pointer;
     width: 50px;
-    padding-right: 10px;
+    padding-right: 20px;
   }
 
   .deleteIconSmall {
