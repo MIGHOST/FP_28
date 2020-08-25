@@ -9,6 +9,7 @@ import {
   editTransaction,
 } from "../actions/transactionTableData";
 import { loaderOn, loaderOff } from "../actions/loader";
+import { getUser } from "./login";
 
 export const updateUserTransaction = (id, transaction, token) => async (
   dispatch
@@ -22,6 +23,7 @@ export const updateUserTransaction = (id, transaction, token) => async (
 
     dispatch(editTransaction(data._id, data));
     dispatch(getUserTransactions());
+    dispatch(getUser());
   } catch (error) {
     console.log("Error update ---->>", error);
   } finally {
