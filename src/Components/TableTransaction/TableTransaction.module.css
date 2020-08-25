@@ -1,24 +1,3 @@
-/* @font-face {
-  font-family: "HelveticaNeueCyr";
-  font-style: normal;
-  font-weight: 500;
-  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.eot)
-      format("eot"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.ttf) format("ttf"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Medium.woff)
-      format("woff");
-}
-
-@font-face {
-  font-family: "HelveticaNeueCyr";
-  font-style: normal;
-  font-weight: 700;
-  src: url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.eot)
-      format("eot"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.ttf) format("ttf"),
-    url(../TableTransactionItem/fonts/HelveticaNeueCyr-Bold.woff) format("woff");
-} */
-
 .list {
   list-style: none;
 }
@@ -90,7 +69,7 @@
   }
 
   .category {
-    width: 175px;
+    width: 125px;
   }
 
   .comment {
@@ -103,6 +82,9 @@
 
   .balance {
     width: 110px;
+  }
+  .delete {
+    width: 50px;
   }
 }
 
@@ -130,7 +112,7 @@
   }
 
   .category {
-    width: 184px;
+    width: 134px;
   }
 
   .comment {
@@ -143,5 +125,44 @@
 
   .balance {
     width: 131px;
+  }
+}
+
+/* button */
+
+.zeroTransactions {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  color: #282828;
+  font-size: 25px;
+}
+
+.zeroTransactions span {
+  padding: 0 10px;
+}
+
+.addButtonInList {
+  position: fixed;
+}
+
+@media screen and (min-width: 1280px) {
+  .addButtonInList {
+    right: calc(50% - 596px);
+    bottom: 48px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .addButtonInList {
+    bottom: 48px;
+    right: calc(50% - 374px + 52px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .addButtonInList {
+    bottom: 7px;
+    left: calc(50% - 27px);
+    opacity: 0.55;
+    z-index: 5;
   }
 }

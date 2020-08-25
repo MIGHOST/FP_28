@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Navigation.module.css";
+import { NavLink } from "react-router-dom";
 const Navigation = () => {
   return (
     <div>
@@ -7,11 +8,15 @@ const Navigation = () => {
         <div className={style.navContainer}>
           <div className={style.navItem}>
             <div className={style.navItem_house}></div>
-            <p className={style.navItem_text}>Главная</p>
+            <NavLink to="/">
+              <p className={style.navItem_text}>Главная</p>
+            </NavLink>
           </div>
           <div className={style.navItem}>
             <div className={style.navItem_chart}></div>
-            <p className={style.navItem_text}>Статистика</p>
+            <NavLink to="/statistics">
+              <p className={style.navItem_text}>Статистика</p>
+            </NavLink>
           </div>
         </div>
       </div>

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import styles from "./TableTransactionItem.module.css";
 
 import { useDispatch } from "react-redux";
-import { updateUserTransaction } from "../../redux/operations/transactions";
+import {
+  updateUserTransaction,
+  deleteUsersTransaction,
+} from "../../redux/operations/transactions";
 
 const TableTransactionItem = ({ transaction }) => {
   const { date, type, category, comment, sum, balance, _id } = transaction;
@@ -40,6 +43,10 @@ const TableTransactionItem = ({ transaction }) => {
     };
 
     dispatch(updateUserTransaction(_id, transaction));
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteUsersTransaction(_id));
   };
 
   return (
@@ -105,6 +112,9 @@ const TableTransactionItem = ({ transaction }) => {
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
         <p className={styles.cellData}>{balance}</p>
+      </div>
+      <div className={styles.delete} onClick={deleteHandler}>
+        <div className={styles.deleteIconSmall}></div>
       </div>
     </li>
   );

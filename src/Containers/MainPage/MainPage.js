@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
-import AddButton from "../../Components/AddButton/AddButton";
 import Currency from "../../Components/Currency/Currency";
 import Balance from "../../Components/Balance/Balance";
 import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Loading from "../../Components/Loader/Loader";
 
-import { asyncSetTransactionsList } from "../../redux/actions/transactionTableData";
+import { getUserTransactions } from "../../redux/operations/transactions";
 import styles from "./MainPage.module.css";
+
+const Statistic = lazy(() =>
+  import(
+    "../../Components/Statistic/Statistic" /* webpackChunkName: "Statistic" */
+  )
+);
 
 const MainPage = () => {
   const loader = useSelector((state) => state.loader);
@@ -19,7 +25,7 @@ const MainPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(asyncSetTransactionsList());
+    dispatch(getUserTransactions());
   }, []);
 
   const modalOpener = () => {
@@ -39,9 +45,18 @@ const MainPage = () => {
         <Navigation />
         <Balance />
         <div className={styles.mainData}>
-          <TableTransaction />
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <TableTransaction modalOpener={modalOpener} />}
+              />
+              <Route path="/statistics" component={Statistic} />
+            </Switch>
+          </Suspense>
         </div>
-        <AddButton modalOpener={modalOpener} />
+
         <div className={styles.blockForMobileButton}></div>
         <div className={styles.currency}>
           <Currency />
