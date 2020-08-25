@@ -9,15 +9,10 @@ import Balance from "../../Components/Balance/Balance";
 import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Loading from "../../Components/Loader/Loader";
+import Statistic from "../../Components/Statistic/Statistic";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 import styles from "./MainPage.module.css";
-
-const Statistic = lazy(() =>
-  import(
-    "../../Components/Statistic/Statistic" /* webpackChunkName: "Statistic" */
-  )
-);
 
 const MainPage = () => {
   const loader = useSelector((state) => state.loader);
@@ -45,16 +40,14 @@ const MainPage = () => {
         <Navigation />
         <Balance />
         <div className={styles.mainData}>
-          <Suspense fallback={<Loading />}>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <TableTransaction modalOpener={modalOpener} />}
-              />
-              <Route path="/statistics" component={Statistic} />
-            </Switch>
-          </Suspense>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <TableTransaction modalOpener={modalOpener} />}
+            />
+            <Route path="/statistics" component={Statistic} />
+          </Switch>
         </div>
 
         <div className={styles.blockForMobileButton}></div>
