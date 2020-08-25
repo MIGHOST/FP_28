@@ -1,7 +1,7 @@
 export const paths = {
   registration: "/registration",
   login: "/login",
-  mainPage: "/"
+  mainPage: "/",
 };
 
 export const userTypes = {
@@ -11,6 +11,7 @@ export const userTypes = {
   REGISTER: "REGISTER",
   LOG_OUT: "LOG_OUT",
   USER_ERROR: "USER_ERROR",
+  GET_CURRENT_USER: "GET_CURRENT_USER",
 };
 
 export const screenSizes = {

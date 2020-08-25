@@ -3,12 +3,15 @@ const {
   loginToWallet,
   loginToWalletWithGoogle,
   loginToWalletWithFacebook,
+  getCurrentUser,
+  setAuthToken,
 } = require("../../api/walletServices");
 const {
   loginUser,
   loginUserWithGoogle,
   loginUserWithFacebook,
   userError,
+  getCurrentUserWithToken,
 } = require("../actions/user");
 
 export const createUserLogin = (formData, history) => async (dispatch) => {
@@ -40,6 +43,18 @@ export const loginWithFacebook = (formData, history) => async (dispatch) => {
     const user = loginResult.data;
     dispatch(loginUserWithFacebook(user));
     history.push(paths.mainPage);
+  } catch (error) {
+    dispatch(userError(error));
+  }
+};
+
+export const getUser = () => async (dispatch, getState) => {
+  try {
+    const token = getState().session.token;
+    setAuthToken(token);
+    const user = await getCurrentUser();
+
+    dispatch(getCurrentUserWithToken(user.data[0]));
   } catch (error) {
     dispatch(userError(error));
   }

@@ -54,11 +54,6 @@
   position: relative;
 }
 
-.edit {
-  width: 130px;
-  position: relative;
-}
-
 .edit::before {
   content: "";
   display: block;
