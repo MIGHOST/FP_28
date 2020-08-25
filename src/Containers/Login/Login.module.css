@@ -318,3 +318,14 @@ transform: scale(1.2);
 transform: scale(1.05);
 }
 
+.error {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #ff2c0c;
+  margin-bottom: 20px;
+}
