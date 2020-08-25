@@ -6,7 +6,6 @@ import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
-import user from "../../redux/reducers/user";
 
 
 const formInitialState = {
@@ -29,7 +28,7 @@ const Login = () => {
     dispatch(createUserLogin(form, history));
     setForm(formInitialState);
   };
-const user = useSelector((state)=>state.session.user) 
+  const user = useSelector((state) => state.session.user);
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
   const { email, password } = form;
   return (
@@ -75,7 +74,12 @@ const user = useSelector((state)=>state.session.user)
                   onChange={handleInput}
                 />
               </div>
-              <p className={styles.error}>{user.error && user.error.message}</p>
+              {user.error &&  (
+                <p className={styles.error}>
+                  The password is invalid or the user does not registered.
+                </p>
+              )}
+
               <button type="submit" className={styles.buttom}>
                 Войти
               </button>
