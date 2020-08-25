@@ -27,3 +27,8 @@ export const userError = (error) => ({
   type: userTypes.USER_ERROR,
   payload: error,
 });
+
+export const setUser = (user) => ({
+  type: userTypes.REGISTER,
+  payload: user,
+});

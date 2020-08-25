@@ -1,26 +1,16 @@
-// import axios from "axios";
-// import { setUser } from "../actions/user";
-// import { setToken } from "../actions/token";
+import { setUser, userError } from "../actions/user";
+import { paths } from "../../constants";
+import { registerToWallet} from "../../api/walletServices";
 
-// const options = {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// };
+export const signUp = (formData, history) => async (dispatch) => {
+  try {
+    const result = await registerToWallet(formData);
+    const { id, email} = result.data;
+    dispatch(setUser({ id, email }));
+    history.push(paths.login);
+  } catch (error) {
+    dispatch(userError(error));
+    console.log(error);
+  }
+};
 
-// export const signUp = (formData) => async (dispatch, getState) => {
-//   options.headers.autorization = getState().token;
-//   const result = await axios.post(
-//     //
-//     // узнать адрес
-//     //
-//     "http://localhost:4000/register",
-//     //
-//     formData,
-//     options
-//   );
-//   const { id, email, token } = result.data.user;
-//   dispatch(setUser({ id, email }));
-//   dispatch(setToken(token));
-//   localStorage.setItem("token", JSON.stringify(token));
-// };
