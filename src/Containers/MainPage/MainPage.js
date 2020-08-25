@@ -38,7 +38,7 @@ const MainPage = () => {
         <Header />
         <Navigation />
         <Balance />
-        <div className={styles.transactionTable}>
+        <div className={styles.mainData}>
           <TableTransaction />
         </div>
         <AddButton modalOpener={modalOpener} />
