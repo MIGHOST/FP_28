@@ -7,7 +7,7 @@ export const signUp = (formData, history) => async (dispatch) => {
     const result = await registerToWallet(formData);
     const { id, email} = result.data;
     dispatch(setUser({ id, email }));
-    history.push(paths.login);
+    history.push(paths.verifyPage);
   } catch (error) {
     dispatch(userError(error));
     console.log(error);

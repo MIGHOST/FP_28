@@ -12,6 +12,17 @@
   margin: 0 auto;
   margin-bottom: 25px;
   padding-top: 40px;
+  z-index: 1;
+}
+
+.EmptyWrapper {
+  background-image: url(../../img/emptyList.png);
+  background-repeat: no-repeat;
+  background-size: 280px;
+  background-position: center;
+  width: 87.5%;
+  height: 305px;
+  margin: 0 auto;
 }
 
 .WrapperPie::after {
@@ -24,7 +35,6 @@
   left: 50%;
   transform: translate(-50%, 0);
   box-shadow: 6px 10px 18px rgba(1, 1, 0, 0.1);
-  z-index: -72;
 }
 
 .WrapperSelect {
@@ -147,6 +157,21 @@
   letter-spacing: 0.45px;
 }
 
+.WrapperEmptyList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.emptyCaption {
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+
+
 @media (min-width: 767.98px) {
   .WrapperPie {
     padding-top: 80px;
@@ -158,6 +183,14 @@
     background-color: #ffffff;
   }
 
+  .EmptyWrapper {
+    background-size: 400px;
+    width: 703px;
+    height: 640px;
+    box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
+    margin-bottom: 35px;
+  }
+
   .WrapperSelect {
     max-width: 360px;
   }
@@ -167,6 +200,7 @@
     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
     grid-column-gap: 60px;
     padding: 0 60px 0 60px;
+
   }
 
   .ItemCategory::after {
@@ -200,6 +234,10 @@
   .ItemTitle {
     padding: 15px 0 15px 0;
   }
+
+  .WrapperEmptyList {
+    height: 100px;
+  }
 }
 
 @media (min-width: 992.98px) {
@@ -224,7 +262,8 @@
     margin: 0;
   }
 
-  .WrapperPie {
+  .WrapperPie,
+  .EmptyWrapper {
     grid-row-start: 4;
     grid-row-end: 6;
     grid-column-start: 1;
@@ -234,6 +273,11 @@
     height: 336px;
     box-shadow: none;
     margin: 0 auto;
+  }
+
+  .EmptyWrapper {
+    background-size: 300px;
+
   }
 
   .WrapperSelect {
@@ -272,14 +316,26 @@
     flex-direction: column;
     margin-right: 60px;
     height: 376px;
+
   }
 
-  .testList {
+  .WrapList,
+  .WrapperEmptyList {
     grid-row-start: 4;
     grid-row-end: 5;
     grid-column-start: 2;
     grid-column-end: 3;
   }
+
+  .WrapperEmptyList {
+    height: 300px;
+  }
+
+  .emptyCaption {
+    margin-right: 60px;
+    font-size: 18px;
+  }
+
 
   .WrapperResult {
     grid-row-start: 5;
@@ -311,6 +367,7 @@
   .ListCategory::after {
     width: 100%;
     left: 0;
+    bottom: 2px;
   }
 
   .ItemTitle {
