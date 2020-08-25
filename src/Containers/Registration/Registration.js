@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
@@ -17,18 +17,19 @@ const formState = {
 const Registration = () => {
   const [form, setForm] = useState(formState);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const inputHandler = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
+    const {value, name} = e.target
     setForm({ ...form, [name]: value });
   };
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signUp(form));
+    dispatch(signUp(form, history));
+    setForm(formState)
   };
-
+  const { email, password, confirmPassword, name } = form;
   return (
     <div className={styles.wrapper}>
       <aside className={styles.aside}>
@@ -50,6 +51,7 @@ const Registration = () => {
               autoComplete="on"
               onChange={inputHandler}
               name="email"
+              value={email}
             />
           </div>
           <div className={styles.formGroup}>
@@ -60,6 +62,7 @@ const Registration = () => {
               autoComplete="off"
               onChange={inputHandler}
               name="password"
+              value={password}
             />
           </div>
           <div className={styles.formGroupConfirm}>
@@ -70,6 +73,7 @@ const Registration = () => {
               autoComplete="off"
               onChange={inputHandler}
               name="confirmPassword"
+              value={confirmPassword}
             />
 
             {/* {form.confirmPassword && form.confirmPassword === form.password ? (
@@ -87,6 +91,7 @@ const Registration = () => {
               placeholder="Ваше имя"
               onChange={inputHandler}
               name="name"
+              value={name}
             />
           </div>
 
