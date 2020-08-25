@@ -1,4 +1,4 @@
-import {Switch, Route} from "react-router-dom"
+import {Switch, Route, Redirect} from "react-router-dom"
 import styles from './MainPage.module.css';
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,15 +10,10 @@ import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Loading from "../../Components/Loader/Loader";
 import { getUserTransactions } from "../../redux/operations/transactions";
+import Statistic from '../../Components/Statistic/Statistic'
+import {useMediaQuery} from 'react-responsive'
 
-
-const Statistic = lazy(() =>
-  import(
-    "../../Components/Statistic/Statistic" /* webpackChunkName: "Statistic" */
-  )
-);
-
-const MainPage = () => {
+const MainPage = (props) => {
   const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -26,8 +21,6 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(getUserTransactions());
   }, []);
-
- 
 
   const modalOpener = () => {
     if (modalOpen) return;
@@ -39,23 +32,24 @@ const MainPage = () => {
     setModalOpen(false);
   };
 
+  const isDesctop = useMediaQuery({ query: "(max-width: 1279px)" })
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
         <Header />
         <Navigation />
         <Balance />
-        <div className={styles.mainData}>
-          <Suspense fallback={<Loading />}>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <TableTransaction modalOpener={modalOpener} />}
-              />
-              <Route path="/statistics" component={Statistic} />
-            </Switch>
-          </Suspense>
+        <div className={styles.transactionTable}>
+          <Suspense fallback={<p>...Loading</p>}>
+        <Switch>
+          <Route path={`${props.match.path}/`} component={TableTransaction}/>
+          <Route path={`${props.match.path}statistic`} component={Statistic}/>
+          {isDesctop ? 
+          (<Route path={`${props.match.path}currency`} component={Currency}/>) 
+          : (<Redirect to="/"/>)}
+      </Switch>
+      </Suspense>
         </div>
 
         <div className={styles.blockForMobileButton}></div>
