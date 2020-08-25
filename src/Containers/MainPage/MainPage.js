@@ -6,6 +6,7 @@ import TableTransaction from "../../Components/TableTransaction/TableTransaction
 import AddButton from "../../Components/AddButton/AddButton";
 import Currency from "../../Components/Currency/Currency";
 import Balance from "../../Components/Balance/Balance";
+import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Loading from "../../Components/Loader/Loader";
 
@@ -34,6 +35,7 @@ const MainPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
+        <Header />
         <Navigation />
         <Balance />
         <div className={styles.transactionTable}>
