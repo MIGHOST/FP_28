@@ -13,13 +13,13 @@ const Navigation = () => {
     <div>
       <div className={style.pc}>
         <div className={style.navContainer}>
-        <Link to={{pathname: `/`, state: {from: location}}} >
+        <Link to={{pathname: `/`, state: {from: location}}} className={style.navItem_link}>
           <div className={style.navItem}>
             <div className={style.navItem_house}></div>
             <p className={style.navItem_text}>Главная</p>
           </div>
           </Link>
-          <Link to={{pathname: `/statistic`, state: {from: location}}} >
+          <Link to={{pathname: `/statistic`, state: {from: location}}} className={style.navItem_link}>
           <div className={style.navItem}>
             <div className={style.navItem_chart}></div>
             <p className={style.navItem_text}>Статистика</p>

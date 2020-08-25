@@ -6,7 +6,6 @@ const Balance = () => {
 
     const user = useSelector((state) => state.session.user)
 
-    console.log(user);
 
 
     return (

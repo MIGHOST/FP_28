@@ -26,7 +26,7 @@ const MainPage = (props) => {
   };
 
   const isDesctop = useMediaQuery({ query: "(max-width: 1279px)" })
-  console.log(isDesctop);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
