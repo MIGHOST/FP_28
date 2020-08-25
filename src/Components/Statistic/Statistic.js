@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserTransactions } from "../../redux/operations/transactions";
 import { Pie } from "react-chartjs-2";
 import { Scrollbars } from "react-custom-scrollbars";
 
@@ -11,34 +13,22 @@ import {
 
 import debounce from "../../helpers/debounce";
 import { screenSizes } from "../../constants";
+import { MONTH } from "../../constants";
 import styles from "./Statistic.module.css";
 import { state } from "./HardCode";
 
-const monthArr = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
-];
 const dataNow = new Date();
 const Statistic = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [initialState, setInitialState] = useState({
-    month: monthArr.indexOf(monthArr[dataNow.getMonth()]) + 1,
+  const [dateState, setDateState] = useState({
+    month: dataNow.getMonth() + 1,
     year: dataNow.getFullYear(),
   });
+
   const inputHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setInitialState({ ...initialState, [name]: value });
+    setDateState({ ...dateState, [name]: value });
   };
   useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
@@ -61,6 +51,19 @@ const Statistic = () => {
     ],
   };
   const classes = useStyles();
+
+  const transactionsArr = useSelector((state) => state.tableData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserTransactions());
+  }, [dispatch]);
+
+  const allYearsArr = transactionsArr
+    .map((el) => Number(el.date.slice(6)))
+    .sort();
+  const uniqueYearsArr = Array.from(new Set(allYearsArr));
+
   return (
     <div className={styles.Wrapper}>
       {screenSizes.medium < screenWidth && (
@@ -68,17 +71,23 @@ const Statistic = () => {
           <h2 className={styles.HeaderTitle}>Статистиска</h2>
         </header>
       )}
-      <div className={styles.WrapperPie}>
-        <Pie
-          data={dataPieCharts}
-          legend={{
-            display: false,
-          }}
-          width={265}
-          height={265}
-          options={{ maintainAspectRatio: false }}
-        />
-      </div>
+
+      {state.length ? (
+        <div className={styles.WrapperPie}>
+          <Pie
+            data={dataPieCharts}
+            legend={{
+              display: false,
+            }}
+            width={265}
+            height={265}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
+      ) : (
+        <div className={styles.EmptyWrapper}></div>
+      )}
+
       <div className={styles.WrapperSelect}>
         <FormControl variant="outlined" className={classes.formControl}>
           <StyledInputLabel id="months-select-outlined-label">
@@ -87,12 +96,12 @@ const Statistic = () => {
           <StyledSelect
             labelId="months-select-outlined-label"
             id="months-select-outlined"
-            value={initialState.month}
+            value={dateState.month}
             name="month"
             onChange={inputHandler}
             label="Месяц"
           >
-            {monthArr.map((el, index) => (
+            {MONTH.map((el, index) => (
               <MenuItem value={index + 1} key={`${el}_${index}`}>
                 {el}
               </MenuItem>
@@ -106,14 +115,20 @@ const Statistic = () => {
           <StyledSelect
             labelId="years-select-outlined-label"
             id="years-select-outlined"
-            value={initialState.year}
+            value={dateState.year}
             name="year"
             onChange={inputHandler}
             label="Год"
           >
-            <MenuItem value={2018}>2018</MenuItem>
-            <MenuItem value={2019}>2019</MenuItem>
-            <MenuItem value={2020}>2020</MenuItem>
+            {uniqueYearsArr.length ? (
+              uniqueYearsArr.map((el, index) => (
+                <MenuItem value={el} key={`${el}_${index}`}>
+                  {el}
+                </MenuItem>
+              ))
+            ) : (
+              <MenuItem value={dateState.year}>{dateState.year}</MenuItem>
+            )}
           </StyledSelect>
         </FormControl>
       </div>
@@ -124,10 +139,34 @@ const Statistic = () => {
             <h3 className={styles.Title}>Сумма</h3>
           </div>
         ))}
-      <div className={styles.testList}>
-        {screenSizes.large < screenWidth ? (
-          <ul className={styles.ListCategory}>
-            <Scrollbars style={{ height: 376 }}>
+      {state.length ? (
+        <div className={styles.WrapList}>
+          {screenSizes.large < screenWidth ? (
+            <ul className={styles.ListCategory}>
+              <Scrollbars style={{ height: 376, width: 374 }}>
+                {state.map((el, index) => (
+                  <li
+                    key={`${el.color}_${index}`}
+                    className={styles.ItemCategory}
+                  >
+                    <div className={styles.WrapperItem}>
+                      <div
+                        style={{
+                          backgroundColor: el.color,
+                          height: "15px",
+                          width: "15px",
+                          marginRight: "13px",
+                        }}
+                      ></div>
+                      <p className={styles.ItemTitle}>{el.category}</p>
+                    </div>
+                    <p>{el.sum.toFixed(2)}</p>
+                  </li>
+                ))}
+              </Scrollbars>
+            </ul>
+          ) : (
+            <ul className={styles.ListCategory}>
               {state.map((el, index) => (
                 <li
                   key={`${el.color}_${index}`}
@@ -147,47 +186,34 @@ const Statistic = () => {
                   <p>{el.sum.toFixed(2)}</p>
                 </li>
               ))}
-            </Scrollbars>
-          </ul>
-        ) : (
-          <ul className={styles.ListCategory}>
-            {state.map((el, index) => (
-              <li key={`${el.color}_${index}`} className={styles.ItemCategory}>
-                <div className={styles.WrapperItem}>
-                  <div
-                    style={{
-                      backgroundColor: el.color,
-                      height: "15px",
-                      width: "15px",
-                      marginRight: "13px",
-                    }}
-                  ></div>
-                  <p className={styles.ItemTitle}>{el.category}</p>
-                </div>
-                <p>{el.sum.toFixed(2)}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className={styles.WrapperResult}>
-        <div className={styles.WrapperResultTitle}>
-          <p className={styles.TitleExpenses}>Расходы:</p>
-          {screenSizes.large < screenWidth ? (
-            <p className={styles.ExpensesTotal}>22 549.24 грн</p>
-          ) : (
-            <p className={styles.ExpensesTotal}>22 549.00</p>
+            </ul>
           )}
         </div>
-        <div className={styles.WrapperResultTitle}>
-          <p className={styles.TitleIncome}>Доходы:</p>
-          {screenSizes.large < screenWidth ? (
-            <p className={styles.IncomeTotal}>27 350.00 грн</p>
-          ) : (
-            <p className={styles.IncomeTotal}>27 350.00</p>
-          )}
+      ) : (
+        <div className={styles.WrapperEmptyList}>
+          <p className={styles.emptyCaption}>Нет записей за выбранный период</p>
         </div>
-      </div>
+      )}
+      {!!state.length && (
+        <div className={styles.WrapperResult}>
+          <div className={styles.WrapperResultTitle}>
+            <p className={styles.TitleExpenses}>Расходы:</p>
+            {screenSizes.large < screenWidth ? (
+              <p className={styles.ExpensesTotal}>22 549.24 грн</p>
+            ) : (
+              <p className={styles.ExpensesTotal}>22 549.00</p>
+            )}
+          </div>
+          <div className={styles.WrapperResultTitle}>
+            <p className={styles.TitleIncome}>Доходы:</p>
+            {screenSizes.large < screenWidth ? (
+              <p className={styles.IncomeTotal}>27 350.00 грн</p>
+            ) : (
+              <p className={styles.IncomeTotal}>27 350.00</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 export const paths = {
   registration: "/registration",
   login: "/login",
-  mainPage: "/"
+  mainPage: "/",
 };
 
 export const userTypes = {
@@ -25,3 +25,18 @@ export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
 
 export const LOADER_ON = "loader/LOADER_ON";
 export const LOADER_OFF = "loader/LOADER_OFF";
+
+export const MONTH = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
