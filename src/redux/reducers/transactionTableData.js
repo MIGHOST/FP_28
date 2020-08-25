@@ -1,4 +1,8 @@
-import { TRANSACTION_UPDATE, TRANSACTIONS_GET } from "../../constants";
+import {
+	TRANSACTION_UPDATE,
+	TRANSACTIONS_GET,
+	ADD_TRANSACTION,
+} from "../../constants";
 
 const initialState = [
 	{
@@ -50,7 +54,7 @@ const initialState = [
 
 const tableData = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case "ADD_TRANSACTION":
+		case ADD_TRANSACTION:
 			return [...state, payload];
 		case TRANSACTIONS_GET: {
 			return payload;

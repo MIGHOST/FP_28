@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styles from "./AddTransaction.module.css";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { asyncAddTransaction } from "../../redux/actions/transactionTableData";
+import { asyncAddTransaction } from "../../redux/operations/transactions";
 import { validate } from "./validate";
+import PropTypes from "prop-types";
 
 const costCategoryArr = [
 	"sdvsdc",
@@ -33,26 +34,12 @@ const initialState = {
 	commentary: "",
 };
 
-const AddTransaction = ({ modalTogle }) => {
+const AddTransaction = ({ modalTogle, title }) => {
 	const [type, setType] = useState("+");
 	const [form, setForm] = useState(initialState);
 	const [categiryList, setCategiryList] = useState(false);
 	const [errors, setErrors] = useState({});
 	const dispatch = useDispatch();
-
-	// document.addEventListener("keydown", (e) => {
-	// 	if (e.key === "Escape") {
-	// 		// modalTogle();
-	// 		console.log("cloce");
-	// 	}
-	// });
-
-	// document.removeEventListener("keydown", (e) => {
-	// 	if (e.key === "Escape") {
-	// 		// modalTogle();
-	// 		console.log("cloce");
-	// 	}
-	// });
 
 	const selectHandler = () => {
 		setCategiryList(!categiryList);
@@ -85,7 +72,6 @@ const AddTransaction = ({ modalTogle }) => {
 			setErrors(resaltValidate);
 		}
 	};
-
 	const cloceModal = (e) => {
 		// console.log(e.target.title);
 		if (e.target.title !== "cloce") {
@@ -101,6 +87,11 @@ const AddTransaction = ({ modalTogle }) => {
 		console.log("cloce");
 	};
 
+	const buildBtnTitle = (text) => {
+		const words = text.split(" ");
+		return words[0];
+	};
+
 	const { sum, date, category, commentary } = form;
 	return (
 		<div className={styles.Overlay} onClick={cloceModal} title="cloce">
@@ -111,7 +102,7 @@ const AddTransaction = ({ modalTogle }) => {
 						onClick={cloceModal}
 						title="cloce"
 					></div>
-					<h3 className={styles.FormHeader}>add a transaction</h3>
+					<h3 className={styles.FormHeader}>{title}</h3>
 					<div
 						className={styles.CloceModal}
 						onClick={cloceModal}
@@ -230,7 +221,11 @@ const AddTransaction = ({ modalTogle }) => {
 						></textarea>
 					</fieldset>
 					<div className={styles.FormBtnPart}>
-						<input type="submit" className={styles.Btn} value="Add" />
+						<input
+							type="submit"
+							className={styles.Btn}
+							value={buildBtnTitle(title)}
+						/>
 					</div>
 				</form>
 			</div>
@@ -239,3 +234,12 @@ const AddTransaction = ({ modalTogle }) => {
 };
 
 export default AddTransaction;
+
+AddTransaction.propTypes = {
+	modalTogle: PropTypes.func,
+	title: PropTypes.string,
+};
+
+AddTransaction.defaultProps = {
+	title: "добавить транзакцыю",
+};
