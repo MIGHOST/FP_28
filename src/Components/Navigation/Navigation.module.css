@@ -80,6 +80,7 @@
   font-size: 15px;
   color: #3a5374;
   background-color: #fcf9f8;
+  text-decoration: none;
 }
 
 .tab_dash {
@@ -93,6 +94,10 @@
 
 .tab_navItem {
   display: flex;
+  font-size: 15px;
+  color: #3a5374;
+  background-color: #fcf9f8;
+  text-decoration: none;
 }
 
 .tab_navItem:hover {
@@ -119,6 +124,17 @@
   width: 16px;
   height: 16px;
   background-image: url("./icon/home-tab.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 10px;
+}
+
+.tab_navItem_dollar {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("./icon/dolar-tab.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
