@@ -3,6 +3,7 @@ import styles from "./TableTransactionItem.module.css";
 
 import { useDispatch } from "react-redux";
 import { updateUserTransaction } from "../../redux/operations/transactions";
+import { getFromLocaleStorage } from "../../helpers/storage";
 
 const TableTransactionItem = ({ transaction }) => {
   const { date, type, category, comment, sum, balance, _id } = transaction;
@@ -39,7 +40,8 @@ const TableTransactionItem = ({ transaction }) => {
       comment: editFields.comment,
     };
 
-    dispatch(updateUserTransaction(_id, transaction));
+    const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
+    dispatch(updateUserTransaction(_id, transaction, token));
   };
 
   return (
@@ -71,6 +73,7 @@ const TableTransactionItem = ({ transaction }) => {
             onKeyDown={handleKeyDown}
             className={styles.cellDataFieldComment}
             maxLength="40"
+            autoFocus
           />
         ) : (
           <p
@@ -92,6 +95,7 @@ const TableTransactionItem = ({ transaction }) => {
             onKeyDown={handleKeyDown}
             className={styles.cellDataFieldSum}
             maxLength="40"
+            autoFocus
           />
         ) : (
           <p
