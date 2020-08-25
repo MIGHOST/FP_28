@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./TableTransactionItem.module.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserTransaction } from "../../redux/operations/transactions";
 import { getFromLocaleStorage } from "../../helpers/storage";
 

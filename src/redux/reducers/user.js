@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
       return action.payload;
     case userTypes.USER_ERROR:
       return { ...state, error: action.payload };
+    case userTypes.GET_CURRENT_USER:
+      return action.payload;
     default:
       return state;
   }
