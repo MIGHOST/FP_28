@@ -1,11 +1,17 @@
-export const validate = (values) => {
+export const validate = ({ category, sum }) => {
 	const errors = {};
 
-	if (!values.category) {
-		errors.category = "Required";
+	if (!category) {
+		errors.category = "Выберите категорию!";
 	}
-	if (!values.sum) {
-		errors.sum = "Required";
+	if (!sum) {
+		errors.sum = "Введите сумму!";
+	} else if (isNaN(Number(sum))) {
+		errors.sum = "Введите цифровое значение!";
 	}
-	return errors;
+	if (!!Object.keys(errors).length) {
+		return errors;
+	} else {
+		return "valid";
+	}
 };

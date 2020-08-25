@@ -23,16 +23,53 @@
 	width: 100%;
 	background-color: #f3f3f5;
 	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	/* align-items: center; */
+}
+.CloceModalMobile,
+.CloceModal {
+	content: "";
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin: 14px;
+	/* background-color: slateblue; */
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 300%;
+	cursor: pointer;
+}
+
+.CloceModal {
+	background-image: url(./icons/close.svg);
+}
+.CloceModal:hover {
+	background-size: 400%;
+	/* background-color: slateblue; */
 }
 
 .FormHeader {
-	padding: 21px;
+	padding: 21px 0;
 	text-transform: uppercase;
 	font-size: 15px;
 	letter-spacing: 0px;
 	line-height: 30px;
 	color: #282828;
 	font-weight: bold;
+}
+.AddingForrm {
+	width: 100%;
+	padding-bottom: 50px;
+}
+
+.MainFormPart,
+.FormBtnPart {
+	margin: 0 auto;
+	width: 300px;
+	border: none;
+	display: flex;
+	justify-content: center;
 }
 
 .RadioContainer {
@@ -63,17 +100,18 @@
 	content: "";
 	display: inline-block;
 	margin-right: 10px;
-	width: 10px;
-	height: 10px;
-	border: 1px solid #b9c9d4;
-	/* padding: 2px; */
-	border-radius: 50%;
+	width: 13px;
+	height: 13px;
+	background-image: url(./icons/circle.svg);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 /* Checked */
 .FormRadio input[type="radio"]:checked + label:before {
 	background-position: center;
-	background-size: 8px;
+	background-size: contain;
 	background-repeat: no-repeat;
 }
 .Cost input[type="radio"]:checked + label:before {
@@ -90,23 +128,22 @@
 	color: #425c7d;
 }
 
-.CategoryRadio input[type="radio"]:checked + label:before {
+.CategoryCostRadio input[type="radio"]:checked + label:before,
+.CategoryCostRadio input[type="radio"]:active + label:before {
 	background-image: url(./icons/costRadio.svg);
 }
-
-.AddingForrm {
-	width: 300px;
-	padding-bottom: 50px;
+.CategoryProfitRadio input[type="radio"]:checked + label:before,
+.CategoryProfitRadio input[type="radio"]:active + label:before {
+	background-image: url(./icons/profitRadio.svg);
+}
+.CategoryRadio {
+	justify-content: start;
 }
 
 .Input {
 	padding: 5px;
 	border-radius: 4px;
 	border: 2px solid #b9c9d4;
-}
-
-.InputError {
-	border: 2px solid #a70000;
 }
 
 .Input:focus {
@@ -145,7 +182,7 @@
 }
 
 .CategoryList {
-	display: none;
+	/* display: none; */
 	margin-top: 31px;
 	width: 300px;
 	padding-top: 5px;
@@ -157,10 +194,6 @@
 	border-bottom-right-radius: 6px;
 	border-bottom-left-radius: 6px;
 	background-color: #ffffff;
-}
-
-.CategoryContainerVisible {
-	display: block;
 }
 
 .CategoryList::-webkit-scrollbar {
@@ -187,6 +220,9 @@
 
 .InputContainer {
 	margin-bottom: 30px;
+}
+
+.SumAndDate {
 	display: flex;
 	justify-content: space-between;
 }
@@ -204,6 +240,7 @@
 	margin-top: 12px;
 	width: 100%;
 	height: 50px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .Btn {
@@ -225,4 +262,82 @@
 
 .Btn:active {
 	background-color: #28384d;
+}
+
+/* Errors Styles */
+
+.ErrorsText {
+	color: rgb(243, 64, 32);
+	padding-top: 10px;
+	padding-left: 4px;
+}
+.InputError {
+	border: 2px solid #a70000;
+}
+
+@media (max-width: 500px) {
+	.Container {
+		width: 100vw;
+		height: 100vh;
+	}
+	.HeadingContainer {
+		background-color: #28384d;
+	}
+	.HeadingContainer {
+		align-items: center;
+	}
+	.CloceModal {
+		background-image: none;
+		margin: 6px;
+	}
+
+	.CloceModalMobile {
+		background-image: url(./icons/arrowLeft.svg);
+		background-size: contain;
+		margin: 6px;
+	}
+
+	.FormHeader {
+		color: #ffffff;
+	}
+	.AddingForrm {
+		/* width: 85%; */
+		height: 100vh;
+		padding-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.Description {
+		height: 100px;
+	}
+
+	.FormBtnPart {
+		width: 100%;
+		background-color: #738397;
+		padding-bottom: 30px;
+	}
+	.Btn {
+		width: 300px;
+		background-color: #ff6b00;
+	}
+	.Btn:active {
+		background-color: #753303;
+	}
+}
+
+@media (max-width: 330px) {
+	.MainFormPart {
+		width: 280px;
+	}
+	.Date {
+		width: 130px;
+	}
+	.Sum {
+		width: 130px;
+	}
+	.Btn {
+		width: 280px;
+	}
 }

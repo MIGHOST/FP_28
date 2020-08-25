@@ -1,10 +1,2 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 29.107 29.107" style="enable-background:new 0 0 29.107 29.107;" xml:space="preserve" width="512px" height="512px" class=""><g><g>
-	<g id="c147_full_moon">
-		<g>
-			<path d="M14.554,0C6.561,0,0,6.562,0,14.552c0,7.996,6.561,14.555,14.554,14.555c7.996,0,14.553-6.559,14.553-14.555     C29.106,6.562,22.55,0,14.554,0z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FF6C00"/>
-		</g>
-	</g>
-	<g id="Capa_1_14_">
-	</g>
-</g></g> </svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 0 480 480" width="512px" class=""><g><path d="m432 240c0 106.039062-85.960938 192-192 192s-192-85.960938-192-192 85.960938-192 192-192 192 85.960938 192 192zm0 0" fill="#cfd2fc" data-original="#CFD2FC" class="" style="fill:#FFFFFF" data-old_color="#cfd2fc"/><path d="m240 480c-132.546875 0-240-107.453125-240-240s107.453125-240 240-240 240 107.453125 240 240c-.148438 132.484375-107.515625 239.851562-240 240zm0-464c-123.710938 0-224 100.289062-224 224s100.289062 224 224 224 224-100.289062 224-224c-.140625-123.652344-100.347656-223.859375-224-224zm0 0" fill="#8690fa" data-original="#8690FA" class="active-path" style="fill:#B9C9D4" data-old_color="#8690fa"/><path d="m352 240c0 61.855469-50.144531 112-112 112s-112-50.144531-112-112 50.144531-112 112-112 112 50.144531 112 112zm0 0" fill="#5153ff" data-original="#5153FF" class="" style="fill:#FF6B00" data-old_color="#5153ff"/></g> </svg>
