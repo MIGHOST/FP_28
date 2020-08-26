@@ -28,8 +28,11 @@ export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
   try {
     setAuthToken(token);
     const { data } = await addTransaction(newTransaction);
-    console.log(data);
-    dispatch(addTransactionToRedux(newTransaction));
+    dispatch(
+      // addTransactionToRedux(newTransaction)
+      addTransactionToRedux({ ...newTransaction, balance: data.userBalance })
+    );
+    dispatch(getUserTransactions());
   } catch (error) {
     console.log("Error adding ---->>", error);
   } finally {
