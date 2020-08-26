@@ -56,6 +56,8 @@ export const getUser = () => async (dispatch, getState) => {
 
     dispatch(getCurrentUserWithToken(user.data[0]));
   } catch (error) {
-    dispatch(userError(error));
+    if(error.response.status !== 500) {
+      dispatch(userError(error));
+    }
   }
 };

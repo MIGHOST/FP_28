@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory} from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Registration.module.css";
@@ -12,12 +12,13 @@ const formState = {
   password: "",
   confirmPassword: "",
   name: "",
-};
+}; 
 
 const Registration = () => {
   const [form, setForm] = useState(formState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const userError = useSelector(state => state.session.user);
 
   const inputHandler = (e) => {
     const {value, name} = e.target
@@ -29,6 +30,7 @@ const Registration = () => {
     dispatch(signUp(form, history));
     setForm(formState)
   };
+
   const { email, password, confirmPassword, name } = form;
   return (
     <div className={styles.wrapper}>
@@ -94,7 +96,7 @@ const Registration = () => {
               value={name}
             />
           </div>
-
+          <p className={styles.error}>{userError.error ? userError.error.data.message : ""}</p>
           <button type="submit" className={styles.button}>
             Регистрация
           </button>

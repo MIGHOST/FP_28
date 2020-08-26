@@ -25,7 +25,7 @@ export const userLogOut = () => ({ type: LOG_OUT });
 
 export const userError = (error) => ({
   type: userTypes.USER_ERROR,
-  payload: error,
+  payload: error.response,
 });
 
 export const setUser = (user) => ({
