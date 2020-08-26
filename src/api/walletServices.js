@@ -34,3 +34,5 @@ export const updateTransaction = (transactionId, transaction) =>
   axios.patch("/update", { transactionId, ...transaction });
 
 export const getCurrentUser = () => axios.get("/user");
+export const getStatisticsItem = (year, month) =>
+  axios.get(`/get/stat?year=${year}&month=${month}`);

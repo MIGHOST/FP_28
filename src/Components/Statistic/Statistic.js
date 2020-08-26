@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserTransactions } from "../../redux/operations/transactions";
 import { Pie } from "react-chartjs-2";
 import { Scrollbars } from "react-custom-scrollbars";
 
+import { getUserTransactions } from "../../redux/operations/transactions";
+import { statisticUserGet } from "../../redux/operations/statistics";
 import { FormControl, MenuItem } from "@material-ui/core";
 import {
   useStyles,
@@ -12,24 +13,53 @@ import {
 } from "./MaterialUiStatistic";
 
 import debounce from "../../helpers/debounce";
-import { screenSizes } from "../../constants";
-import { MONTH } from "../../constants";
+import { screenSizes, MONTH, backgroundStatistic } from "../../constants";
 import styles from "./Statistic.module.css";
-import { state } from "./HardCode";
 
-const dataNow = new Date();
 const Statistic = () => {
+  const dataNow = new Date();
+
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [dateState, setDateState] = useState({
     month: dataNow.getMonth() + 1,
     year: dataNow.getFullYear(),
   });
+  const dispatch = useDispatch();
+  //tuning statistic data
+  useEffect(() => {
+    dispatch(statisticUserGet(dateState));
+  }, [dateState, dispatch]);
 
+  const statisticData = useSelector((state) => state.statistic);
+  let arrayStatisticCategory = [];
+  if (!!Object.keys(statisticData).length) {
+    arrayStatisticCategory = [...statisticData.arr];
+  }
+
+  // arrayStatisticCategory.push(
+  //   {
+  //     category: "income",
+  //     sum: 8700.0,
+  //     type: "+",
+  //   },
+  //   {
+  //     category: " expenses",
+  //     sum: 4700.0,
+  //     type: "-",
+  //   }
+  // );
+  if (arrayStatisticCategory.length) {
+    arrayStatisticCategory.forEach(
+      (el, index) => (el.color = backgroundStatistic[index])
+    );
+  }
+  //control input
   const inputHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setDateState({ ...dateState, [name]: value });
   };
+  //debounce breakPoint resize screen
   useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setScreenWidth(window.innerWidth);
@@ -39,22 +69,20 @@ const Statistic = () => {
       window.removeEventListener("resize", debouncedHandleResize);
     };
   }, [screenWidth]);
-
+  //PieCharts
   const dataPieCharts = {
-    labels: state.map((el) => el.category),
+    labels: arrayStatisticCategory.map((el) => el.category),
     datasets: [
       {
-        data: state.map((el) => el.sum),
-        backgroundColor: state.map((el) => el.color),
+        data: arrayStatisticCategory.map((el) => el.sum),
+        backgroundColor: arrayStatisticCategory.map((el) => el.color),
         borderWidth: 1,
       },
     ],
   };
   const classes = useStyles();
-
+  //select year
   const transactionsArr = useSelector((state) => state.tableData);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getUserTransactions());
   }, [dispatch]);
@@ -72,7 +100,7 @@ const Statistic = () => {
         </header>
       )}
 
-      {state.length ? (
+      {arrayStatisticCategory.length ? (
         <div className={styles.WrapperPie}>
           <Pie
             data={dataPieCharts}
@@ -139,12 +167,12 @@ const Statistic = () => {
             <h3 className={styles.Title}>Сумма</h3>
           </div>
         ))}
-      {state.length ? (
+      {arrayStatisticCategory.length ? (
         <div className={styles.WrapList}>
           {screenSizes.large < screenWidth ? (
             <ul className={styles.ListCategory}>
               <Scrollbars style={{ height: 376, width: 374 }}>
-                {state.map((el, index) => (
+                {arrayStatisticCategory.map((el, index) => (
                   <li
                     key={`${el.color}_${index}`}
                     className={styles.ItemCategory}
@@ -158,16 +186,26 @@ const Statistic = () => {
                           marginRight: "13px",
                         }}
                       ></div>
-                      <p className={styles.ItemTitle}>{el.category}</p>
+                      {el.type === "-" ? (
+                        <p className={styles.incomeItemTitle}>{el.category}</p>
+                      ) : (
+                        <p className={styles.ItemTitle}>{el.category}</p>
+                      )}
                     </div>
-                    <p>{el.sum.toFixed(2)}</p>
+                    {el.type === "-" ? (
+                      <p className={styles.incomeItemTitle}>
+                        {el.sum.toFixed(2)}
+                      </p>
+                    ) : (
+                      <p>{el.sum.toFixed(2)}</p>
+                    )}
                   </li>
                 ))}
               </Scrollbars>
             </ul>
           ) : (
             <ul className={styles.ListCategory}>
-              {state.map((el, index) => (
+              {arrayStatisticCategory.map((el, index) => (
                 <li
                   key={`${el.color}_${index}`}
                   className={styles.ItemCategory}
@@ -181,9 +219,19 @@ const Statistic = () => {
                         marginRight: "13px",
                       }}
                     ></div>
-                    <p className={styles.ItemTitle}>{el.category}</p>
+                    {el.type === "-" ? (
+                      <p className={styles.incomeItemTitle}>{el.category}</p>
+                    ) : (
+                      <p className={styles.ItemTitle}>{el.category}</p>
+                    )}
                   </div>
-                  <p>{el.sum.toFixed(2)}</p>
+                  {el.type === "-" ? (
+                    <p className={styles.incomeItemTitle}>
+                      {el.sum.toFixed(2)}
+                    </p>
+                  ) : (
+                    <p>{el.sum.toFixed(2)}</p>
+                  )}
                 </li>
               ))}
             </ul>
@@ -194,22 +242,32 @@ const Statistic = () => {
           <p className={styles.emptyCaption}>Нет записей за выбранный период</p>
         </div>
       )}
-      {!!state.length && (
+      {!!arrayStatisticCategory.length && (
         <div className={styles.WrapperResult}>
           <div className={styles.WrapperResultTitle}>
             <p className={styles.TitleExpenses}>Расходы:</p>
             {screenSizes.large < screenWidth ? (
-              <p className={styles.ExpensesTotal}>22 549.24 грн</p>
+              <p className={styles.ExpensesTotal}>
+                {statisticData.expenses >= 0 &&
+                  `${statisticData.expenses.toFixed(2)} грн`}
+              </p>
             ) : (
-              <p className={styles.ExpensesTotal}>22 549.00</p>
+              <p className={styles.ExpensesTotal}>
+                {statisticData.expenses && statisticData.expenses.toFixed(2)}
+              </p>
             )}
           </div>
           <div className={styles.WrapperResultTitle}>
             <p className={styles.TitleIncome}>Доходы:</p>
             {screenSizes.large < screenWidth ? (
-              <p className={styles.IncomeTotal}>27 350.00 грн</p>
+              <p className={styles.IncomeTotal}>
+                {statisticData.income >= 0 &&
+                  `${statisticData.income.toFixed(2)} грн`}
+              </p>
             ) : (
-              <p className={styles.IncomeTotal}>27 350.00</p>
+              <p className={styles.IncomeTotal}>
+                {statisticData.income && statisticData.income.toFixed(2)}
+              </p>
             )}
           </div>
         </div>

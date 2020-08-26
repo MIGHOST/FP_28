@@ -28,6 +28,8 @@ export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
 export const LOADER_ON = "loader/LOADER_ON";
 export const LOADER_OFF = "loader/LOADER_OFF";
 
+export const STATISTIC_GET = "statistic/get";
+
 export const MONTH = [
   "Январь",
   "Февраль",
@@ -41,4 +43,30 @@ export const MONTH = [
   "Октябрь",
   "Ноябрь",
   "Декабрь",
+];
+export const backgroundStatistic = [
+  "#80bdff",
+  "#007bff",
+  "#003e80",
+  "#ee9aa2",
+  "#e56874",
+  "#dc3545",
+  "#ffdfc4",
+  "#febf8a",
+  "#fe9e4f",
+  "#fff0c1",
+  "#ffe083",
+  "#ffd145",
+  "#94d3a2",
+  "#5ebd74",
+  "#28a745",
+  "#90e4cb",
+  "#58d7b1",
+  "#20c997",
+  "#8bd1dc",
+  "#51b9ca",
+  "#17a2b8",
+  "#f49fc6",
+  "#ee6ea9",
+  "#e83e8c",
 ];
