@@ -7,16 +7,22 @@ import statistic from "./statistic";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const session = combineReducers({
-  user,
-  token,
-});
-
 const authPersistConfig = {
   key: "auth-token",
   storage,
   whitelist: "token",
 };
+
+const authPersistConfigStatus = {
+  key: "status",
+  storage,
+  whitelist: "status",
+};
+
+const session = combineReducers({
+  user: persistReducer(authPersistConfigStatus, user),
+  token,
+});
 
 const rootReducer = combineReducers({
   session: persistReducer(authPersistConfig, session),
