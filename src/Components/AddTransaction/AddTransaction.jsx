@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import ru from "date-fns/locale/ru";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { getFromLocaleStorage } from "../../helpers/storage";
 
 const costCategoryArr = [
   "дом",
@@ -22,14 +23,9 @@ const costCategoryArr = [
   "комуналка",
   "ресторан",
   "техника",
-  "аренда"
+  "аренда",
 ];
-const profitCtegoryArr = [
-  "зарплата",
-  "депозит",
-  "freelance",
-  "роялти"
-];
+const profitCtegoryArr = ["зарплата", "депозит", "freelance", "роялти"];
 const initialState = {
   date: Date.now(),
   category: "",
@@ -75,28 +71,28 @@ const AddTransaction = ({ modalCloser, title }) => {
         type: type,
       };
 
-      dispatch(asyncAddTransaction(newTransaction));
+      const token = JSON.parse(
+        getFromLocaleStorage("persist:auth-token").token
+      );
+
+      dispatch(asyncAddTransaction(newTransaction, token));
       // modalTogle();
       modalCloser();
-  
     } else {
       setErrors(resaltValidate);
     }
   };
   const cloceModal = (e) => {
-
     if (e.target.title !== "cloce") {
       return;
     }
     document.removeEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-    
         modalCloser();
         console.log("cloce");
       }
-    });  
+    });
     modalCloser();
-
   };
 
   const buildBtnTitle = (text) => {

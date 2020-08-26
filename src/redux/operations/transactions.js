@@ -12,18 +12,12 @@ import {
   editTransaction,
   deleteTransactionFromState,
 } from "../actions/transactionTableData";
-import { getFromLocaleStorage } from "../../helpers/storage";
-import { filteredToken } from "../../helpers/convertator";
 import { loaderOn, loaderOff } from "../actions/loader";
 import { getUser } from "./login";
 
-const token = filteredToken(
-  getFromLocaleStorage("persist:auth-token")
-    ? getFromLocaleStorage("persist:auth-token").token
-    : ""
-);
-
-export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
+export const asyncAddTransaction = (newTransaction, token) => async (
+  dispatch
+) => {
   dispatch(loaderOn());
   try {
     setAuthToken(token);
@@ -86,7 +80,7 @@ export const getUserTransactions = () => async (dispatch, getState) => {
   }
 };
 
-export const deleteUsersTransaction = (id) => async (dispatch) => {
+export const deleteUsersTransaction = (id, token) => async (dispatch) => {
   dispatch(loaderOn());
   try {
     setAuthToken(token);
