@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
@@ -13,22 +13,29 @@ const formState = {
   confirmPassword: "",
   name: "",
 };
-
 const Registration = () => {
   const [form, setForm] = useState(formState);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const inputHandler = (e) => {
-    const {value, name} = e.target
+    const { value, name } = e.target;
     setForm({ ...form, [name]: value });
   };
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signUp(form, history));
-    setForm(formState)
+    const { email, password, confirmPassword, name } = form;
+
+    if ((email, password, confirmPassword, name)) {
+      dispatch(signUp(form, history));
+      setForm(formState);
+    } else {
+      form.errorMsg = true;
+      setForm(formState);
+    }
   };
+
   const { email, password, confirmPassword, name } = form;
   return (
     <div className={styles.wrapper}>
@@ -76,11 +83,11 @@ const Registration = () => {
               value={confirmPassword}
             />
 
-            {/* {form.confirmPassword && form.confirmPassword === form.password ? (
-              <div className={styles.confirmed}></div>
+            {form.confirmPassword === form.password ? (
+              <div></div>
             ) : (
-              <div className={styles.confirmPasswordBar}></div>
-            )} */}
+              <span className={styles.errorMsg}>Confirm password</span>
+            )}
           </div>
           <PasswordStrengthMeter password={form.password} />
 
@@ -98,6 +105,7 @@ const Registration = () => {
           <button type="submit" className={styles.button}>
             Регистрация
           </button>
+
           <div className={styles.login}>
             <Link to="/login">Войти</Link>
           </div>

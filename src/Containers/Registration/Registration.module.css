@@ -254,3 +254,8 @@
   color: #fff;
   background-color: #333333;
 } */
+.errorMsg {
+  color: red;
+  font-size: 10px;
+  font-family: sans-serif;
+}
