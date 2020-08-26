@@ -38,7 +38,7 @@ const initialState = {
   commentary: "",
 };
 
-const AddTransaction = ({ modalTogle, title }) => {
+const AddTransaction = ({ modalCloser, title }) => {
   const [type, setType] = useState("+");
   const [form, setForm] = useState(initialState);
   const [categiryList, setCategiryList] = useState(false);
@@ -77,6 +77,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 
       dispatch(asyncAddTransaction(newTransaction));
       // modalTogle();
+      modalCloser();
       console.log("cloce");
     } else {
       setErrors(resaltValidate);
@@ -90,10 +91,12 @@ const AddTransaction = ({ modalTogle, title }) => {
     document.removeEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         // modalTogle();
+        modalCloser();
         console.log("cloce");
       }
     });
     // modalTogle();
+    modalCloser();
     console.log("cloce");
   };
 

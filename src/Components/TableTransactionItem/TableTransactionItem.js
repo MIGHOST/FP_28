@@ -115,13 +115,7 @@ const TableTransactionItem = ({ transaction }) => {
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
-        <p className={styles.cellData}>{balance}</p>{" "}
-        <div className={styles.delete}>
-          <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
-          <div className={styles.deleteWord} onClick={deleteHandler}>
-            <p>delete</p>
-          </div>
-        </div>
+        <p className={styles.cellData}>{balance}</p>
       </div>
       <div className={styles.delete}>
         <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
