@@ -7,12 +7,13 @@ import {
 import styles from "./TableTransactionItem.module.css";
 import { getFromLocaleStorage } from "../../helpers/storage";
 
-
 const TableTransactionItem = ({ transaction }) => {
   const { date, type, category, comment, sum, balance, _id } = transaction;
   const [isEditSum, setIsEditSum] = useState(false);
   const [isEditCommentary, setIsEditCommentary] = useState(false);
   const [editFields, setEditFields] = useState({ sum, comment });
+
+  const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
 
   const dispatch = useDispatch();
 
@@ -40,12 +41,13 @@ const TableTransactionItem = ({ transaction }) => {
       comment: editFields.comment,
     };
 
-    const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
     dispatch(updateUserTransaction(_id, transaction, token));
   };
 
   const deleteHandler = () => {
-    dispatch(deleteUsersTransaction(_id));}
+    dispatch(deleteUsersTransaction(_id, token));
+  };
+
   const closeEdit = () => {
     setIsEditSum(false);
     setIsEditCommentary(false);
@@ -108,7 +110,12 @@ const TableTransactionItem = ({ transaction }) => {
             onBlur={closeEdit}
           />
         ) : (
-          <p className={`${styles.cellData} ${styles.sum}`}>{editFields.sum}</p>
+          <p
+            className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
+            onClick={editSum}
+          >
+            {editFields.sum.toFixed(2)}
+          </p>
         )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>

@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import ru from "date-fns/locale/ru";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { getFromLocaleStorage } from "../../helpers/storage";
 
 const costCategoryArr = [
   "дом",
@@ -22,19 +23,14 @@ const costCategoryArr = [
   "комуналка",
   "ресторан",
   "техника",
-  "аренда"
+  "аренда",
 ];
-const profitCtegoryArr = [
-  "зарплата",
-  "депозит",
-  "freelance",
-  "роялти"
-];
+const profitCtegoryArr = ["зарплата", "депозит", "freelance", "роялти"];
 const initialState = {
   date: Date.now(),
   category: "",
   sum: "",
-  commentary: "",
+  comment: "",
 };
 
 const AddTransaction = ({ modalCloser, title }) => {
@@ -70,33 +66,33 @@ const AddTransaction = ({ modalCloser, title }) => {
       const newTransaction = {
         ...form,
         date: `${moment(form.date).format("DD/MM/YYYY")}`,
-        sum: Number(type + form.sum),
+        // sum: Number(type + form.sum),
+        sum: Number(form.sum),
         type: type,
       };
 
-      dispatch(asyncAddTransaction(newTransaction));
+      const token = JSON.parse(
+        getFromLocaleStorage("persist:auth-token").token
+      );
+
+      dispatch(asyncAddTransaction(newTransaction, token));
       // modalTogle();
       modalCloser();
-      console.log("cloce");
     } else {
       setErrors(resaltValidate);
     }
   };
   const cloceModal = (e) => {
-    // console.log(e.target.title);
     if (e.target.title !== "cloce") {
       return;
     }
     document.removeEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        // modalTogle();
         modalCloser();
         console.log("cloce");
       }
     });
-    // modalTogle();
     modalCloser();
-    console.log("cloce");
   };
 
   const buildBtnTitle = (text) => {
@@ -104,7 +100,7 @@ const AddTransaction = ({ modalCloser, title }) => {
     return words[0];
   };
 
-  const { sum, date, category, commentary } = form;
+  const { sum, date, category, comment } = form;
   return (
     <div className={styles.Overlay} onClick={cloceModal} title="cloce">
       <div className={styles.Container}>
@@ -238,14 +234,14 @@ const AddTransaction = ({ modalCloser, title }) => {
               )}
             </div>
 
-            <label htmlFor="commentary">Комментарий</label>
+            <label htmlFor="comment">Комментарий</label>
             <textarea
               className={`${styles.Description} ${styles.Input}`}
-              name="commentary"
+              name="comment"
               id=""
               cols="30"
               rows="10"
-              value={commentary}
+              value={comment}
               onChange={inputHandler}
             ></textarea>
           </fieldset>

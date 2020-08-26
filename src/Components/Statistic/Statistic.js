@@ -15,6 +15,7 @@ import {
 import debounce from "../../helpers/debounce";
 import { screenSizes, MONTH, backgroundStatistic } from "../../constants";
 import styles from "./Statistic.module.css";
+import { getFromLocaleStorage } from "../../helpers/storage";
 
 const Statistic = () => {
   const dataNow = new Date();
@@ -25,10 +26,12 @@ const Statistic = () => {
     year: dataNow.getFullYear(),
   });
   const dispatch = useDispatch();
+  const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
+
   //tuning statistic data
   useEffect(() => {
-    dispatch(statisticUserGet(dateState));
-  }, [dateState, dispatch]);
+    dispatch(statisticUserGet(dateState, token));
+  }, [dateState, dispatch, token]);
 
   const statisticData = useSelector((state) => state.statistic);
   let arrayStatisticCategory = [];
