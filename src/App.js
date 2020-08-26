@@ -23,7 +23,7 @@ const App = () => {
       <Switch>
         <Route path="/registration" component={Registration} />
         <Route path="/login" component={Login} />
-        <Route path="/verify" component={Verified} /> 
+        <Route path="/verify" component={Verified} />
         <PrivateRoute path="/transaction" component={AddTransaction} />
         <PrivateRoute path="/sta" component={Statistic} />
         <PrivateRoute path="/" component={MainPage} />
