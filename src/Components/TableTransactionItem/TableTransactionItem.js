@@ -108,7 +108,12 @@ const TableTransactionItem = ({ transaction }) => {
             onBlur={closeEdit}
           />
         ) : (
-          <p className={`${styles.cellData} ${styles.sum}`}>{editFields.sum}</p>
+          <p
+            className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
+            onClick={editSum}
+          >
+            {editFields.sum.toFixed(2)}
+          </p>
         )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
