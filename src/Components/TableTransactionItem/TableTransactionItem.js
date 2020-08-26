@@ -114,13 +114,13 @@ const TableTransactionItem = ({ transaction }) => {
             className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
             onClick={editSum}
           >
-            {editFields.sum.toFixed(2)}
+            {Number(editFields.sum).toFixed(2)}
           </p>
         )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
-        <p className={styles.cellData}>{balance}</p>
+        <p className={styles.cellData}>{Number(balance).toFixed(2)}</p>
       </div>
       <div className={styles.delete}>
         <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
