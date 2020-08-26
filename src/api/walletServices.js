@@ -32,3 +32,6 @@ export const deleteTransaction = (transactionId) =>
 
 export const updateTransaction = (transactionId, transaction) =>
   axios.patch("/update", { transactionId, ...transaction });
+
+export const getStatisticsItem = (year, month) =>
+  axios.get(`/get/stat?year=${year}&month=${month}`);
