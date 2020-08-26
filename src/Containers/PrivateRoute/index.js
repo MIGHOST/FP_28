@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Verified from "../../Components/Verified/Verified";
-
+import { getFromLocaleStorage } from "../../helpers/storage";
 const PrivateRoute = ({ component, ...rest }) => {
-  const isAuth = "Verified";
+  const isAuth = getFromLocaleStorage("status");
   const Interface = component;
   switch (isAuth) {
     case "Verified":
