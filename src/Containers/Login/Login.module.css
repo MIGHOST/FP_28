@@ -34,8 +34,8 @@
   height: 100vh;
   background-blend-mode: multiply;
   background: rgb(61, 85, 117) url("./images/Layer1.png");
-  background-position: cover;
-  background-size: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 .wrapper_phone {
@@ -64,7 +64,7 @@
   padding: 42px 58px;
   align-items: center;
   width: 550px;
-  height: 500px;
+  height: 510px;
   box-shadow: 10px 17px 40px rgba(112, 124, 130, 0.3);
   background-color: #ffffff;
   /* margin-bottom: 50px; */
