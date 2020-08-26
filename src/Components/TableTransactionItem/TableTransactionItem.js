@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import styles from "./TableTransactionItem.module.css";
-
-import { useDispatch, useSelector } from "react-redux";
-import { updateUserTransaction } from "../../redux/operations/transactions";
+import { useDispatch } from "react-redux";
+import {
+  updateUserTransaction,
+  deleteUsersTransaction,
+} from "../../redux/operations/transactions";
 import { getFromLocaleStorage } from "../../helpers/storage";
+
+import styles from "./TableTransactionItem.module.css";
 
 const TableTransactionItem = ({ transaction }) => {
   const { date, type, category, comment, sum, balance, _id } = transaction;
@@ -42,6 +45,10 @@ const TableTransactionItem = ({ transaction }) => {
 
     const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
     dispatch(updateUserTransaction(_id, transaction, token));
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteUsersTransaction(_id));
   };
 
   return (
@@ -108,7 +115,13 @@ const TableTransactionItem = ({ transaction }) => {
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
-        <p className={styles.cellData}>{balance}</p>
+        <p className={styles.cellData}>{balance}</p>{" "}
+        <div className={styles.delete}>
+          <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
+          <div className={styles.deleteWord} onClick={deleteHandler}>
+            <p>delete</p>
+          </div>
+        </div>
       </div>
     </li>
   );
