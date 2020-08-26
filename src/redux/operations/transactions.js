@@ -36,6 +36,8 @@ export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
         _id: transaction[transaction.length - 1]._id,
       })
     );
+    dispatch(getUserTransactions());
+    dispatch(getUser());
   } catch (error) {
     console.log("Error adding ---->>", error);
   } finally {
@@ -90,6 +92,8 @@ export const deleteUsersTransaction = (id) => async (dispatch) => {
     setAuthToken(token);
     await deleteTransaction(id);
     dispatch(deleteTransactionFromState(id));
+    dispatch(getUserTransactions());
+    dispatch(getUser());
   } catch (error) {
     console.log("Error delete ---->>", error);
   } finally {
