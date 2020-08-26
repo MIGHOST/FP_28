@@ -9,6 +9,7 @@ const Header = () => {
   const logOut = () => {
     // console.log("sadsad");
     dispatch(userLogOut());
+    // при логауте нужно чистить в локалСторэдже ключ status=""
   };
   return (
     currentUser.email !== "" && (
