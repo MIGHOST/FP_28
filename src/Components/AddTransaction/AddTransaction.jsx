@@ -11,25 +11,24 @@ import ru from "date-fns/locale/ru";
 import "react-datepicker/dist/react-datepicker.css";
 
 const costCategoryArr = [
-  "category1",
-  "category2",
-  "category3",
-  "category4",
-  "category5",
-  "category6",
-  "category7",
-  "category8",
-  "category9",
-  "category10",
-  "category11",
+  "дом",
+  "машина",
+  "путешествия",
+  "спортзал",
+  "образования",
+  "подарки",
+  "продукты",
+  "дети",
+  "комуналка",
+  "ресторан",
+  "техника",
+  "аренда"
 ];
 const profitCtegoryArr = [
-  "profitCategory1",
-  "profitCategory2",
-  "profitCategory3",
-  "profitCategory4",
-  "profitCategory5",
-  "profitCategory6",
+  "зарплата",
+  "депозит",
+  "freelance",
+  "роялти"
 ];
 const initialState = {
   date: Date.now(),
@@ -271,5 +270,5 @@ AddTransaction.propTypes = {
 };
 
 AddTransaction.defaultProps = {
-  title: "добавить транзакцыю",
+  title: "добавить транзакцию",
 };
