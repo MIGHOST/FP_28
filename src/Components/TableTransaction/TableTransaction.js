@@ -2,9 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import TableTransactionItem from "../TableTransactionItem/TableTransactionItem";
+import AddButton from "../AddButton/AddButton";
 import styles from "./TableTransaction.module.css";
 
-const TableTransaction = () => {
+const TableTransaction = ({ modalOpener }) => {
   const transactionsArr = useSelector((state) => state.tableData);
 
   return (
@@ -35,6 +36,7 @@ const TableTransaction = () => {
           })}
         </ul>
       )}
+      <AddButton modalOpener={modalOpener} />
     </div>
   );
 };

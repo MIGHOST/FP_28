@@ -135,11 +135,12 @@
 
   .deleteWord {
     border-radius: 205px;
-    background-color: #ff6c00;
+    border: solid 1px #ff6c00;
+    background-color: transparent;
+    color: #ff6c00;
     width: 200px;
     height: 30px;
     font-family: "HelveticaNeueCyr", sans-serif;
-    color: white;
     letter-spacing: 2px;
     font-size: 16px;
     line-height: 30px;
@@ -149,9 +150,8 @@
   }
 
   .deleteWord:active {
-    border: solid 1px #ff6c00;
-    background-color: transparent;
-    color: #ff6c00;
+    background-color: #ff6c00;
+    color: white;
   }
 }
 

@@ -13,7 +13,6 @@ import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Statistic from "../../Components/Statistic/Statistic";
 import Loading from "../../Components/Loader/Loader";
-import AddButton from "../../Components/AddButton/AddButton";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 
@@ -46,7 +45,10 @@ const MainPage = (props) => {
         <Balance />
         <div className={styles.mainData}>
           <Switch>
-            <Route path={`${props.match.path}/`} component={TableTransaction} />
+            <Route
+              path={`${props.match.path}/`}
+              render={() => <TableTransaction modalOpener={modalOpener} />}
+            />
             <Route
               path={`${props.match.path}statistic`}
               component={Statistic}
@@ -61,8 +63,6 @@ const MainPage = (props) => {
             )}
           </Switch>
         </div>
-
-        <AddButton modalOpener={modalOpener} />
         <div className={styles.blockForMobileButton}></div>
         <div className={styles.currency}>
           <Currency />
