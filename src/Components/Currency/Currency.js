@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import style from "./Currency.module.css";
 import moment from "moment";
 import axios from "axios";
+import CurrencyTable from './CurrencyTable'
 
 
 const Currency = () => {
@@ -38,22 +39,17 @@ const Currency = () => {
           <p className={style.exHeadText}>Продажа</p>
         </div>
         <ul>
-          {currencyArray.map((el, index) => {
-            return (
-              <li className={style.exData} key ={index}>
-                <div className={style.exItem}>{`${el.currency}`}</div>
-                <div className={style.exItem}>{`${Number(el.purchaseRate).toFixed(2)}`}</div>
-                <div className={style.exItem}>{`${Number(el.saleRate).toFixed(2)}`}</div>
-              </li>
-            );
-          })}
+        <Suspense fallback={<p>...Loading</p>}>
+          {currencyArray.map((el, index) => 
+            <CurrencyTable el={el} key={index} index={index}/>
+            
+          )}
+          </Suspense>
+
         </ul>
       </div>
 
       <div className={style.chart}>
-        <div>
-            {/* <img src="../src/Components/Currency/icons/bg.png"></img> */}
-        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ export const paths = {
 	registration: "/registration",
 	login: "/login",
 	mainPage: "/",
+	verifyPage: "/verify",
 };
 
 export const userTypes = {
@@ -11,6 +12,7 @@ export const userTypes = {
 	REGISTER: "REGISTER",
 	LOG_OUT: "LOG_OUT",
 	USER_ERROR: "USER_ERROR",
+	GET_CURRENT_USER: "GET_CURRENT_USER",
 };
 
 export const screenSizes = {
@@ -26,3 +28,18 @@ export const TRANSACTION_UPDATE = "transaction/TRANSACTION_UPDATE";
 
 export const LOADER_ON = "loader/LOADER_ON";
 export const LOADER_OFF = "loader/LOADER_OFF";
+
+export const MONTH = [
+	"Январь",
+	"Февраль",
+	"Март",
+	"Апрель",
+	"Май",
+	"Июнь",
+	"Июль",
+	"Август",
+	"Сентябрь",
+	"Октябрь",
+	"Ноябрь",
+	"Декабрь",
+];

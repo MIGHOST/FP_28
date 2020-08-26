@@ -33,3 +33,5 @@ export const deleteTransaction = (transactionId) =>
 
 export const updateTransaction = (transactionId, transaction) =>
 	axios.patch("/update", { transactionId, ...transaction });
+
+export const getCurrentUser = () => axios.get("/user");

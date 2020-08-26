@@ -10,9 +10,10 @@ import {
 	getTransactionList,
 	editTransaction,
 } from "../actions/transactionTableData";
-import { loaderOn, loaderOff } from "../actions/loader";
 import { getFromLocaleStorage } from "../../helpers/storage";
 import { filteredToken } from "../../helpers/convertator";
+import { loaderOn, loaderOff } from "../actions/loader";
+import { getUser } from "./login";
 
 const token = filteredToken(
 	getFromLocaleStorage("persist:auth-token")
@@ -35,8 +36,11 @@ export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
 	}
 };
 
-export const updateUserTransaction = (id, transaction) => async (dispatch) => {
+export const updateUserTransaction = (id, transaction, token) => async (
+	dispatch
+) => {
 	dispatch(loaderOn());
+
 	try {
 		setAuthToken(token);
 
@@ -44,6 +48,7 @@ export const updateUserTransaction = (id, transaction) => async (dispatch) => {
 
 		dispatch(editTransaction(data._id, data));
 		dispatch(getUserTransactions());
+		dispatch(getUser());
 	} catch (error) {
 		console.log("Error update ---->>", error);
 	} finally {
@@ -52,8 +57,11 @@ export const updateUserTransaction = (id, transaction) => async (dispatch) => {
 	}
 };
 
-export const getUserTransactions = () => async (dispatch) => {
+export const getUserTransactions = () => async (dispatch, getState) => {
 	dispatch(loaderOn());
+
+	const token = getState().session.token;
+
 	try {
 		setAuthToken(token);
 

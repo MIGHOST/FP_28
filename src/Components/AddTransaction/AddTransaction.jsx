@@ -5,13 +5,17 @@ import { useDispatch } from "react-redux";
 import { asyncAddTransaction } from "../../redux/operations/transactions";
 import { validate } from "./validate";
 import PropTypes from "prop-types";
+import DatePicker from "react-datepicker";
+import ru from "date-fns/locale/ru";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const costCategoryArr = [
-	"sdvsdc",
-	"asdc",
-	"vefxsd",
-	"cdcsdc",
-	"aecSDca5",
+	"category1",
+	"category2",
+	"category3",
+	"category4",
+	"category5",
 	"category6",
 	"category7",
 	"category8",
@@ -28,7 +32,7 @@ const profitCtegoryArr = [
 	"profitCategory6",
 ];
 const initialState = {
-	date: `${moment(Date.now()).format("YYYY-MM-DD")}`,
+	date: Date.now(),
 	category: "",
 	sum: "",
 	commentary: "",
@@ -54,6 +58,11 @@ const AddTransaction = ({ modalTogle, title }) => {
 		const value = e.target.value;
 		setForm({ ...form, [name]: value });
 	};
+
+	const changeDate = (date) => {
+		setForm({ ...form, date });
+	};
+
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const resaltValidate = validate(form);
@@ -61,6 +70,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 			setErrors({});
 			const newTransaction = {
 				...form,
+				date: `${moment(form.date).format("DD/MM/YYYY")}`,
 				sum: Number(type + form.sum),
 				type: type,
 			};
@@ -121,7 +131,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 									defaultChecked
 									onChange={inputHandler}
 								/>
-								<label htmlFor="profit">Profit</label>
+								<label htmlFor="profit">Доход</label>
 							</div>
 
 							<div className={`${styles.FormRadio} ${styles.Cost}`}>
@@ -132,7 +142,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 									value="-"
 									onChange={inputHandler}
 								/>
-								<label htmlFor="cost">Cost</label>
+								<label htmlFor="cost">Расход</label>
 							</div>
 						</div>
 						<div className={styles.CategoryContainer}>
@@ -144,7 +154,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 								}
 							>
 								<p onClick={selectHandler} className={styles.SelectHeading}>
-									{category ? category : "Category"}
+									{category ? category : "Категория"}
 								</p>
 
 								{categiryList && (
@@ -186,7 +196,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 									type="text"
 									placeholder="0.00"
 									name="sum"
-									value={sum}
+									defaultValue={sum}
 									onChange={inputHandler}
 									className={
 										errors.sum
@@ -194,13 +204,30 @@ const AddTransaction = ({ modalTogle, title }) => {
 											: `${styles.Input} ${styles.Sum}`
 									}
 								/>
-								<input
+								<div className={`${styles.Input} ${styles.DateContainer}`}>
+									<DatePicker
+										selected={date}
+										onChange={changeDate}
+										locale={ru}
+										dateFormat="dd / MM / yyyy"
+										className={styles.Date}
+									/>
+								</div>
+
+								{/* <input
 									type="date"
 									name="date"
 									value={date}
 									onChange={inputHandler}
-									className={`${styles.Input} ${styles.Date}`}
+									className={styles.Date}
 								/>
+								<label htmlFor="date">
+									<input
+										type="text"
+									
+										className={`${styles.Input} ${styles.DateLabel}`}
+									/>
+								</label> */}
 							</div>
 							{errors.sum && (
 								<div className={styles.Errors}>
@@ -209,7 +236,7 @@ const AddTransaction = ({ modalTogle, title }) => {
 							)}
 						</div>
 
-						<label htmlFor="commentary">Description</label>
+						<label htmlFor="commentary">Комментарий</label>
 						<textarea
 							className={`${styles.Description} ${styles.Input}`}
 							name="commentary"
