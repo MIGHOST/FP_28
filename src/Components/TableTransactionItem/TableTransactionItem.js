@@ -16,6 +16,8 @@ const TableTransactionItem = ({ transaction }) => {
 
   const dispatch = useDispatch();
 
+  console.log(transaction);
+
   const handleChange = (e) => {
     const { value, name } = e.target;
 
@@ -109,7 +111,7 @@ const TableTransactionItem = ({ transaction }) => {
             className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
             onClick={editSum}
           >
-            {editFields.sum}
+            {editFields.sum.toFixed(2)}
           </p>
         )}
       </div>
