@@ -28,11 +28,14 @@ export const asyncAddTransaction = (newTransaction) => async (dispatch) => {
   try {
     setAuthToken(token);
     const { data } = await addTransaction(newTransaction);
+    const { userBalance, transaction } = data;
     dispatch(
-      // addTransactionToRedux(newTransaction)
-      addTransactionToRedux({ ...newTransaction, balance: data.userBalance })
+      addTransactionToRedux({
+        ...newTransaction,
+        balance: userBalance,
+        _id: transaction[transaction.length - 1]._id,
+      })
     );
-    dispatch(getUserTransactions());
   } catch (error) {
     console.log("Error adding ---->>", error);
   } finally {
