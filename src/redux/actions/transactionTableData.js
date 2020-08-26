@@ -19,6 +19,7 @@ export const editTransaction = (id, transaction) => ({
   type: TRANSACTION_UPDATE,
   payload: { id, transaction },
 });
+
 export const deleteTransactionFromState = (id) => ({
   type: TRANSACTION_DELETE,
   payload: id,

@@ -1,5 +1,4 @@
 .button {
-  display: block;
   width: 54px;
   height: 54px;
   border-radius: 27px;
@@ -9,9 +8,9 @@
   color: #ffffff;
   font-size: 30px;
   cursor: pointer;
-  position: fixed;
+  /* position: fixed; */
 }
-
+/* 
 @media screen and (min-width: 1280px) {
   .button {
     right: calc(50% - 596px);
@@ -34,4 +33,4 @@
     opacity: 0.55;
     z-index: 5;
   }
-}
+} */

@@ -123,6 +123,12 @@ const TableTransactionItem = ({ transaction }) => {
           </div>
         </div>
       </div>
+      <div className={styles.delete}>
+        <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
+        <div className={styles.deleteWord} onClick={deleteHandler}>
+          <p>delete</p>
+        </div>
+      </div>
     </li>
   );
 };

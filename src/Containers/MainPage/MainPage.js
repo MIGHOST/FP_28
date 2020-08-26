@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import { Switch, Route, Redirect } from "react-router-dom";
+
 import styles from "./MainPage.module.css";
+
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
-import AddButton from "../../Components/AddButton/AddButton";
 import Currency from "../../Components/Currency/Currency";
 import Balance from "../../Components/Balance/Balance";
 import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Statistic from "../../Components/Statistic/Statistic";
-import { useMediaQuery } from "react-responsive";
+import Loading from "../../Components/Loader/Loader";
+import AddButton from "../../Components/AddButton/AddButton";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 
 const MainPage = (props) => {
+  const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -40,7 +44,7 @@ const MainPage = (props) => {
         <Header />
         <Navigation />
         <Balance />
-        <div className={styles.transactionTable}>
+        <div className={styles.mainData}>
           <Switch>
             <Route path={`${props.match.path}/`} component={TableTransaction} />
             <Route
@@ -65,6 +69,7 @@ const MainPage = (props) => {
         </div>
         <AddTransaction modalCloser={modalCloser} />
         {modalOpen && <AddTransaction modalCloser={modalCloser} />}
+        {loader && <Loading />}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import {
   TRANSACTION_UPDATE,
   TRANSACTIONS_GET,
   ADD_TRANSACTION,
+  TRANSACTION_DELETE,
 } from "../../constants";
 
 const initialState = [];
@@ -20,6 +21,8 @@ const tableData = (state = initialState, { type, payload }) => {
           : transaction
       );
     }
+    case TRANSACTION_DELETE:
+      return state.filter((transaction) => transaction._id !== payload);
     default:
       return state;
   }
