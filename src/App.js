@@ -9,13 +9,22 @@ import { useDispatch } from "react-redux";
 import { getUser } from "./redux/operations/login";
 import PrivateRoute from "./Containers/PrivateRoute/index";
 import Verified from "./Components/Verified/Verified";
+import { getFromLocaleStorage } from "./helpers/storage";
 
 const App = () => {
   const dispatch = useDispatch();
 
+  const token = JSON.parse(
+    getFromLocaleStorage("persist:auth-token")
+      ? getFromLocaleStorage("persist:auth-token").token
+      : null
+  );
+
   useEffect(() => {
+    if (!token) return;
+
     dispatch(getUser());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <>

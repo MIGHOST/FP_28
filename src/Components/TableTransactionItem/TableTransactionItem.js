@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  updateUserTransaction,
+  deleteUsersTransaction,
+} from "../../redux/operations/transactions";
 import styles from "./TableTransactionItem.module.css";
-
-import { useDispatch, useSelector } from "react-redux";
-import { updateUserTransaction } from "../../redux/operations/transactions";
 import { getFromLocaleStorage } from "../../helpers/storage";
 
 const TableTransactionItem = ({ transaction }) => {
@@ -10,6 +12,8 @@ const TableTransactionItem = ({ transaction }) => {
   const [isEditSum, setIsEditSum] = useState(false);
   const [isEditCommentary, setIsEditCommentary] = useState(false);
   const [editFields, setEditFields] = useState({ sum, comment });
+
+  const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
 
   const dispatch = useDispatch();
 
@@ -21,27 +25,32 @@ const TableTransactionItem = ({ transaction }) => {
 
   const editSum = () => {
     setIsEditSum(true);
-    setIsEditCommentary(false);
   };
 
   const editCommentary = () => {
     setIsEditCommentary(true);
-    setIsEditSum(false);
   };
 
   const handleKeyDown = async (e) => {
-    if (e.key !== "Enter") return;
+    if (e.key !== "Enter" && e.key !== "Escape") return;
 
-    setIsEditSum(false);
-    setIsEditCommentary(false);
+    closeEdit();
 
     const transaction = {
       sum: editFields.sum,
       comment: editFields.comment,
     };
 
-    const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
     dispatch(updateUserTransaction(_id, transaction, token));
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteUsersTransaction(_id, token));
+  };
+
+  const closeEdit = () => {
+    setIsEditSum(false);
+    setIsEditCommentary(false);
   };
 
   return (
@@ -62,7 +71,10 @@ const TableTransactionItem = ({ transaction }) => {
         <p className={styles.cellTitle}>Категория</p>
         <p className={styles.cellData}>{category}</p>
       </div>
-      <div className={`${styles.cell} ${styles.cellComment}`}>
+      <div
+        className={`${styles.cell} ${styles.cellComment} ${styles.editCom}`}
+        onClick={editCommentary}
+      >
         <p className={styles.cellTitle}>Комментарий</p>
         {isEditCommentary ? (
           <input
@@ -74,17 +86,16 @@ const TableTransactionItem = ({ transaction }) => {
             className={styles.cellDataFieldComment}
             maxLength="40"
             autoFocus
+            onBlur={closeEdit}
           />
         ) : (
-          <p
-            className={`${styles.cellData} ${styles.edit}`}
-            onClick={editCommentary}
-          >
-            {editFields.comment}
-          </p>
+          <p className={`${styles.cellData}`}>{editFields.comment}</p>
         )}
       </div>
-      <div className={`${styles.cell} ${styles.cellSum}`}>
+      <div
+        className={`${styles.cell} ${styles.cellSum} ${styles.editSum}`}
+        onClick={editSum}
+      >
         <p className={styles.cellTitle}>Сумма</p>
         {isEditSum ? (
           <input
@@ -96,19 +107,26 @@ const TableTransactionItem = ({ transaction }) => {
             className={styles.cellDataFieldSum}
             maxLength="40"
             autoFocus
+            onBlur={closeEdit}
           />
         ) : (
           <p
             className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
             onClick={editSum}
           >
-            {editFields.sum}
+            {Number(editFields.sum).toFixed(2)}
           </p>
         )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
-        <p className={styles.cellData}>{balance}</p>
+        <p className={styles.cellData}>{Number(balance).toFixed(2)}</p>
+      </div>
+      <div className={styles.delete}>
+        <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
+        <div className={styles.deleteWord} onClick={deleteHandler}>
+          <p>delete</p>
+        </div>
       </div>
     </li>
   );

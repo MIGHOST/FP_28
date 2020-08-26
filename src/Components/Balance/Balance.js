@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 
 const Balance = () => {
   const user = useSelector((state) => state.session.user);
-
   return (
     <div className={style.navContainer}>
       <div className={style.balance}>
         <p>Баланс</p>
-        {user.userBalance && <p>{`${user.userBalance}`} грн</p>}
+        {user.userBalance && <p>{`${user.userBalance.toFixed(2)}`} грн</p>}
       </div>
     </div>
   );

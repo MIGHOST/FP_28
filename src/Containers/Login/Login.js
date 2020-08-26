@@ -7,7 +7,6 @@ import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
 
-
 const formInitialState = {
   email: "",
   password: "",
@@ -26,11 +25,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(createUserLogin(form, history));
+
     setForm(formInitialState);
   };
   const user = useSelector((state) => state.session.user);
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
   const { email, password } = form;
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -74,7 +75,7 @@ const Login = () => {
                   onChange={handleInput}
                 />
               </div>
-              {user.error &&  (
+              {user.error && (
                 <p className={styles.error}>
                   The password is invalid or the user does not registered.
                 </p>

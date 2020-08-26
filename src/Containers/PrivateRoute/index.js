@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Verified from "../../Components/Verified/Verified";
-
+import { useSelector } from "react-redux";
 const PrivateRoute = ({ component, ...rest }) => {
-  const isAuth = "Verified";
+  const isAuth = useSelector((state) => state.session.user.status);
+
   const Interface = component;
   switch (isAuth) {
     case "Verified":

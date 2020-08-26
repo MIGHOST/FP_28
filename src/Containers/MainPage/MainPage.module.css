@@ -24,15 +24,13 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .wrapper {
+  .mainPage {
+    width: 748px;
+    padding-bottom: 50px;
     background-image: url(./img/main_tab_bgrd.jpg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  .mainPage {
-    width: 748px;
-    padding-bottom: 50px;
   }
   .currency {
     display: none;
@@ -48,13 +46,14 @@
 
   .mainPage {
     width: 1192px;
-    padding: 45px 0;
+    padding: 0 0 45px;
     position: relative;
   }
 
-  .transactionTable {
+  .mainData {
     position: absolute;
-    top: 120px;
+    width: 855px;
+    top: 75px;
     right: 0;
   }
 }
