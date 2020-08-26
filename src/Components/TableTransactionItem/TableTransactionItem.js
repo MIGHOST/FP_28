@@ -16,8 +16,6 @@ const TableTransactionItem = ({ transaction }) => {
 
   const dispatch = useDispatch();
 
-  console.log(transaction);
-
   const handleChange = (e) => {
     const { value, name } = e.target;
 
