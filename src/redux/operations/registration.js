@@ -10,7 +10,7 @@ export const signUp = (formData, history) => async (dispatch) => {
     dispatch(setUser({ id, email }));
     history.push(paths.verifyPage);
   } catch (error) {
-    dispatch(userError(error.response.data));
+    dispatch(userError(error.response));
     console.log(error);
   }
 };
