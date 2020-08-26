@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from "react";
-import {Switch, Route} from "react-router-dom"
+import {Switch, Route, Redirect} from "react-router-dom"
 import styles from './MainPage.module.css';
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
@@ -9,12 +9,11 @@ import Balance from "../../Components/Balance/Balance";
 import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Statistic from '../../Components/Statistic/Statistic'
+import {useMediaQuery} from 'react-responsive'
 
 
 const MainPage = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
-
- 
 
   const modalOpener = () => {
     if (modalOpen) return;
@@ -25,6 +24,9 @@ const MainPage = (props) => {
     if (!modalOpen) return;
     setModalOpen(false);
   };
+
+  const isDesctop = useMediaQuery({ query: "(max-width: 1279px)" })
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainPage}>
@@ -36,7 +38,9 @@ const MainPage = (props) => {
         <Switch>
           <Route path={`${props.match.path}/`} component={TableTransaction}/>
           <Route path={`${props.match.path}statistic`} component={Statistic}/>
-          <Route path={`${props.match.path}currency`} component={Currency}/>
+          {isDesctop ? 
+          (<Route path={`${props.match.path}currency`} component={Currency}/>) 
+          : (<Redirect to="/"/>)}
       </Switch>
       </Suspense>
         </div>
