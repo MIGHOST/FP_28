@@ -6,7 +6,7 @@ import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
 import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
-
+import { saveToLocaleStorage } from "../../helpers/storage";
 
 const formInitialState = {
   email: "",
@@ -17,20 +17,23 @@ const Login = () => {
   const [form, setForm] = useState(formInitialState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const status = useSelector((state) => state.session.user.status);
 
   const handleInput = (e) => {
     const { value, name } = e.target;
     setForm({ ...form, [name]: value });
   };
-
+  console.log(status);
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(createUserLogin(form, history));
+    saveToLocaleStorage("status", status);
     setForm(formInitialState);
   };
   const user = useSelector((state) => state.session.user);
   const isTablet = useMediaQuery({ query: "(max-width: 1023px)" });
   const { email, password } = form;
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -74,7 +77,7 @@ const Login = () => {
                   onChange={handleInput}
                 />
               </div>
-              {user.error &&  (
+              {user.error && (
                 <p className={styles.error}>
                   The password is invalid or the user does not registered.
                 </p>
