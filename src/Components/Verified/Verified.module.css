@@ -36,14 +36,15 @@
 
 @media (min-width: 767.98px) {
     .Wrapper {
-        background-size: 600px;
+        background-size: 550px;
         background-position: center 40px;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 450px 1fr;
     }
 
     .Title {
-        padding-bottom: 60px;
-        font-size: 45px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        font-size: 36px;
     }
 
     .SubText {
@@ -51,7 +52,7 @@
     }
 
     .Content {
-        font-size: 20px;
+        font-size: 18px;
 
     }
 
