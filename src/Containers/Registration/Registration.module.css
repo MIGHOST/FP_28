@@ -254,3 +254,12 @@
   color: #fff;
   background-color: #333333;
 } */
+
+.error {
+  font-family: "HelveticaNeueCyr";
+  width: 80%;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #ff2c0c;
+}
