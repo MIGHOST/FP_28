@@ -37,6 +37,7 @@ const Registration = () => {
   };
 
   const { email, password, confirmPassword, name } = form;
+  console.log(form);
   return (
     <div className={styles.wrapper}>
       <aside className={styles.aside}>
@@ -106,7 +107,11 @@ const Registration = () => {
             />
           </div>
 
-          <button type="submit" className={styles.button}>
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={form.confirmPassword !== form.password}
+          >
             Регистрация
           </button>
 
