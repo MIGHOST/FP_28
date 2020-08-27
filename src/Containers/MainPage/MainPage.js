@@ -41,9 +41,7 @@ const MainPage = (props) => {
           <Route path={`${props.match.path}statistic`} component={Statistic}/>
           {isDesctop ? 
           (<Route path={`${props.match.path}currency`} component={Currency}/>) 
-          : 
-          (<Redirect to="/"/>)
-          }
+          : (<Redirect to="/"/>)}
       </Switch>
       </Suspense>
         </div>
