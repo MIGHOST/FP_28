@@ -32,9 +32,9 @@ const App = () => {
         <Route path="/registration" component={Registration} />
         <Route path="/login" component={Login} />
         <Route path="/verify" component={Verified} />
-        <Route path="/transaction" component={AddTransaction} />
-        <Route path="/sta" component={Statistic} />
-        <Route path="/" component={MainPage} />
+        <PrivateRoute path="/transaction" component={AddTransaction} />
+        <PrivateRoute path="/sta" component={Statistic} />
+        <PrivateRoute path="/" component={MainPage} />
       </Switch>
     </>
   );
