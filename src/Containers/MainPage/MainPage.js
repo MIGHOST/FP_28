@@ -39,7 +39,7 @@ const MainPage = (props) => {
   const isDesctop = useMediaQuery({ query: "(max-width: 1279px)" });
 
   return (
-    <div className={styles.wrapper}>
+    <div className={modalOpen ? styles.noScroll : styles.wrapper}>
       <div className={styles.mainPage}>
         <Header />
         <Navigation />
@@ -48,7 +48,12 @@ const MainPage = (props) => {
           <Switch>
             <Route
               path={`${props.match.path}/`}
-              render={() => <TableTransaction modalOpener={modalOpener} />}
+              render={() => (
+                <TableTransaction
+                  modalOpener={modalOpener}
+                  modalOpen={modalOpen}
+                />
+              )}
             />
             <Route
               path={`${props.match.path}statistic`}
