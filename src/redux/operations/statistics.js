@@ -8,6 +8,7 @@ export const statisticUserGet = (params, token) => async (dispatch) => {
     setAuthToken(token);
     const { year, month } = params;
     const result = await getStatisticsItem(year, month);
+    console.log(result);
     const statItems = result.data;
     dispatch(statisticGetData(statItems));
   } catch (error) {
