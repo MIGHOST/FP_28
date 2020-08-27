@@ -17,7 +17,6 @@
   display: flex;
   padding: 0;
   margin: 0;
-  height: 100vh;
 }
 
 .wrapper_left {
@@ -25,7 +24,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-blend-mode: multiply;
   background: rgb(61, 85, 117) url("./img/registration-background.png");
   background-position: center;
@@ -52,7 +50,6 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 48em;
 }
 
 .wrapper_registration {
@@ -95,6 +92,7 @@
 .formGroup {
   margin-bottom: 12px;
   width: 100%;
+  position: relative;
 }
 
 .formGroupConfirm {
@@ -102,15 +100,58 @@
   margin-bottom: 2px;
 }
 
-.formGroup input {
-  padding: 16px;
+.input {
   width: 100%;
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
+  height: 45px;
+  background-color: #f2f7f7;
   border: none;
-  border-radius: 6px;
-  background-color: rgb(249, 251, 251);
-  height: 48px;
+  border-radius: 5px;
+  font-family: "HelveticaNeueCyr";
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 58px;
+}
+
+.inputNotValid {
+  border: 2px solid;
+  border-color: #ff2c0c;
+}
+
+.formGroup input::placeholder {
+  color: #bcc8d2;
+  font-family: "HelveticaNeueCyr";
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+}
+
+.icon_email {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/baseline-email-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.icon_password {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/baseline-lock-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.icon_name {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/account_box-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
 }
 
 .confirmPasswordBar {
@@ -217,8 +258,8 @@
 @media screen and (max-width: 767px) {
   .wrapper_registration {
     width: 100%;
-    padding: 30px 22px 0;
-    box-shadow: none;  
+    padding: 50px 22px 0;
+    box-shadow: none;
   }
 
   .wrapper_right {
@@ -249,9 +290,15 @@
 
 
 .error {
-  font-family: "HelveticaNeueCyr";
-  font-size: 12px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #ff2c0c;
+    font-family: "Montserrat",sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    height: 25px;
+    line-height: 22px;
+    letter-spacing: .04em;
+    color: #ff2c0c;
+    margin-bottom: 20px;
+    overflow: hidden;
 }

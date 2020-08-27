@@ -16,12 +16,50 @@ const formState = {
 
 const Registration = () => {
   const [form, setForm] = useState(formState);
+  const [emailValid, setEmailValid] = useState(true);
+  const [passValid, setPassValid] = useState(true);
+  const [nameValid, setNameValid] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
   const userError = useSelector((state) => state.session.user);
 
+  const errorHandler = (err) => {
+    console.log('1', err);
+    console.log(userError);
+    if ((err.error.data.message).includes("Password is not valid")){
+      return "Password is not valid"
+    }
+  }
+
   const inputHandler = (e) => {
     const { value, name } = e.target;
+    const emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const passValidate = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
+    // email validation
+    if(name === "email"){
+      if(!emailValidate.test(value)){
+        console.log(emailValidate.test(value))
+        setEmailValid(false);
+      } else {
+        setEmailValid(true);
+      }
+    };
+    // password validation
+    if(name === "password") {
+      if(!passValidate.test(value)){
+        setPassValid(false);
+      } else {
+        setPassValid(true);
+      }
+    }
+    // name validation
+    if(name === "name") {
+      if(value.length < 3){
+        setNameValid(false);
+      } else {
+        setNameValid(true);
+      }
+    }
     setForm({ ...form, [name]: value });
   };
 
@@ -50,9 +88,10 @@ const Registration = () => {
           </div>
           <form onSubmit={formSubmit} className={styles.formWrapper}>
             <div className={styles.formGroup}>
+              <div className={`${styles.icon} ${styles.icon_email}`}></div>
               <input
                 type="email"
-                className={styles.inputEmail}
+                className={`${styles.input} ${emailValid ? "" : styles.inputNotValid}`}
                 placeholder="E-mail"
                 autoComplete="on"
                 onChange={inputHandler}
@@ -61,20 +100,23 @@ const Registration = () => {
               />
             </div>
             <div className={styles.formGroup}>
+            <div className={`${styles.icon} ${styles.icon_password}`}></div>
               <input
                 type="password"
-                className={styles.inputPassword}
+                className={`${styles.input} ${passValid ? "" : styles.inputNotValid}`}
                 placeholder="Пароль"
                 autoComplete="off"
+                title={passValid ? "" : "Pass must have one or more number; two or more letter - upper and lower; one of special symbol like # @ ₴ ? $ 0; password length is more then 6 symbol"}
                 onChange={inputHandler}
                 name="password"
                 value={password}
               />
             </div>
             <div className={styles.formGroupConfirm}>
+              <div className={`${styles.icon} ${styles.icon_password}`}></div>
               <input
                 type="password"
-                className={styles.inputConfirmPassword}
+                className={styles.input}
                 placeholder="Подтвердите пароль"
                 autoComplete="off"
                 onChange={inputHandler}
@@ -85,17 +127,19 @@ const Registration = () => {
             <PasswordStrengthMeter password={form.password} />
 
             <div className={styles.formGroup}>
+            <div className={`${styles.icon} ${styles.icon_name}`}></div>
               <input
                 type="text"
-                className={styles.inputName}
+                className={`${styles.input} ${nameValid ? "" : styles.inputNotValid}`}
                 placeholder="Ваше имя"
+                title={nameValid ? "" : "Name must be more then 3 letters"}
                 onChange={inputHandler}
                 name="name"
                 value={name}
               />
             </div>
             <p className={styles.error}>
-              {userError.error ? userError.error.data.message : ""}
+              {userError.error ? errorHandler(userError) : ""}
             </p>
             <button type="submit" className={styles.button}>
               Регистрация
