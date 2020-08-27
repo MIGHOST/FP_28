@@ -2,17 +2,19 @@ import React from "react";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { LogOutUser } from "../../redux/operations/login";
-import { useHistory } from "react-router-dom";
+import { getFromLocaleStorage } from "../../helpers/storage";
 import { paths } from "../../constants";
 
 const Header = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
+
+  const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
+
   const logOut = () => {
-    dispatch(LogOutUser());
-    history.push(paths.login);
+    dispatch(LogOutUser(token));
   };
+
   return (
     user.email !== "" && (
       <header className={styles.header}>
@@ -20,7 +22,7 @@ const Header = () => {
           <div className={styles.logo}></div>
 
           <nav className={styles.nav}>
-            <a href="#" className={styles.siteLogo}>
+            <a href={paths.mainPage} className={styles.siteLogo}>
               Wallet
             </a>
             <ul className={styles.navList}>

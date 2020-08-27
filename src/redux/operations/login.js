@@ -5,12 +5,13 @@ const {
   loginToWalletWithFacebook,
   getCurrentUser,
   setAuthToken,
+  logoutFromWallet,
+  clearAuthToken,
 } = require("../../api/walletServices");
 const {
   loginUser,
   loginUserWithGoogle,
   loginUserWithFacebook,
-  logoutFromWallet,
   userError,
   userLogOut,
   getCurrentUserWithToken,
@@ -58,19 +59,22 @@ export const getUser = () => async (dispatch, getState) => {
 
     dispatch(getCurrentUserWithToken(user.data[0]));
   } catch (error) {
-    if(error.response.status !== 500) {
+    if (error.response.status !== 500) {
       dispatch(userError(error));
     }
   }
 };
 
-
-
-export const LogOutUser = () => async (dispatch) => {
+export const LogOutUser = (token) => async (dispatch) => {
   try {
-    await logoutFromWallet();    
-    dispatch(userLogOut()); 
+    setAuthToken(token);
+
+    await logoutFromWallet();
+
+    dispatch(userLogOut());
   } catch (error) {
     dispatch(userError(error));
+  } finally {
+    clearAuthToken();
   }
 };
