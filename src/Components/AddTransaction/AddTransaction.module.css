@@ -304,6 +304,7 @@
 @media (max-width: 767px) {
   .Container {
     width: 320px;
+    /* width: 100vw; */
     height: 100vh;
   }
   .HeadingContainer {

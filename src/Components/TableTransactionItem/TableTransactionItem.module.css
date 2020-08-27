@@ -258,11 +258,11 @@
   }
 
   .editCom::before {
-    left: 5px;
+    left: 0;
   }
 
   .editSum::before {
-    left: 5px;
+    left: 0;
   }
 }
 

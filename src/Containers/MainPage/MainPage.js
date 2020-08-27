@@ -47,7 +47,12 @@ const MainPage = (props) => {
           <Switch>
             <Route
               path={`${props.match.path}/`}
-              render={() => <TableTransaction modalOpener={modalOpener} />}
+              render={() => (
+                <TableTransaction
+                  modalOpener={modalOpener}
+                  modalOpen={modalOpen}
+                />
+              )}
             />
             <Route
               path={`${props.match.path}statistic`}
