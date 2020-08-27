@@ -19,9 +19,7 @@ export const getCurrentUserWithToken = (user) => ({
   payload: user,
 });
 
-export const LOG_OUT = "USER_LOG_OUT";
-
-export const userLogOut = () => ({ type: LOG_OUT });
+export const userLogOut = () => ({ type: userTypes.LOG_OUT});
 
 export const userError = (error) => ({
   type: userTypes.USER_ERROR,

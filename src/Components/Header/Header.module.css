@@ -176,9 +176,11 @@
 
   .navLinkImg {
     margin-left: 20px;
+    cursor: pointer;
   }
 
   .navItem {
     color: #6b7d83;
+    cursor: pointer;
   }
 }

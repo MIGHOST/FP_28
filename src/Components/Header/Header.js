@@ -1,17 +1,20 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogOut } from "../../redux/actions/user";
+import { LogOutUser } from "../../redux/operations/login";
+import { useHistory } from "react-router-dom";
+import { paths } from "../../constants";
 
 const Header = () => {
-  const currentUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
   const logOut = () => {
-    // console.log("sadsad");
-    dispatch(userLogOut());
+    dispatch(LogOutUser());
+    history.push(paths.login);
   };
   return (
-    currentUser.email !== "" && (
+    user.email !== "" && (
       <header className={styles.header}>
         <div className={styles.wrapper}>
           <div className={styles.logo}></div>
@@ -22,19 +25,16 @@ const Header = () => {
             </a>
             <ul className={styles.navList}>
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLink}>
-                  {" "}
-                  {currentUser.userName}
-                </a>
+                <p className={styles.navLink}>{`${user.name}`}</p>
               </li>
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLinkImg} onClick={logOut}></a>
+                <div className={styles.navLinkImg} onClick={logOut}></div>
               </li>
 
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLink} onClick={logOut}>
+                <div className={styles.navLink} onClick={logOut}>
                   log out
-                </a>
+                </div>
               </li>
             </ul>
           </nav>

@@ -1,5 +1,6 @@
 import { userTypes } from "../../constants";
 const initialState = {};
+const userLogOut = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +14,8 @@ export default (state = initialState, action) => {
       return { ...state, error: action.payload };
     case userTypes.GET_CURRENT_USER:
       return action.payload;
+    case userTypes.LOG_OUT:
+      return userLogOut;
     default:
       return state;
   }

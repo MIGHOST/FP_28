@@ -10,7 +10,9 @@ const {
   loginUser,
   loginUserWithGoogle,
   loginUserWithFacebook,
+  logoutFromWallet,
   userError,
+  userLogOut,
   getCurrentUserWithToken,
 } = require("../actions/user");
 
@@ -59,5 +61,17 @@ export const getUser = () => async (dispatch, getState) => {
     if(error.response.status !== 500) {
       dispatch(userError(error));
     }
+  }
+};
+
+
+
+export const LogOutUser = (history) => async (dispatch) => {
+  try {
+    await logoutFromWallet();    
+    dispatch(userLogOut());
+    history.push(paths.login);
+  } catch (error) {
+    dispatch(userError(error));
   }
 };
