@@ -25,19 +25,11 @@ const Registration = () => {
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    const { email, password, confirmPassword, name } = form;
-
-    if ((email, password, confirmPassword, name)) {
-      dispatch(signUp(form, history));
-      setForm(formState);
-    } else {
-      form.errorMsg = true;
-      setForm(formState);
-    }
+    dispatch(signUp(form, history));
+    setForm(formState);
   };
 
   const { email, password, confirmPassword, name } = form;
-  console.log(form);
   return (
     <div className={styles.wrapper}>
       <aside className={styles.aside}>
