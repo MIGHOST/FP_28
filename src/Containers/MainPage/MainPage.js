@@ -12,6 +12,7 @@ import Statistic from '../../Components/Statistic/Statistic'
 import {useMediaQuery} from 'react-responsive'
 
 
+
 const MainPage = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -40,7 +41,9 @@ const MainPage = (props) => {
           <Route path={`${props.match.path}statistic`} component={Statistic}/>
           {isDesctop ? 
           (<Route path={`${props.match.path}currency`} component={Currency}/>) 
-          : (<Redirect to="/"/>)}
+          : 
+          (<Redirect to="/"/>)
+          }
       </Switch>
       </Suspense>
         </div>
