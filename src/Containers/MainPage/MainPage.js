@@ -16,6 +16,7 @@ import Loading from "../../Components/Loader/Loader";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 
+
 const MainPage = (props) => {
   const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
