@@ -66,11 +66,10 @@ export const getUser = () => async (dispatch, getState) => {
 
 
 
-export const LogOutUser = (history) => async (dispatch) => {
+export const LogOutUser = () => async (dispatch) => {
   try {
     await logoutFromWallet();    
-    dispatch(userLogOut());
-    history.push(paths.login);
+    dispatch(userLogOut()); 
   } catch (error) {
     dispatch(userError(error));
   }
