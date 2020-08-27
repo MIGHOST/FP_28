@@ -59,6 +59,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="email"
               value={email}
+              required
             />
           </div>
           <div className={styles.formGroup}>
@@ -70,6 +71,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="password"
               value={password}
+              required
             />
           </div>
           <div className={styles.formGroupConfirm}>
@@ -81,6 +83,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="confirmPassword"
               value={confirmPassword}
+              required
             />
 
             {form.confirmPassword === form.password ? (
@@ -99,6 +102,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="name"
               value={name}
+              required
             />
           </div>
 
