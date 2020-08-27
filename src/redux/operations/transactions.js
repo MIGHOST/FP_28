@@ -1,10 +1,10 @@
 import {
   updateTransaction,
-  getTransactions,
   setAuthToken,
   clearAuthToken,
   addTransaction,
   deleteTransaction,
+  getSortedTransctionPerDate,
 } from "../../api/walletServices";
 import {
   addTransactionToRedux,
@@ -33,7 +33,7 @@ export const asyncAddTransaction = (newTransaction, token) => async (
     dispatch(getUserTransactions());
     dispatch(getUser());
   } catch (error) {
-    console.log("Error adding ---->>", error);
+    console.log("Error adding ---->>", error.response);
   } finally {
     clearAuthToken();
     dispatch(loaderOff());
@@ -54,7 +54,7 @@ export const updateUserTransaction = (id, transaction, token) => async (
     dispatch(getUserTransactions());
     dispatch(getUser());
   } catch (error) {
-    console.log("Error update ---->>", error);
+    console.log("Error update ---->>", error.response);
   } finally {
     clearAuthToken();
     dispatch(loaderOff());
@@ -69,11 +69,11 @@ export const getUserTransactions = () => async (dispatch, getState) => {
   try {
     setAuthToken(token);
 
-    const { data } = await getTransactions();
+    const { data } = await getSortedTransctionPerDate();
 
     dispatch(getTransactionList(data));
   } catch (error) {
-    console.log("Error get ---->>", error);
+    console.log("Error get ---->>", error.response);
   } finally {
     clearAuthToken();
     dispatch(loaderOff());
@@ -89,7 +89,7 @@ export const deleteUsersTransaction = (id, token) => async (dispatch) => {
     dispatch(getUserTransactions());
     dispatch(getUser());
   } catch (error) {
-    console.log("Error delete ---->>", error);
+    console.log("Error delete ---->>", error.response);
   } finally {
     clearAuthToken();
     dispatch(loaderOff());
