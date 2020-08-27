@@ -17,6 +17,7 @@
   font-size: 13px;
   line-height: 15px;
   font-weight: 300;
+  overflow: hidden;
 }
 
 .cellTitle {
@@ -39,7 +40,6 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 20px;
   width: 11px;
   height: 11px;
   margin: auto;
@@ -57,7 +57,6 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 20px;
   width: 11px;
   height: 11px;
   margin: auto;
@@ -136,10 +135,12 @@
     width: 8px;
     height: 315px;
     left: 0;
+    z-index: 1;
   }
 
   .cell {
     height: 45px;
+    padding-right: 30px;
   }
 
   .delete {
@@ -154,7 +155,7 @@
     background-color: #e28b20;
   }
 
-  .cell:nth-child(2n-1) {
+  .cell:nth-of-type(2n-1) {
     background-color: #f3f6f6;
   }
   .cellTitle {
@@ -181,6 +182,12 @@
   .deleteWord:hover {
     background-color: #ff6c00;
     color: white;
+  }
+  .editCom::before {
+    right: 10px;
+  }
+  .editSum::before {
+    right: 10px;
   }
 }
 
@@ -249,6 +256,14 @@
   .deleteWord {
     display: none;
   }
+
+  .editCom::before {
+    left: 5px;
+  }
+
+  .editSum::before {
+    left: 5px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -287,14 +302,14 @@
   }
 
   .editCom::before {
-    left: -120px;
     width: 13px;
     height: 13px;
+    left: 15px;
   }
 
   .editSum::before {
-    left: -80px;
     width: 13px;
     height: 13px;
+    left: 15px;
   }
 }
