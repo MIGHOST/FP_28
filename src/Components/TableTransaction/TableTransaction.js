@@ -5,7 +5,7 @@ import TableTransactionItem from "../TableTransactionItem/TableTransactionItem";
 import AddButton from "../AddButton/AddButton";
 import styles from "./TableTransaction.module.css";
 
-const TableTransaction = ({ modalOpener }) => {
+const TableTransaction = ({ modalOpener, modalOpen }) => {
   const transactionsArr = useSelector((state) => state.tableData);
 
   return (
@@ -36,7 +36,7 @@ const TableTransaction = ({ modalOpener }) => {
           })}
         </ul>
       )}
-      <AddButton modalOpener={modalOpener} />
+      {!modalOpen && <AddButton modalOpener={modalOpener} />}
     </div>
   );
 };
