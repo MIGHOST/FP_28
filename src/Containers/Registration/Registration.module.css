@@ -217,8 +217,8 @@
 @media screen and (max-width: 767px) {
   .wrapper_registration {
     width: 100%;
-    padding: 50px 22px 0;
-    box-shadow: none;
+    padding: 30px 22px 0;
+    box-shadow: none;  
   }
 
   .wrapper_right {

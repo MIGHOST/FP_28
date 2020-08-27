@@ -5,7 +5,6 @@ import { registerToWallet} from "../../api/walletServices";
 export const signUp = (formData, history) => async (dispatch) => {
   try {
     const result = await registerToWallet(formData);
-    console.log(result);
     const { id, email} = result.data;
     dispatch(setUser({ id, email }));
     history.push(paths.verifyPage);
