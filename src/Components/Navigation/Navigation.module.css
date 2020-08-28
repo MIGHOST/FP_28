@@ -9,52 +9,47 @@
   box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
 }
 
-.navItem {
-  display: flex;
-  align-items: center;
-  height: 36px;
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #f7f8fa;
-  font-size: 13px;
-  padding: 0 30px;
-}
-
-.navItem:hover {
+.navItem_link_active {
   background-color: #3a5374;
   font-weight: 700;
 }
 
 .navItem_link {
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
   color: #f7f8fa;
-  font-size: 13px;
-}
-
-.navItem_house {
+  font-size: 15px;
   display: block;
-  width: 18px;
-  height: 18px;
-  background-image: url("./icon/home.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.navItem_chart {
-  display: block;
-  width: 18px;
-  height: 18px;
-  background-image: url("./icon/Diagrams.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.navItem_text {
-  margin-left: 20px;
+  padding-left: 64px;
   cursor: pointer;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.45px;
+  position: relative;
+}
+
+.navItem_link_statistic::after,
+.navItem_link_main::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 10px;
+  left: 35px;
+}
+
+.navItem_link_statistic::after {
+  background-image: url(./icon/graphWhite.png);
+}
+
+.navItem_link_main::after {
+  background-image: url(./icon/homeWhite.png);
 }
 
 .balance {
@@ -63,11 +58,13 @@
   justify-content: space-between;
   height: 30px;
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #f7f8fa;
-  font-size: 13px;
-  padding: 0 30px;
+  color: #ffffff;
+  font-family: "Helvetica Neue Cyr";
+  font-size: 15px;
   font-weight: 700;
+  line-height: 30px;
+  padding-left: 30px;
+  letter-spacing: 0.45px;
 }
 
 /* ____tablet */
@@ -85,67 +82,102 @@
   justify-content: center;
   font-family: Helvetica;
   font-size: 15px;
-  color: #3a5374;
-  /* background-color: #fcf9f8; */
   text-decoration: none;
-}
-
-.tab_dash {
-  display: block;
-  content: none;
-  width: 1px;
-  height: 16px;
-  background-color: #3a5374;
-  margin: 0 12px;
 }
 
 .tab_navItem {
-  display: flex;
   font-size: 15px;
-  color: #3a5374;
-  background-color: #fcf9f8;
+  color: #6b7d83;
   text-decoration: none;
+  position: relative;
+  margin-right: 51px;
 }
 
-.tab_navItem:hover {
-  cursor: pointer;
+.mr {
+  margin-right: 25px;
 }
+
+.tab_navItem::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 15px;
+  background: #6b7d83;
+  position: absolute;
+  top: 0;
+  right: -12px;
+}
+
+
+.tab_navItem_active {
+  color: #3a5374;
+  font-weight: 700;
+}
+
+.tab_main_icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background-image: url(./icon/home.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 0;
+  left: -23px;
+}
+
+.tab_main_icon_active::after {
+  background-image: url(./icon/homeActive.png);
+}
+
+.tab_statistic_icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 13px;
+  background-image: url(./icon/graph.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 2px;
+  left: -23px;
+}
+
+.tab_statistic_icon_active::after {
+  background-image: url(./icon/graphActive.png);
+}
+
+.tab_currency_icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background-image: url(./icon/dollar.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 2px;
+  left: -23px;
+}
+
+.tab_currency_icon_active::after {
+  background-image: url(./icon/dollarActive.png);
+}
+
+
+
+/* .tab_navItem:hover {
+  cursor: pointer;
+} */
 
 .tab_balance {
   display: flex;
+  color: #6b7d83;
 }
 
-.tab_navItem_chart {
-  display: block;
-  width: 18px;
-  height: 18px;
-  background-image: url("./icon/Diagrams-tab.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-right: 10px;
-}
-
-.tab_navItem_house {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url("./icon/home-tab.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-right: 10px;
-}
-
-.tab_navItem_dollar {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url("./icon/dolar-tab.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-right: 10px;
+.userBalance {
+  color: #3a5374;
 }
 
 /* ____mobile */
@@ -155,7 +187,6 @@
   width: 100%;
   height: 40px;
   background-color: #3a5374;
-
   justify-content: space-between;
   align-items: center;
   width: 320px;
@@ -164,48 +195,56 @@
 }
 
 .mob_navItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  content: none;
-  width: 32px;
-  height: 26px;
+  width: 30px;
+  height: 25px;
   border-radius: 4px;
   background-color: #2a4262;
 }
 
-.mob_navItem:hover {
-  background-color: #66778e;
+.mob_navItem_active {
+  background-color: #79879a;
 }
 
-.mob_navItem_house {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url("./icon/home-mob.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.mob_main_icon {
+  background-image: url(./icon/home.png);
+  background-size: 16px 16px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
-.mob_navItem_chart {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url("./icon/Diagrams-mob.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.mob_statistic_icon {
+  background-image: url(./icon/graph.png);
+  background-size: 16px 13px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
-.mob_navItem_dolar {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url("./icon/dolar-mob.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.mob_currency_icon {
+  background-image: url(./icon/dollar.png);
+  background-size: 14px 14px;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mob_main_icon_active {
+  background-image: url(./icon/homeWhite.png);
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mob_statistic_icon_active {
+  background-image: url(./icon/graphWhite.png);
+  background-size: 16px 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mob_currency_icon_active {
+  background-image: url(./icon/dollarWhite.png);
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .mob_balance {
