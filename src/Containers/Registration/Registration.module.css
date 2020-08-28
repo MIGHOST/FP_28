@@ -2,125 +2,166 @@
   font-family: "BauhausC";
   src: url("../../fonts/bauhouse/BauhausC_Medium_Bold.ttf") format("woff2");
 }
+
 @font-face {
   font-family: "BauhausC-thin";
   src: url("../../fonts/bauhouse/BauhausC_Light.ttf") format("woff2");
 }
+
 @font-face {
   font-family: "HelveticaNeueCyr";
-  src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.ttf")
-    format("woff2");
+  src: url("../../fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.ttf") format("woff2");
 }
+
 .wrapper {
   display: flex;
   padding: 0;
   margin: 0;
+}
+
+.wrapper_left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
-}
-.aside {
-  background-image: url(./img/registration-background.png);
-  width: 40%;
-  margin: 0;
-  padding-top: 130px;
-  padding-bottom: 130px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  text-align: center;
-}
-.iphone {
-  margin-right: auto;
-  margin-left: auto;
-  background-image: url(./img/iphone.png);
+  background-blend-mode: multiply;
+  background: rgb(61, 85, 117) url("./img/registration-background.png");
   background-position: center;
+  background-size: cover;
+}
+
+.wrapper_phone {
+  min-width: 250px;
+  height: 599px;
+  margin: 0 110px 39px;
+  background: url("./img/iphone.png") no-repeat center;
   background-size: contain;
-  width: 290px;
-  height: 100%;
-  background-repeat: no-repeat;
-  vertical-align: middle;
 }
-.titleApp {
-  margin: auto;
+
+.wrapper_left__title {
+  color: #ffffff;
+  font-family: "BauhausC";
   font-size: 24px;
-  font-family: "BauhausC-thin";
-  color: rgb(255, 255, 255);
-  line-height: 1.875;
-  font-weight: 200;
+  font-weight: 500;
 }
-.formSectionWrapper {
+
+.wrapper_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  padding: 100px;
-  padding-top: 150px;
-  text-align: center;
 }
-.formWrapper {
-  min-width: 560px;
-  padding: 20px;
-  margin: 0 auto;
-  text-align: center;
-  box-sizing: border-box;
-  border-radius: 5px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 10px 17.321px 40px 0px rgba(112, 124, 130, 0.3);
+
+.wrapper_registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42px 58px;
+  width: 550px;
+  max-height: 600px;
+  box-shadow: 10px 17px 40px rgba(112, 124, 130, 0.3);
+  background-color: #ffffff;
 }
+
 .logoWrapper {
   display: flex;
-  align-items: center;
-  height: 26px;
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin-bottom: 34px;
 }
+
 .logo {
-  margin: auto;
-  background-image: url("../../icons/logo.svg");
   width: 24px;
   height: 24px;
-  margin: 105px 10px;
+  background-image: url("../../icons/logo.svg");
+  margin-right: 14px;
 }
 
 .title {
-  height: 100%;
-  font-size: 24px;
+  color: #2c2c2c;
   font-family: "BauhausC";
-  color: rgb(40, 40, 40);
+  font-size: 24px;
   font-weight: lighter;
-  line-height: 1.25;
-  margin: 10px 10px;
 }
 
 .formWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-bottom: 23px;
 }
+
 .formGroup {
   margin-bottom: 12px;
   width: 100%;
+  position: relative;
 }
+
 .formGroupConfirm {
   composes: formGroup;
   margin-bottom: 2px;
 }
-.formGroup input {
-  padding: 16px;
+
+.input {
   width: 100%;
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
-  color: rgb(185, 201, 212);
-  line-height: 2.308;
+  height: 45px;
+  background-color: #f2f7f7;
   border: none;
-  border-radius: 6px;
-  background-color: rgb(249, 251, 251);
-  height: 48px;
+  border-radius: 5px;
+  font-family: "HelveticaNeueCyr";
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 58px;
 }
+
+.inputNotValid {
+  border: 2px solid;
+  border-color: #ff2c0c;
+}
+
+.formGroup input::placeholder {
+  color: #bcc8d2;
+  font-family: "HelveticaNeueCyr";
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+}
+
+.icon_email {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/baseline-email-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.icon_password {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/baseline-lock-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.icon_name {
+  width: 25px;
+  height: 25px;
+  background-image: url('./icons/account_box-24px.svg');
+  background-size: contain;
+  opacity: 0.5;
+}
+
 .confirmPasswordBar {
   background-color: rgb(252, 132, 44);
   opacity: 0.2;
   width: 100%;
   height: 6px;
 }
+
 .confirmed {
   background-color: rgb(55, 190, 62);
   opacity: 0.8;
@@ -129,22 +170,20 @@
 }
 
 .button {
-  border: none;
-  border-radius: 4px;
-  background: rgb(236, 178, 42) 0%;
-
-  box-shadow: 0px 3px 3px 0px rgba(226, 122, 43, 0.2);
-  height: 40px;
-  width: 100%;
-  cursor: pointer;
-  font-size: 15px;
+  width: 281px;
+  height: 39px;
+  color: #ffffff;
   font-family: "HelveticaNeueCyr";
-  color: rgb(255, 255, 255);
-  font-weight: normal;
-  line-height: 2;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 2px 3px 3px rgba(225, 131, 55, 0.25);
+  background-color: #e18337;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 33px;
+  cursor: pointer;
 }
+
 .login a {
   cursor: pointer;
   font-size: 12px;
@@ -153,6 +192,7 @@
   text-decoration: underline;
   line-height: 2.5;
 }
+
 .login a:visited {
   color: rgb(107, 125, 131);
 }
@@ -164,6 +204,7 @@
   padding: 0;
   margin-top: 10px;
 }
+
 .social_title {
   margin: 0;
   padding: 0;
@@ -171,6 +212,7 @@
   color: rgb(107, 125, 131);
   font-family: "HelveticaNeueCyr";
 }
+
 .google_box {
   margin: auto;
   background-image: url("../../icons/social_icon/google.svg");
@@ -178,6 +220,7 @@
   height: 42px;
   margin-right: 25px;
 }
+
 .fb_box {
   margin: auto;
   background-image: url("../../icons/social_icon/fb.svg");
@@ -190,76 +233,73 @@
   transform: scale(1.2);
 }
 
-@media screen and (max-width: 1200px) {
-  .aside {
-    display: none;
-  }
-  .formSectionWrapper {
+@media screen and (max-width: 1060px) {
+
+  .wrapper_right {
     background-image: url(./img/registration-background.png);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
   }
-  .formWrapper {
-    max-width: 560px;
+
+  .wrapper_left__title {
+    color: ffffff;
+    font-family: "BauhausC";
+    font-size: 24px;
+    font-weight: 500;
   }
+
 }
-@media screen and (max-width: 768px) {
-  .formSectionWrapper {
-    background-image: none;
-    padding: 0;
-    padding-top: 40px;
+
+@media screen and (max-width: 767px) {
+  .wrapper_registration {
+    width: 100%;
+    padding: 50px 22px 0;
+    box-shadow: none;
   }
-  .formWrapper {
-    min-width: 320px;
+
+  .wrapper_right {
+    background: none;
   }
+
   .logoWrapper {
     align-items: center;
     flex-direction: column;
-    height: 100%;
     align-content: space-around;
-    margin-bottom: 10px;
+    margin-bottom: 34px;
+
   }
+
   .logo {
-    margin: 10px;
+    margin: 0 0 25px;
+  }
+
+  .wrapper_left__title {
+    display: none;
+  }
+
+  .social_box {
+    padding-bottom: 25px;
   }
 }
 
-/* .socials {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-/* .login100SocialItem {
-  margin: 10px;
-  margin-bottom: 23px;
-  margin-top: 23px;
-  background-image: url("./icons/google.svg");
-  background-size: contain;
-  width: 24px;
-  height: 24px;
-}
-.link_fb {
-  margin: 10px;
-  margin-bottom: 23px;
-  margin-top: 23px;
-  background-image: url("./icons/fb.svg");
-  background-size: contain;
-  width: 24px;
-  height: 24px;
-}
 
-.login100-social-item:hover {
-  color: #fff;
-  background-color: #333333;
-} */
 
 .error {
-  font-family: "HelveticaNeueCyr";
-  width: 80%;
-  font-size: 12px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #ff2c0c;
+    font-family: "Montserrat",sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    height: 25px;
+    line-height: 22px;
+    letter-spacing: .04em;
+    color: #ff2c0c;
+    margin-bottom: 20px;
+    overflow: hidden;
 }
