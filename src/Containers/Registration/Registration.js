@@ -65,7 +65,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="password"
               value={password}
-              autofocus
+              autoFocus
             />
           </div>
           <div className={styles.formGroupConfirm}>

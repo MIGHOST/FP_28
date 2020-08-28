@@ -91,7 +91,7 @@ html {
 }
 
 .swicher_currency {
-  background-image: url("./icons/Слой\ 1.png");
+  background-image: url("./icons/Lay.png");
 }
 
 .exchange {
@@ -156,10 +156,6 @@ html {
     width: 100%;
   }
 
-  /* .wrapper {
-    width: 354px;
-    box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
-  } */
 }
 
 .lds_ring {
@@ -167,8 +163,6 @@ html {
   display: flex;
   justify-content: center;
   position: relative;
-  /* width: 80px; */
-  /* height: 80px; */
 }
 .lds_ring div {
   box-sizing: border-box;

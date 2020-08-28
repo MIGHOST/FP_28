@@ -69,9 +69,6 @@
 
 /* ____tablet */
 
-/* .tab {
-    display: none;
-} */
 
 .tab_container {
   display: none;
@@ -167,9 +164,7 @@
 
 
 
-/* .tab_navItem:hover {
-  cursor: pointer;
-} */
+
 
 .tab_balance {
   display: flex;
