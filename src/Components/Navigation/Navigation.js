@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Navigation.module.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navigation = () => {
@@ -11,83 +11,80 @@ const Navigation = () => {
     <div>
       <div className={style.pc}>
         <div className={style.navContainer}>
-          <Link
+          <NavLink
             to={{ pathname: `/`, state: { from: location } }}
-            className={style.navItem_link}
+            className={`${style.navItem_link} ${style.navItem_link_main}`}
+            activeClassName={style.navItem_link_active}
+            exact
           >
-            <div className={style.navItem}>
-              <div className={style.navItem_house}></div>
-              <p className={style.navItem_text}>Главная</p>
-            </div>
-          </Link>
-          <Link
+            Главная
+          </NavLink>
+          <NavLink
             to={{ pathname: `/statistic`, state: { from: location } }}
-            className={style.navItem_link}
+            className={`${style.navItem_link} ${style.navItem_link_statistic}`}
+            activeClassName={style.navItem_link_active}
+            exact
           >
-            <div className={style.navItem}>
-              <div className={style.navItem_chart}></div>
-              <p className={style.navItem_text}>Статистика</p>
-            </div>
-          </Link>
+            Статистика
+          </NavLink>
         </div>
       </div>
 
       <div className={style.tab}>
         <div className={style.tab_container}>
-          <Link
+          <NavLink
             to={{ pathname: `/`, state: { from: location } }}
-            className={style.tab_navItem}
+            className={`${style.tab_navItem} ${style.tab_main_icon}`}
+            activeClassName={`${style.tab_navItem_active} ${style.tab_main_icon_active}`}
+            exact
           >
-            <div className={style.tab_navItem}>
-              <div className={style.tab_navItem_house}></div>
-              <p className={style.tab_navItem_text}>Главная</p>
-            </div>
-          </Link>
-          <div className={style.tab_dash}></div>
-          <Link
+            Главная
+          </NavLink>
+          <NavLink
             to={{ pathname: `/statistic`, state: { from: location } }}
-            className={style.tab_navItem}
+            className={`${style.tab_navItem} ${style.tab_statistic_icon}`}
+            activeClassName={`${style.tab_navItem_active} ${style.tab_statistic_icon_active}`}
+            exact
           >
-            <div className={style.tab_navItem}>
-              <div className={style.tab_navItem_chart}></div>
-              <p className={style.tab_navItem_text}>Статистика</p>
-            </div>
-          </Link>
-          <div className={style.tab_dash}></div>
-          <Link
+            Статистика
+          </NavLink>
+          <NavLink
             to={{ pathname: `/currency`, state: { from: location } }}
-            className={style.tab_navItem}
+            className={`${style.tab_navItem} ${style.tab_currency_icon} ${style.mr}`}
+            activeClassName={`${style.tab_navItem_active} ${style.tab_currency_icon_active}`}
+            exact
           >
-            <div className={style.tab_navItem}>
-              <div className={style.tab_navItem_dollar}></div>
-              <p className={style.tab_navItem_text}>Курс валют</p>
-            </div>
-          </Link>
-          <div className={style.tab_dash}></div>
+            Курс валют
+          </NavLink>
           <div className={style.tab_balance}>
             <p>Баланс </p>
-            <p>{`: ${user.userBalance} грн`}</p>
+            <p className={style.userBalance}>
+              {user.userBalance && `: ${user.userBalance} грн`}
+            </p>
           </div>
         </div>
       </div>
 
       <div className={style.mob}>
         <div className={style.mob_container}>
-          <Link to={{ pathname: `/`, state: { from: location } }}>
-            <div className={style.mob_navItem}>
-              <div className={style.mob_navItem_house}></div>
-            </div>
-          </Link>
-          <Link to={{ pathname: `/statistic`, state: { from: location } }}>
-            <div className={style.mob_navItem}>
-              <div className={style.mob_navItem_chart}></div>
-            </div>
-          </Link>
-          <Link to={{ pathname: `/currency`, state: { from: location } }}>
-            <div className={style.mob_navItem}>
-              <div className={style.mob_navItem_dolar}></div>
-            </div>
-          </Link>
+          <NavLink
+            to={{ pathname: `/`, state: { from: location } }}
+            className={`${style.mob_navItem} ${style.mob_main_icon} `}
+            activeClassName={`${style.mob_navItem_active} ${style.mob_main_icon_active}`}
+            exact
+          ></NavLink>
+          <NavLink
+            to={{ pathname: `/statistic`, state: { from: location } }}
+            className={`${style.mob_navItem}  ${style.mob_statistic_icon}`}
+            activeClassName={`${style.mob_navItem_active} ${style.mob_statistic_icon_active}`}
+            exact
+          ></NavLink>
+          <NavLink
+            to={{ pathname: `/currency`, state: { from: location } }}
+            className={`${style.mob_navItem} ${style.mob_currency_icon}`}
+            activeClassName={`${style.mob_navItem_active} ${style.mob_currency_icon_active}`}
+            exact
+          ></NavLink>
         </div>
       </div>
     </div>
