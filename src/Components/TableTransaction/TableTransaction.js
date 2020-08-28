@@ -22,6 +22,7 @@ const TableTransaction = ({ modalOpener, modalOpen }) => {
     };
   }, [screenWidth]);
   const transactionsArr = useSelector((state) => state.tableData);
+<<<<<<< HEAD
 
   return (
     <div className={styles.wrapper}>
@@ -34,12 +35,50 @@ const TableTransaction = ({ modalOpener, modalOpen }) => {
       {!!transactionsArr.length && (
         <>
           <header className={styles.listTitle}>
+=======
+<<<<<<< HEAD
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserTransactions());
+  }, [dispatch]);
+
+  return (
+    <div className={styles.wrapper}>
+      <ul className={styles.list}>
+        <li className={styles.listTitle}>
+          <p className={styles.date}>Дата</p>
+          <p className={styles.type}>Тип</p>
+          <p className={styles.category}>Категория</p>
+          <p className={styles.comment}>Комментарий</p>
+          <p className={styles.sum}>Сумма</p>
+          <p className={styles.balance}>Баланс</p>
+        </li>
+        {transactionsArr.map((transaction) => {
+          return (
+            <TableTransactionItem
+              key={transaction._id}
+              transaction={transaction}
+            />
+          );
+        })}
+      </ul>
+=======
+
+  return (
+    <div className={styles.wrapper}>
+      {transactionsArr.length === 0 && <p>нет транзакций</p>}
+      {!!transactionsArr.length && (
+        <>
+          <div className={styles.listTitle}>
+>>>>>>> origin/try
             <p className={styles.date}>Дата</p>
             <p className={styles.type}>Тип</p>
             <p className={styles.category}>Категория</p>
             <p className={styles.comment}>Комментарий</p>
             <p className={styles.sum}>Сумма</p>
             <p className={styles.balance}>Баланс</p>
+<<<<<<< HEAD
             {/* <div className={styles.delete}></div> */}
           </header>
           <ul className={styles.list}>
@@ -81,6 +120,22 @@ const TableTransaction = ({ modalOpener, modalOpen }) => {
         </>
       )}
       {!modalOpen && <AddButton modalOpener={modalOpener} />}
+=======
+          </div>
+          <ul className={styles.list}>
+            {transactionsArr.map((transaction) => {
+              return (
+                <TableTransactionItem
+                  key={transaction.id}
+                  transaction={transaction}
+                />
+              );
+            })}
+          </ul>
+        </>
+      )}
+>>>>>>> remotes/origin/F4-5-6-8-9
+>>>>>>> origin/try
     </div>
   );
 };

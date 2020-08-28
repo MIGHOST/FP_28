@@ -14,4 +14,4 @@ export const sumParser = (sum) =>
     .toFixed(2)
     .split(".")
     .map((el, i) => (i === 0 ? Number(el).toLocaleString() : el))
-    .join(".");
+    .join(" ");

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   TRANSACTION_UPDATE,
   TRANSACTIONS_GET,
@@ -7,6 +8,20 @@ import {
 
 export const addTransactionToRedux = (data) => ({
   type: ADD_TRANSACTION,
+=======
+import { TRANSACTION_UPDATE, TRANSACTIONS_GET } from "../../constants";
+import axios from "axios";
+
+import storage from "../../helpers/storage";
+import { loaderOn, loaderOff } from "./loader";
+
+const token =
+  storage.get("token") ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDI1MTAwZDE1ODA2MDAxNzcyZDIzZCIsImlhdCI6MTU5ODIxODgxMCwiZXhwIjoxNTk4MzA1MjEwfQ.GOjLBi_QZf5Muw5pnye5IjxmZwhViU5IMgULFz-8FuI";
+
+export const addTtansaction = (data) => ({
+  type: "ADD_TRANSACTION",
+>>>>>>> origin/try
   payload: data,
 });
 

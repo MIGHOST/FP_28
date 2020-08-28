@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
 import user from "./user";
 import tableData from "./transactionTableData";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/try
 import token from "./token";
 import loader from "./loader";
 import statistic from "./statistic";
@@ -12,6 +16,7 @@ const authPersistConfig = {
   storage,
   whitelist: "token",
 };
+<<<<<<< HEAD
 
 const authPersistConfigStatus = {
   key: "status",
@@ -23,6 +28,11 @@ const session = combineReducers({
   user: persistReducer(authPersistConfigStatus, user),
   token,
 });
+=======
+=======
+import loader from "./loader";
+>>>>>>> remotes/origin/F4-5-6-8-9
+>>>>>>> origin/try
 
 const rootReducer = combineReducers({
   session: persistReducer(authPersistConfig, session),

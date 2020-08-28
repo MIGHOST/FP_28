@@ -24,7 +24,8 @@ export const createUserLogin = (formData, history) => async (dispatch) => {
     dispatch(loginUser(user));
     history.push(paths.mainPage);
   } catch (error) {
-    dispatch(userError(error));
+    dispatch(userError(error.message));
+    // console.log(error.message);
   }
 };
 

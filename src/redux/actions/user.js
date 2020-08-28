@@ -14,19 +14,28 @@ export const loginUserWithFacebook = (user) => ({
   payload: user,
 });
 
+<<<<<<< HEAD
 export const getCurrentUserWithToken = (user) => ({
   type: userTypes.GET_CURRENT_USER,
   payload: user,
 });
 
 export const userLogOut = () => ({ type: userTypes.LOG_OUT});
+=======
+export const LOG_OUT = "USER_LOG_OUT";
+
+export const userLogOut = () => ({ type: LOG_OUT });
+>>>>>>> origin/try
 
 export const userError = (error) => ({
   type: userTypes.USER_ERROR,
   payload: error,
 });
+<<<<<<< HEAD
 
 export const setUser = (user) => ({
   type: userTypes.REGISTER,
   payload: user,
 });
+=======
+>>>>>>> origin/try

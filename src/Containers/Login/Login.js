@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Login.module.css";
-import { useMediaQuery } from "react-responsive";
 import { createUserLogin } from "../../redux/operations/login";
+<<<<<<< HEAD
+=======
+// import user from "../../redux/reducers/user";
+>>>>>>> origin/try
 
 const formInitialState = {
   email: "",
@@ -16,7 +20,8 @@ const Login = () => {
   const [form, setForm] = useState(formInitialState);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const user = useSelector((state) => state.session.user);
+  console.log(user);
   const handleInput = (e) => {
     const { value, name } = e.target;
     setForm({ ...form, [name]: value });
@@ -80,8 +85,36 @@ const Login = () => {
               </p>
             )}
 
+<<<<<<< HEAD
             <button type="submit" className={styles.buttom}
             disabled={!email || !password}
+=======
+              <div className={styles.input_wrapper}>
+                <div className={`${styles.icon} ${styles.icon_password}`}></div>
+                <input
+                  className={`${styles.input} ${styles.input_password}`}
+                  placeholder="Пароль"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handleInput}
+                />
+              </div>
+              <button type="submit" className={styles.buttom}>
+                Войти
+              </button>
+            </form>
+
+            <span className={styles.link_registration}>
+              {user.error && user.error.message}
+              {/* {error && error.message}1111111111 */}
+            </span>
+
+            <Link
+              to="/registration"
+              className={styles.link_registration}
+              href="#"
+>>>>>>> origin/try
             >
               Войти
             </button>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -5,6 +6,11 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import styles from "./MainPage.module.css";
 
+=======
+
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+>>>>>>> origin/try
 import Navigation from "../../Components/Navigation/Navigation";
 import TableTransaction from "../../Components/TableTransaction/TableTransaction";
 import Currency from "../../Components/Currency/Currency";
@@ -14,10 +20,17 @@ import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Statistic from "../../Components/Statistic/Statistic";
 import Loading from "../../Components/Loader/Loader";
 
+<<<<<<< HEAD
 import { getUserTransactions } from "../../redux/operations/transactions";
 
 
 const MainPage = (props) => {
+=======
+import { asyncSetTransactionsList } from "../../redux/actions/transactionTableData";
+import styles from "./MainPage.module.css";
+
+const MainPage = () => {
+>>>>>>> origin/try
   const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();

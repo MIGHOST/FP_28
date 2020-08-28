@@ -284,7 +284,24 @@
   color: #ff2c0c;
   margin-bottom: 20px;
 }
+<<<<<<< HEAD
 
 .buttom:disabled {
   background-color: rgba(112, 124, 130, 0.3);
 }
+=======
+.error_box{
+  display: inline-block;
+  width: 200px;
+  height: 25px;
+}
+.error {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  /* letter-spacing: 0.04em; */
+  color: #ff2c0c;
+  margin-bottom: 10px;
+}
+>>>>>>> origin/try
