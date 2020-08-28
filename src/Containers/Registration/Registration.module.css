@@ -291,15 +291,19 @@
 
 
 .error {
-    font-family: "Montserrat",sans-serif;
-    text-align: center;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    height: 25px;
-    line-height: 22px;
-    letter-spacing: .04em;
-    color: #ff2c0c;
-    margin-bottom: 20px;
-    overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  height: 25px;
+  line-height: 22px;
+  letter-spacing: .04em;
+  color: #ff2c0c;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.button:disabled {
+  background-color: rgba(112, 124, 130, 0.3);
 }
