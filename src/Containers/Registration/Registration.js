@@ -26,9 +26,11 @@ const Registration = () => {
   const errorHandler = (err) => {
     console.log('1', err);
     console.log(userError);
-    if ((err.error.data.message).includes("Password is not valid")){
-      return "Password is not valid"
-    }
+    if(err.error.data.message !== undefined){
+      if ((err.error.data.message).includes("Password is not valid")){
+        return "Password is not valid"
+      }
+    }   
   }
 
   const inputHandler = (e) => {

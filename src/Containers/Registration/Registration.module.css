@@ -24,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
   background-blend-mode: multiply;
   background: rgb(61, 85, 117) url("./img/registration-background.png");
   background-position: center;

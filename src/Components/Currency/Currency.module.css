@@ -6,7 +6,7 @@ html {
 .wrapper {
   display: flex;
   align-items: center;
-  min-width: 320px;
+  min-width: 312px;
   flex-direction: column;
 }
 
