@@ -51,14 +51,34 @@
 
   .mainPage {
     width: 1192px;
-    padding: 0 0 45px;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 855px;
+    grid-template-rows: 95px 145px 90px 400px 45px;
+    grid-gap: 30px;
+  }
+
+  .header {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  .navigation {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .balance {
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
+  .currency {
+    grid-row-start: 4;
+    grid-row-end: 5;
   }
 
   .mainData {
-    position: absolute;
-    width: 855px;
-    top: 125px;
-    right: 0;
+    grid-column-start: 2;
   }
 }
