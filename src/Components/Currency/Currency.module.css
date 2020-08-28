@@ -137,14 +137,23 @@ html {
   background-position: bottom;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1279.9999px) {
   .wrapper {
     width: 312px;
     border-radius: 3px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
   }
+
   .chart {
-    height: 194px;
+    height: 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .wrapper {
+    height: 390px;
+
   }
 }
 
@@ -152,24 +161,24 @@ html {
   .chart {
     display: none;
   }
+
   .wrapper {
     width: 100%;
   }
 
-  /* .wrapper {
-    width: 354px;
-    box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
-  } */
 }
 
+
+
 .lds_ring {
- 
+
   display: flex;
   justify-content: center;
   position: relative;
   /* width: 80px; */
   /* height: 80px; */
 }
+
 .lds_ring div {
   box-sizing: border-box;
   display: block;
@@ -182,22 +191,25 @@ html {
   animation: lds_ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #708096 transparent transparent transparent;
 }
+
 .lds_ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
+
 .lds_ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
+
 .lds_ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
 @keyframes lds_ring {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
-
-

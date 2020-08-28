@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory} from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
 import FacebookButton from "../../Components/FacebookButton/FacebookButton";
@@ -12,23 +12,23 @@ const formState = {
   password: "",
   confirmPassword: "",
   name: "",
-}; 
+};
 
 const Registration = () => {
   const [form, setForm] = useState(formState);
   const dispatch = useDispatch();
   const history = useHistory();
-  const userError = useSelector(state => state.session.user);
+  const userError = useSelector((state) => state.session.user);
 
   const inputHandler = (e) => {
-    const {value, name} = e.target
+    const { value, name } = e.target;
     setForm({ ...form, [name]: value });
   };
 
   const formSubmit = async (e) => {
     e.preventDefault();
     dispatch(signUp(form, history));
-    setForm(formState)
+    setForm(formState);
   };
 
   const { email, password, confirmPassword, name } = form;
@@ -77,7 +77,7 @@ const Registration = () => {
               onChange={inputHandler}
               name="confirmPassword"
               value={confirmPassword}
-            />     
+            />
           </div>
           <PasswordStrengthMeter password={form.password} />
 
@@ -91,7 +91,9 @@ const Registration = () => {
               value={name}
             />
           </div>
-          <p className={styles.error}>{userError.error ? userError.error.data.message : ""}</p>
+          <p className={styles.error}>
+            {userError.error ? userError.error.data.message : ""}
+          </p>
           <button type="submit" className={styles.button}>
             Регистрация
           </button>

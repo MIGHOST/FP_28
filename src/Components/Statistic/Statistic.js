@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Pie } from "react-chartjs-2";
 import { Scrollbars } from "react-custom-scrollbars";
@@ -91,22 +91,6 @@ const Statistic = () => {
           <h2 className={styles.HeaderTitle}>Статистиска</h2>
         </header>
       )}
-
-      {/* {arrayStatisticCategory.length ? (
-        <div className={styles.WrapperPie}>
-          <Pie
-            data={dataPieCharts}
-            legend={{
-              display: false,
-            }}
-            width={265}
-            height={265}
-            options={{ maintainAspectRatio: false }}
-          />
-        </div>
-      ) : (
-        <div className={styles.EmptyWrapper}></div>
-      )} */}
       {!!arrayStatisticCategory.length && !loader && (
         <div className={styles.WrapperPie}>
           <Pie
