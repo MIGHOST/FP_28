@@ -20,6 +20,14 @@
   color: #282828;
 }
 
+.zeroTransactions {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  color: #3a5374;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 50px;
+}
+
 @media screen and (max-width: 767px) {
   .listTitle {
     display: none;
@@ -33,6 +41,8 @@
   .list {
     padding-bottom: 55px;
   }
+
+
 }
 
 @media screen and (min-width: 768px) {
@@ -92,6 +102,10 @@
   .delete {
     width: 50px;
   }
+
+  .zeroTransactions {
+    padding-top: 100px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -132,10 +146,17 @@
   .balance {
     width: 131px;
   }
+
+  .zeroTransactions {
+    padding-top: 200px;
+  }
 }
 
+/* 
 .zeroTransactions {
   font-family: "HelveticaNeueCyr", sans-serif;
-  color: #282828;
+  color: #3a5374;
   font-size: 25px;
-}
+  text-align: center;
+  padding-top: 200px;
+} */
