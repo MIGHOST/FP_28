@@ -49,8 +49,14 @@ const AddTransaction = ({ modalCloser, title }) => {
       setForm(initialState);
       return;
     }
+
     const name = e.target.name;
-    const value = e.target.value;
+    let value;
+    if (name === "sum") {
+      value = e.target.value.replace(/[^\d]+/gi, "");
+    } else {
+      value = e.target.value;
+    }
     setForm({ ...form, [name]: value });
   };
 
@@ -88,7 +94,7 @@ const AddTransaction = ({ modalCloser, title }) => {
     }
     document.removeEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        modalCloser();        
+        modalCloser();
       }
     });
     modalCloser();
@@ -193,7 +199,7 @@ const AddTransaction = ({ modalCloser, title }) => {
                   type="text"
                   placeholder="0.00"
                   name="sum"
-                  defaultValue={sum}
+                  value={sum}
                   onChange={inputHandler}
                   className={
                     errors.sum
