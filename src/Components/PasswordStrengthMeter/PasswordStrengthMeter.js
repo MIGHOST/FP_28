@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./PasswordStrengthMeter.module.css";
 import zxcvbn from "zxcvbn";
 
 const PasswordStrengthMeter = ({ password }) => {
   const testedResult = zxcvbn(password);
-  const createPasswordLabel = result => {
+  const createPasswordLabel = (result) => {
     let color;
     switch (result.score) {
       case 0:
@@ -36,4 +36,3 @@ const PasswordStrengthMeter = ({ password }) => {
 };
 
 export default PasswordStrengthMeter;
-  
