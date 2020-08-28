@@ -123,16 +123,13 @@ const TableTransactionItem = ({ transaction }) => {
         <p className={styles.cellTitle}>Баланс</p>
         <p className={styles.cellData}>{sumParser(balance)}</p>
       </div>
-      {isEditSum || isEditCommentary ? (
-        <div className={styles.delete}>
-          <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
-          <div className={styles.deleteWord} onClick={deleteHandler}>
-            <p>delete</p>
-          </div>
+
+      <div className={styles.delete}>
+        <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>
+        <div className={styles.deleteWord} onClick={deleteHandler}>
+          <p>delete</p>
         </div>
-      ) : (
-        ""
-      )}
+      </div>
     </li>
   );
 };
