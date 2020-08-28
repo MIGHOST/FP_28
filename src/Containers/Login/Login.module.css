@@ -284,3 +284,7 @@
   color: #ff2c0c;
   margin-bottom: 20px;
 }
+
+.buttom:disabled {
+  background-color: rgba(112, 124, 130, 0.3);
+}

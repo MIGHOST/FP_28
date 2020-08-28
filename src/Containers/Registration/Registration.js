@@ -23,40 +23,38 @@ const Registration = () => {
   const history = useHistory();
   const userError = useSelector((state) => state.session.user);
 
-  const errorHandler = (err) => {
-    console.log('1', err);
-    console.log(userError);
-    if(err.error.data.message !== undefined){
-      if ((err.error.data.message).includes("Password is not valid")){
-        return "Password is not valid"
-      }
-    }   
-  }
+  const errHandler = (message) => {
+    if(message.includes("Password")){
+      return "Password not valid"
+    } else {
+      return message
+    }
+  };
 
   const inputHandler = (e) => {
     const { value, name } = e.target;
     const emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const passValidate = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
     // email validation
-    if(name === "email"){
-      if(!emailValidate.test(value)){
-        console.log(emailValidate.test(value))
+    if (name === "email") {
+      if (!emailValidate.test(value)) {
+        console.log(emailValidate.test(value));
         setEmailValid(false);
       } else {
         setEmailValid(true);
       }
-    };
+    }
     // password validation
-    if(name === "password") {
-      if(!passValidate.test(value)){
+    if (name === "password") {
+      if (!passValidate.test(value)) {
         setPassValid(false);
       } else {
         setPassValid(true);
       }
     }
     // name validation
-    if(name === "name") {
-      if(value.length < 3){
+    if (name === "name") {
+      if (value.length < 3) {
         setNameValid(false);
       } else {
         setNameValid(true);
@@ -93,7 +91,9 @@ const Registration = () => {
               <div className={`${styles.icon} ${styles.icon_email}`}></div>
               <input
                 type="email"
-                className={`${styles.input} ${emailValid ? "" : styles.inputNotValid}`}
+                className={`${styles.input} ${
+                  emailValid ? "" : styles.inputNotValid
+                }`}
                 placeholder="E-mail"
                 autoComplete="on"
                 onChange={inputHandler}
@@ -102,13 +102,19 @@ const Registration = () => {
               />
             </div>
             <div className={styles.formGroup}>
-            <div className={`${styles.icon} ${styles.icon_password}`}></div>
+              <div className={`${styles.icon} ${styles.icon_password}`}></div>
               <input
                 type="password"
-                className={`${styles.input} ${passValid ? "" : styles.inputNotValid}`}
+                className={`${styles.input} ${
+                  passValid ? "" : styles.inputNotValid
+                }`}
                 placeholder="Пароль"
                 autoComplete="off"
-                title={passValid ? "" : "Pass must have one or more number; two or more letter - upper and lower; one of special symbol like # @ ₴ ? $ 0; password length is more then 6 symbol"}
+                title={
+                  passValid
+                    ? ""
+                    : "Pass must have one or more number; two or more letter - upper and lower; one of special symbol like # @ ₴ ? $ 0; password length is more then 6 symbol"
+                }
                 onChange={inputHandler}
                 name="password"
                 value={password}
@@ -129,10 +135,12 @@ const Registration = () => {
             <PasswordStrengthMeter password={form.password} />
 
             <div className={styles.formGroup}>
-            <div className={`${styles.icon} ${styles.icon_name}`}></div>
+              <div className={`${styles.icon} ${styles.icon_name}`}></div>
               <input
                 type="text"
-                className={`${styles.input} ${nameValid ? "" : styles.inputNotValid}`}
+                className={`${styles.input} ${
+                  nameValid ? "" : styles.inputNotValid
+                }`}
                 placeholder="Ваше имя"
                 title={nameValid ? "" : "Name must be more then 3 letters"}
                 onChange={inputHandler}
@@ -141,9 +149,13 @@ const Registration = () => {
               />
             </div>
             <p className={styles.error}>
-              {userError.error ? errorHandler(userError) : ""}
+            {userError.error ? errHandler(userError.error.data.message) : ""}
             </p>
-            <button type="submit" className={styles.button}>
+            <button
+              type="submit"
+              className={styles.button}
+              disabled={!email || !password || !confirmPassword || !name}
+            >
               Регистрация
             </button>
             <div className={styles.login}>

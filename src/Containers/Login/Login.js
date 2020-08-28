@@ -80,7 +80,9 @@ const Login = () => {
               </p>
             )}
 
-            <button type="submit" className={styles.buttom}>
+            <button type="submit" className={styles.buttom}
+            disabled={!email || !password}
+            >
               Войти
             </button>
           </form>

@@ -26,7 +26,7 @@ const Header = () => {
         </a>
       </div>
       <div className={styles.wrapper_nav}>
-        <p className={styles.user_name}>{`${user.name}`}</p>
+        <p className={styles.user_name}>{user.name && `${user.name}`}</p>
         <div className={styles.wrapper_log_out} onClick={logOut}>
           <div className={styles.icon_log_out}></div>
           {!isMobile && <div className={styles.text_log_out}>Вийти</div>}
