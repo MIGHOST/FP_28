@@ -303,7 +303,3 @@
     margin-bottom: 20px;
     overflow: hidden;
 }
-
-.button:disabled {
-  background-color: rgba(112, 124, 130, 0.3);
-}
