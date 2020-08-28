@@ -23,13 +23,13 @@ const Registration = () => {
   const history = useHistory();
   const userError = useSelector((state) => state.session.user);
 
-  const errorHandler = (err) => {
-    console.log('1', err);
-    console.log(userError);
-    if ((err.error.data.message).includes("Password is not valid")){
-      return "Password is not valid"
+  const errHandler = (message) => {
+    if(message.includes("Password")){
+      return "Password not valid"
+    } else {
+      return message
     }
-  }
+  };
 
   const inputHandler = (e) => {
     const { value, name } = e.target;
@@ -139,7 +139,7 @@ const Registration = () => {
               />
             </div>
             <p className={styles.error}>
-              {userError.error ? errorHandler(userError) : ""}
+              {userError.error ? errHandler(userError.error.data.message) : ""}
             </p>
             <button type="submit" className={styles.button}>
               Регистрация
