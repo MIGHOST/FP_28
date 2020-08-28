@@ -19,7 +19,9 @@ import { getFromLocaleStorage } from "../../helpers/storage";
 
 const Statistic = () => {
   const dataNow = new Date();
-
+  const loader = useSelector((state) => state.loader);
+  const statisticData = useSelector((state) => state.statistic);
+  const transactionsArr = useSelector((state) => state.tableData);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [dateState, setDateState] = useState({
     month: dataNow.getMonth() + 1,
@@ -33,24 +35,11 @@ const Statistic = () => {
     dispatch(statisticUserGet(dateState, token));
   }, [dateState, dispatch, token]);
 
-  const statisticData = useSelector((state) => state.statistic);
   let arrayStatisticCategory = [];
   if (!!Object.keys(statisticData).length) {
     arrayStatisticCategory = [...statisticData.arr];
   }
 
-  // arrayStatisticCategory.push(
-  //   {
-  //     category: "income",
-  //     sum: 8700.0,
-  //     type: "+",
-  //   },
-  //   {
-  //     category: " expenses",
-  //     sum: 4700.0,
-  //     type: "-",
-  //   }
-  // );
   if (arrayStatisticCategory.length) {
     arrayStatisticCategory.forEach(
       (el, index) => (el.color = backgroundStatistic[index])
@@ -85,7 +74,6 @@ const Statistic = () => {
   };
   const classes = useStyles();
   //select year
-  const transactionsArr = useSelector((state) => state.tableData);
   useEffect(() => {
     dispatch(getUserTransactions());
   }, [dispatch]);
@@ -103,7 +91,7 @@ const Statistic = () => {
         </header>
       )}
 
-      {arrayStatisticCategory.length ? (
+      {/* {arrayStatisticCategory.length ? (
         <div className={styles.WrapperPie}>
           <Pie
             data={dataPieCharts}
@@ -116,6 +104,23 @@ const Statistic = () => {
           />
         </div>
       ) : (
+        <div className={styles.EmptyWrapper}></div>
+      )} */}
+      {!!arrayStatisticCategory.length && !loader && (
+        <div className={styles.WrapperPie}>
+          <Pie
+            data={dataPieCharts}
+            legend={{
+              display: false,
+            }}
+            width={265}
+            height={265}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
+      )}
+
+      {!arrayStatisticCategory.length && !loader && (
         <div className={styles.EmptyWrapper}></div>
       )}
 
@@ -242,7 +247,11 @@ const Statistic = () => {
         </div>
       ) : (
         <div className={styles.WrapperEmptyList}>
-          <p className={styles.emptyCaption}>Нет записей за выбранный период</p>
+          {!loader && (
+            <p className={styles.emptyCaption}>
+              Нет записей за выбранный период
+            </p>
+          )}
         </div>
       )}
       {!!arrayStatisticCategory.length && (
