@@ -16,7 +16,6 @@ import Loading from "../../Components/Loader/Loader";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 
-
 const MainPage = (props) => {
   const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
@@ -41,9 +40,15 @@ const MainPage = (props) => {
   return (
     <div className={modalOpen ? styles.noScroll : styles.wrapper}>
       <div className={styles.mainPage}>
-        <Header />
-        <Navigation />
-        <Balance />
+        <div className={styles.header}>
+          <Header />
+        </div>
+        <div className={styles.navigation}>
+          <Navigation />
+        </div>
+        <div className={styles.balance}>
+          <Balance />
+        </div>
         <div className={styles.mainData}>
           <Switch>
             <Route
@@ -62,7 +67,12 @@ const MainPage = (props) => {
             {isDesctop ? (
               <Route
                 path={`${props.match.path}currency`}
-                component={Currency}
+                // component={Currency}
+                render={() => (
+                  <div className={styles.currency}>
+                    <Currency />
+                  </div>
+                )}
               />
             ) : (
               <Redirect to="/" />
