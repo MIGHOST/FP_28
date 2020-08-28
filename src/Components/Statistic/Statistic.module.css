@@ -23,6 +23,7 @@
   width: 87.5%;
   height: 305px;
   margin: 0 auto;
+  background-color: #fff;
 }
 
 .WrapperPie::after {

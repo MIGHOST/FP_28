@@ -16,6 +16,7 @@ import debounce from "../../helpers/debounce";
 import { screenSizes, MONTH, backgroundStatistic } from "../../constants";
 import styles from "./Statistic.module.css";
 import { getFromLocaleStorage } from "../../helpers/storage";
+import { sumParser } from "../../helpers/convertator";
 
 const Statistic = () => {
   const dataNow = new Date();
@@ -202,10 +203,10 @@ const Statistic = () => {
                     </div>
                     {el.type === "-" ? (
                       <p className={styles.incomeItemTitle}>
-                        {el.sum.toFixed(2)}
+                        {sumParser(el.sum)}
                       </p>
                     ) : (
-                      <p>{el.sum.toFixed(2)}</p>
+                      <p>{sumParser(el.sum)}</p>
                     )}
                   </li>
                 ))}
@@ -235,10 +236,10 @@ const Statistic = () => {
                   </div>
                   {el.type === "-" ? (
                     <p className={styles.incomeItemTitle}>
-                      {el.sum.toFixed(2)}
+                      {sumParser(el.sum)}
                     </p>
                   ) : (
-                    <p>{el.sum.toFixed(2)}</p>
+                    <p>{sumParser(el.sum)}</p>
                   )}
                 </li>
               ))}
@@ -261,11 +262,11 @@ const Statistic = () => {
             {screenSizes.large < screenWidth ? (
               <p className={styles.ExpensesTotal}>
                 {statisticData.expenses >= 0 &&
-                  `${statisticData.expenses.toFixed(2)} грн`}
+                  `${sumParser(statisticData.expenses)} грн`}
               </p>
             ) : (
               <p className={styles.ExpensesTotal}>
-                {statisticData.expenses && statisticData.expenses.toFixed(2)}
+                {statisticData.expenses && sumParser(statisticData.expenses)}
               </p>
             )}
           </div>
@@ -274,11 +275,11 @@ const Statistic = () => {
             {screenSizes.large < screenWidth ? (
               <p className={styles.IncomeTotal}>
                 {statisticData.income >= 0 &&
-                  `${statisticData.income.toFixed(2)} грн`}
+                  `${sumParser(statisticData.income)} грн`}
               </p>
             ) : (
               <p className={styles.IncomeTotal}>
-                {statisticData.income && statisticData.income.toFixed(2)}
+                {statisticData.income && sumParser(statisticData.income)}
               </p>
             )}
           </div>
