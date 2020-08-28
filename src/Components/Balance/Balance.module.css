@@ -30,12 +30,13 @@
 
 @media screen and (max-width: 767px) {
   .navContainer {
-    width: 318px;    
+    width: 300px;
     align-items: center;
     margin: 20px auto;
     background-color: #3a5374;
     justify-content: center;
   }
+
   .balance {
     flex-direction: column;
     line-height: 15px;

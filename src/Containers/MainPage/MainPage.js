@@ -13,10 +13,24 @@ import Header from "../../Components/Header/Header";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import Statistic from "../../Components/Statistic/Statistic";
 import Loading from "../../Components/Loader/Loader";
+import debounce from "../../helpers/debounce";
+import { screenSizes } from "../../constants";
+import { useLocation } from "react-router-dom";
 
 import { getUserTransactions } from "../../redux/operations/transactions";
 
 const MainPage = (props) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const debouncedHandleResize = debounce(function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }, 1000);
+    window.addEventListener("resize", debouncedHandleResize);
+    return (_) => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, [screenWidth]);
   const loader = useSelector((state) => state.loader);
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -46,9 +60,17 @@ const MainPage = (props) => {
         <div className={styles.navigation}>
           <Navigation />
         </div>
-        <div className={styles.balance}>
-          <Balance />
-        </div>
+        {screenWidth < screenSizes.small && pathname === "/" && (
+          <div className={styles.balance}>
+            <Balance />
+          </div>
+        )}
+        {screenWidth > screenSizes.small && (
+          <div className={styles.balance}>
+            <Balance />
+          </div>
+        )}
+
         <div className={styles.mainData}>
           <Switch>
             <Route
