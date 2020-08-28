@@ -72,6 +72,7 @@ const Login = () => {
                 name="password"
                 value={password}
                 onChange={handleInput}
+                autofocus
               />
             </div>
             {user.error && (
