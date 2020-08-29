@@ -15,3 +15,6 @@ export const sumParser = (sum) =>
     .split(".")
     .map((el, i) => (i === 0 ? Number(el).toLocaleString() : el))
     .join(".");
+
+export const objToArray = (obj) =>
+  Object.entries(obj).map((el) => ({ [el[0]]: el[1], currency: el[0] }));

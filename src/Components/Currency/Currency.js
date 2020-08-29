@@ -1,39 +1,26 @@
 import React, { useState, useEffect } from "react";
 import style from "./Currency.module.css";
-import moment from "moment";
-import axios from "axios";
 import CurrencyTable from "./CurrencyTable";
+import { getExchangeRate } from "../../api/kurstodayServices";
+import { objToArray } from "../../helpers/convertator";
 
 const Currency = () => {
-  const requestCurrencyURL = `https://cors-anywhere.herokuapp.com/https://api.privatbank.ua/p24api/exchange_rates?json&date=${moment(
-    Date.now()
-  ).format("DD.MM.yyyy")}`;
-
-  const [arrayOfExchange, setArrayOfExchange] = useState([]);
+  const [objOfExchange, setArrayOfExchange] = useState({});
   const [loader, setLoader] = useState(false);
-
-  const getData = async () => {
-    try {
-      const res = await axios.get(requestCurrencyURL);
-      setArrayOfExchange([...arrayOfExchange, ...res.data.exchangeRate]);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoader(false);
-    }
-  };
 
   useEffect(() => {
     setLoader(true);
-    getData();
+
+    getExchangeRate()
+      .then((res) => {
+        setArrayOfExchange(res.data);
+      })
+      .catch(console.error)
+      .finally(setLoader(false));
   }, []);
 
-  const currencyArray = arrayOfExchange.filter(
-    (el) =>
-      el.currency === "EUR" ||
-      el.currency === "USD" ||
-      el.currency === "RUB" ||
-      el.currency === "PLZ"
+  const currencyArray = objToArray(objOfExchange).filter(
+    (el) => el["eur"] || el["usd"] || el["rur"] || el["pln"]
   );
 
   return (
@@ -53,13 +40,10 @@ const Currency = () => {
           </div>
         )}
         <ul>
-          {/* <Suspense fallback={<p>...Loading</p>}> */}
-
           {!loader &&
             currencyArray.map((el, index) => (
               <CurrencyTable el={el} key={index} index={index} />
             ))}
-          {/* </Suspense> */}
         </ul>
       </div>
 

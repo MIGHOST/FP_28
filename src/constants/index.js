@@ -1,25 +1,25 @@
 export const paths = {
-	registration: "/registration",
-	login: "/login",
-	mainPage: "/",
-	verifyPage: "/verify",
+  registration: "/registration",
+  login: "/login",
+  mainPage: "/",
+  verifyPage: "/verify",
 };
 
 export const userTypes = {
-	LOGIN: "LOGIN",
-	LOGIN_WITH_GOOGLE: "LOGIN_WITH_GOOGLE",
-	LOGIN_WITH_FACEBOOK: "LOGIN_WITH_FACEBOOK",
-	REGISTER: "REGISTER",
-	LOG_OUT: "LOG_OUT",
-	USER_ERROR: "USER_ERROR",
-	GET_CURRENT_USER: "GET_CURRENT_USER",
+  LOGIN: "LOGIN",
+  LOGIN_WITH_GOOGLE: "LOGIN_WITH_GOOGLE",
+  LOGIN_WITH_FACEBOOK: "LOGIN_WITH_FACEBOOK",
+  REGISTER: "REGISTER",
+  LOG_OUT: "LOG_OUT",
+  USER_ERROR: "USER_ERROR",
+  GET_CURRENT_USER: "GET_CURRENT_USER",
 };
 
 export const screenSizes = {
-	small: 575.98,
-	medium: 767.98,
-	large: 991.98,
-	extra: 1199.98,
+  small: 575.98,
+  medium: 767.98,
+  large: 991.98,
+  extra: 1199.98,
 };
 
 export const ADD_TRANSACTION = "transaction/ADD_TRANSACTION";
@@ -33,18 +33,18 @@ export const LOADER_OFF = "loader/LOADER_OFF";
 export const STATISTIC_GET = "statistic/get";
 
 export const MONTH = [
-	"Январь",
-	"Февраль",
-	"Март",
-	"Апрель",
-	"Май",
-	"Июнь",
-	"Июль",
-	"Август",
-	"Сентябрь",
-	"Октябрь",
-	"Ноябрь",
-	"Декабрь",
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
 ];
 export const backgroundStatistic = [
   "#80bdff",
@@ -72,3 +72,5 @@ export const backgroundStatistic = [
   "#ee6ea9",
   "#e83e8c",
 ];
+
+export const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
