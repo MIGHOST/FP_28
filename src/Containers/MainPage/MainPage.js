@@ -49,7 +49,8 @@ const MainPage = (props) => {
     setModalOpen(false);
   };
 
-  const isDesctop = useMediaQuery({ query: "(max-width: 1279px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1279px)" });
+  const isDesctop = useMediaQuery({ query: "(min-width: 1280px)" });
 
   return (
     <div className={modalOpen ? styles.noScroll : styles.wrapper}>
@@ -85,8 +86,9 @@ const MainPage = (props) => {
             <Route
               path={`${props.match.path}statistic`}
               component={Statistic}
-            />
-            {isDesctop ? (
+            /> 
+
+            {isTablet ? (
               <Route
                 path={`${props.match.path}currency`}
                 render={() => (
@@ -101,9 +103,11 @@ const MainPage = (props) => {
           </Switch>
         </div>
         <div className={styles.blockForMobileButton}></div>
-        <div className={styles.currency}>
-          <Currency />
-        </div>
+        {isDesctop && (
+          <div className={styles.currency}>
+            <Currency />
+          </div>
+        )}
         {modalOpen && <AddTransaction modalCloser={modalCloser} />}
         {loader && <Loading />}
       </div>
