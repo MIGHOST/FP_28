@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 767px) {
   .currency {
-    display: none;
+    display: block;
   }
 
   .blockForMobileButton {
@@ -38,7 +38,7 @@
     background-size: cover;
   }
   .currency {
-    display: none;
+    display: block;
   }
 }
 
@@ -81,4 +81,5 @@
   .mainData {
     grid-column-start: 2;
   }
+
 }
