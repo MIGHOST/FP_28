@@ -1,2 +1,2 @@
 # FP_28
-Final project group FS_28
+https://wallet-fp-28.netlify.app/registration
