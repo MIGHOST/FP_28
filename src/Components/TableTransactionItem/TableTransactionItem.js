@@ -6,6 +6,7 @@ import {
 } from "../../redux/operations/transactions";
 import styles from "./TableTransactionItem.module.css";
 import { getFromLocaleStorage } from "../../helpers/storage";
+import { sumParser } from "../../helpers/convertator";
 
 const TableTransactionItem = ({ transaction }) => {
   const { date, type, category, comment, sum, balance, _id } = transaction;
@@ -114,13 +115,13 @@ const TableTransactionItem = ({ transaction }) => {
             className={`${styles.cellData} ${styles.sum} ${styles.edit}`}
             onClick={editSum}
           >
-            {Number(editFields.sum).toFixed(2)}
+            {sumParser(editFields.sum)}
           </p>
         )}
       </div>
       <div className={`${styles.cell} ${styles.cellBalance}`}>
         <p className={styles.cellTitle}>Баланс</p>
-        <p className={styles.cellData}>{Number(balance).toFixed(2)}</p>
+        <p className={styles.cellData}>{sumParser(balance)}</p>
       </div>
       <div className={styles.delete}>
         <div className={styles.deleteIconSmall} onClick={deleteHandler}></div>

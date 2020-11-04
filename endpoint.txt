@@ -1,15 +1,15 @@
-URL = "https://powerful-waters-91620.herokuapp.com"
+URL = "https://guarded-cliffs-65841.herokuapp.com/"
 
 
 ================For User=====================
-Реєстрація юзера  "https://powerful-waters-91620.herokuapp.com/register"
-Логінізація юзера "https://powerful-waters-91620.herokuapp.com/login"
-LogOut юзера      "https://powerful-waters-91620.herokuapp.com/logout"
+Реєстрація юзера  "https://guarded-cliffs-65841.herokuapp.com/register"
+Логінізація юзера "https://guarded-cliffs-65841.herokuapp.com/login"
+LogOut юзера      "https://guarded-cliffs-65841.herokuapp.com/logout"
 
 ===============For Transaction=================
 
 
-Створення транзакцій          "https://powerful-waters-91620.herokuapp.com/post"
-Отримання колекції транзакцій "https://powerful-waters-91620.herokuapp.com/get"
-Оновлення транзакції          "https://powerful-waters-91620.herokuapp.com/update"
-Видалення транзакції          "https://powerful-waters-91620.herokuapp.com/update/delete"
+Створення транзакцій          "https://guarded-cliffs-65841.herokuapp.com/post"
+Отримання колекції транзакцій "https://guarded-cliffs-65841.herokuapp.com/get"
+Оновлення транзакції          "https://guarded-cliffs-65841.herokuapp.com/update"
+Видалення транзакції          "https://guarded-cliffs-65841.herokuapp.com/update/delete"

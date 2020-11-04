@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import GoogleButton from "../../Components/GoogleButton/GoogleButton";
-import FacebookButton from "../../Components/FacebookButton/FacebookButton";
+// import GoogleButton from "../../Components/GoogleButton/GoogleButton";
+// import FacebookButton from "../../Components/FacebookButton/FacebookButton";
 import styles from "./Registration.module.css";
 import { signUp } from "../../redux/operations/registration";
 import PasswordStrengthMeter from "../../Components/PasswordStrengthMeter/PasswordStrengthMeter";
@@ -21,7 +21,7 @@ const Registration = () => {
   const [nameValid, setNameValid] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
-  const userError = useSelector((state) => state.session.user);
+  const errorMessage = useSelector((state) => state.session.user.error);
 
   const errHandler = (message) => {
     if(message.includes("Password")){
@@ -139,7 +139,7 @@ const Registration = () => {
               />
             </div>
             <p className={styles.error}>
-              {userError.error ? errHandler(userError.error.data.message) : ""}
+              {errorMessage ? errHandler(errorMessage.data.message) : ""}
             </p>
             <button type="submit" className={styles.button}>
               Регистрация
@@ -148,12 +148,12 @@ const Registration = () => {
               <Link to="/login">Войти</Link>
             </div>
           </form>
-          <div className={styles.login}>
+          {/* <div className={styles.login}>
             <div className={styles.social_box}>
               <GoogleButton />
               <FacebookButton />
             </div>
-          </div>
+          </div> */}
         </div>
         {isTablet && (
           <h2 className={styles.wrapper_left__title}>Finance App</h2>

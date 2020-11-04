@@ -29,6 +29,7 @@
     width: 306px;
     margin: 0 auto;
   }
+
   .list {
     padding-bottom: 55px;
   }
@@ -37,7 +38,7 @@
 @media screen and (min-width: 768px) {
   .list {
     max-height: 70vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   .list::-webkit-scrollbar {
@@ -55,8 +56,9 @@
   .list::-webkit-scrollbar-thumb:hover {
     background: #ff6c00;
   }
+
   .wrapper {
-    padding: 20px 20px 100px;
+    padding: 0 20px 0 20px;
   }
 
   .listTitle {
@@ -86,6 +88,7 @@
   .balance {
     width: 110px;
   }
+
   .delete {
     width: 50px;
   }

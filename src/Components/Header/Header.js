@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { LogOutUser } from "../../redux/operations/login";
 import { getFromLocaleStorage } from "../../helpers/storage";
 import { paths } from "../../constants";
+import { useMediaQuery } from "react-responsive";
 
 const Header = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   const token = JSON.parse(getFromLocaleStorage("persist:auth-token").token);
 
@@ -16,33 +18,21 @@ const Header = () => {
   };
 
   return (
-    user.email !== "" && (
-      <header className={styles.header}>
-        <div className={styles.wrapper}>
-          <div className={styles.logo}></div>
-
-          <nav className={styles.nav}>
-            <a href={paths.mainPage} className={styles.siteLogo}>
-              Wallet
-            </a>
-            <ul className={styles.navList}>
-              <li className={styles.navItem}>
-                <p className={styles.navLink}>{`${user.name}`}</p>
-              </li>
-              <li className={styles.navItem}>
-                <div className={styles.navLinkImg} onClick={logOut}></div>
-              </li>
-
-              <li className={styles.navItem}>
-                <div className={styles.navLink} onClick={logOut}>
-                  log out
-                </div>
-              </li>
-            </ul>
-          </nav>
+    <header className={styles.header}>
+      <div className={styles.wrapper_logo}>
+        <div className={styles.img_logo}></div>
+        <a className={styles.title} href={paths.mainPage}>
+          Wallet
+        </a>
+      </div>
+      <div className={styles.wrapper_nav}>
+        <p className={styles.user_name}>{user.name && `${user.name}`}</p>
+        <div className={styles.wrapper_log_out} onClick={logOut}>
+          <div className={styles.icon_log_out}></div>
+          {!isMobile && <div className={styles.text_log_out}>Вийти</div>}
         </div>
-      </header>
-    )
+      </div>
+    </header>
   );
 };
 export default Header;

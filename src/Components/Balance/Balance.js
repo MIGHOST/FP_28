@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Balance.module.css";
 import { useSelector } from "react-redux";
+import { sumParser } from "../../helpers/convertator";
 
 const Balance = () => {
   const user = useSelector((state) => state.session.user);
@@ -8,7 +9,7 @@ const Balance = () => {
     <div className={style.navContainer}>
       <div className={style.balance}>
         <p>Баланс</p>
-        {user.userBalance && <p>{`${user.userBalance.toFixed(2)}`} грн</p>}
+        {user.userBalance && <p>{`${sumParser(user.userBalance)}`} грн</p>}
       </div>
     </div>
   );

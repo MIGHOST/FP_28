@@ -88,8 +88,7 @@ const AddTransaction = ({ modalCloser, title }) => {
     }
     document.removeEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        modalCloser();
-        console.log("cloce");
+        modalCloser();        
       }
     });
     modalCloser();

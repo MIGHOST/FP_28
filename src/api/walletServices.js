@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://powerful-waters-91620.herokuapp.com";
+axios.defaults.baseURL = "https://cors-anywhere.herokuapp.com/https://guarded-cliffs-65841.herokuapp.com";
 
 export const setAuthToken = (token) => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;

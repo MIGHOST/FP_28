@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Pie } from "react-chartjs-2";
 import { Scrollbars } from "react-custom-scrollbars";

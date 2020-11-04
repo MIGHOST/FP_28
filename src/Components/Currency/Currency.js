@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Currency.module.css";
 import moment from "moment";
 import axios from "axios";
@@ -12,15 +12,23 @@ const Currency = () => {
 ).format("DD.MM.yyyy")}`;
 
   const [arrayOfExchange, setArrayOfExchange] = useState([]);
+  const [loader, setLoader] = useState(false)
   
 
-  const getData = async() => {return await axios.get(requestCurrencyURL)}
+    const getData = async() => 
+    {try 
+      {
+      const res = await axios.get(requestCurrencyURL)
+      setArrayOfExchange([...arrayOfExchange, ...res.data.exchangeRate])} 
+      catch (e) {
+        console.log(e);
+      } finally {setLoader(false)}
+    }
 
-  useEffect(() => {
-    getData()
-    .then(data => setArrayOfExchange(data.data.exchangeRate))
-    .catch(e => console.log(e))
-  }, [])
+    useEffect(() => {
+      setLoader(true)
+      getData()
+    }, [])
 
   const currencyArray = arrayOfExchange.filter(el => 
     el.currency === "EUR" ||
@@ -28,6 +36,8 @@ const Currency = () => {
    el.currency === "RUB" ||
    el.currency === "PLZ"
    )
+
+ 
 
 
   return (
@@ -38,13 +48,16 @@ const Currency = () => {
           <p className={style.exHeadText}>Покупка</p>
           <p className={style.exHeadText}>Продажа</p>
         </div>
+        {loader && <div className={style.lds_ring}><div></div><div></div><div></div><div></div></div>}
         <ul>
-        <Suspense fallback={<p>...Loading</p>}>
-          {currencyArray.map((el, index) => 
+        {/* <Suspense fallback={<p>...Loading</p>}> */}
+       
+          {!loader &&
+          currencyArray.map((el, index) => 
             <CurrencyTable el={el} key={index} index={index}/>
             
-          )}
-          </Suspense>
+          )} 
+          {/* </Suspense> */}
 
         </ul>
       </div>

@@ -30,7 +30,7 @@
 
 @media screen and (max-width: 767px) {
   .navContainer {
-    width: 306px;
+    width: 318px;    
     align-items: center;
     margin: 20px auto;
     background-color: #3a5374;
